@@ -43,8 +43,7 @@ class HomePage extends StatelessWidget{
   );
 }
 }
-class SecondPage extends StatefulWidget{
-//  const SecondPage({super.key});
+class SecondPage extends StatefulWidget {
 
   @override
   _MySecondPageState createState() => _MySecondPageState();
@@ -63,21 +62,27 @@ class _MySecondPageState extends State<SecondPage> {
   String selectedDuration = "30 Minutes";
 
   void updateSelectedSubjects() {
+
     selectedSubjects = checkbox_pick.entries
         .where((entry) => entry.value)
         .map((entry) => entry.key)
         .toList();
+
   }
 
   int getDurationInSeconds() {
+
     if (selectedDuration == "30 Minutes") return 1800;
     if (selectedDuration == "45 Minutes") return 2700;
     return 3600;
+
   }
 
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
+
       appBar: AppBar(
         title: Text("Pick Your Subjects"),
         centerTitle: true,
@@ -91,17 +96,27 @@ class _MySecondPageState extends State<SecondPage> {
           Expanded(
             child: Padding(
               padding: EdgeInsets.all(16),
+
               child: ListView(
+
                 children: checkbox_pick.keys.map((String key) {
+
                   return CheckboxListTile(
+
                     title: Text(key),
+
                     value: checkbox_pick[key],
+
                     onChanged: (bool? value) {
+
                       setState(() {
                         checkbox_pick[key] = value!;
                       });
+
                     },
+
                   );
+
                 }).toList(),
               ),
             ),
@@ -109,12 +124,14 @@ class _MySecondPageState extends State<SecondPage> {
 
           VerticalDivider(),
 
-          /// RIGHT SIDE — DROPDOWN ONLY
+          /// RIGHT SIDE — DROPDOWN
           Expanded(
             child: Padding(
               padding: EdgeInsets.all(16),
+
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
+
                 children: [
 
                   Text(
@@ -127,22 +144,30 @@ class _MySecondPageState extends State<SecondPage> {
                   SizedBox(height: 20),
 
                   DropdownButton<String>(
+
                     value: selectedDuration,
+
                     isExpanded: true,
+
                     items: [
                       "30 Minutes",
                       "45 Minutes",
                       "60 Minutes"
                     ].map((value) {
+
                       return DropdownMenuItem(
                         value: value,
                         child: Text(value),
                       );
+
                     }).toList(),
+
                     onChanged: (value) {
+
                       setState(() {
                         selectedDuration = value!;
                       });
+
                     },
                   ),
                 ],
@@ -153,29 +178,61 @@ class _MySecondPageState extends State<SecondPage> {
       ),
 
       floatingActionButton: FloatingActionButton(
+
         onPressed: () {
+
           updateSelectedSubjects();
 
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => ThirdPage(
-                examDuration: getDurationInSeconds(),
+          if (selectedSubjects.isEmpty) {
+
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(
+                content: Text("Please select at least one subject"),
               ),
+            );
+
+            return;
+
+          }
+
+          Navigator.push(
+
+            context,
+
+            MaterialPageRoute(
+
+              builder: (context) => ThirdPage(
+
+                examDuration: getDurationInSeconds(),
+
+                selectedSubjects: selectedSubjects,
+
+              ),
+
             ),
+
           );
+
         },
+
         backgroundColor: Colors.blueGrey,
+
         child: Icon(Icons.arrow_forward),
+
       ),
     );
   }
 }
 
 class ThirdPage extends StatefulWidget {
-  final int examDuration;
 
-  ThirdPage({required this.examDuration});
+  final int examDuration;
+  final List<String> selectedSubjects;
+
+  ThirdPage({
+    required this.examDuration,
+    required this.selectedSubjects,
+  });
 
   @override
   _MyThirdPageState createState() => _MyThirdPageState();
@@ -183,26 +240,10 @@ class ThirdPage extends StatefulWidget {
 
 class _MyThirdPageState extends State<ThirdPage> {
 
-  /// CSV FILES
-  final List<String> csvFiles = [
-    "assets/CPE461.csv",
-    "assets/CPE481.csv",
-    "assets/ENS211.csv",
-    "assets/PRE211.csv",
-  ];
+  late List<String> csvFiles;
+  late List<String> subjects;
 
-  /// SUBJECT NAMES
-  final List<String> subjects = [
-    "CPE461",
-    "CPE481",
-    "ENS211",
-    "PRE211",
-  ];
-
-  /// QUESTIONS PER SUBJECT
   Map<int, List<Map<String, dynamic>>> subjectQuestions = {};
-
-  /// ANSWERS PER SUBJECT
   Map<int, Map<int, int>> subjectAnswers = {};
 
   int currentSubject = 0;
@@ -213,19 +254,30 @@ class _MyThirdPageState extends State<ThirdPage> {
 
   @override
   void initState() {
+
     super.initState();
+
     remainingSeconds = widget.examDuration;
+
+    /// SUBJECTS FROM SCREEN 2
+    subjects = widget.selectedSubjects;
+
+    /// CONVERT TO CSV PATHS
+    csvFiles = subjects.map((subject) {
+      return "assets/$subject.csv";
+    }).toList();
+
     loadQuestions();
+
     startTimer();
+
   }
 
-  /// LOAD MULTIPLE CSV FILES
   Future<void> loadQuestions() async {
 
     for (int i = 0; i < csvFiles.length; i++) {
 
-      final rawData =
-          await rootBundle.loadString(csvFiles[i]);
+      final rawData = await rootBundle.loadString(csvFiles[i]);
 
       List<List<dynamic>> csvData =
           CsvToListConverter().convert(rawData);
@@ -233,6 +285,44 @@ class _MyThirdPageState extends State<ThirdPage> {
       List<Map<String, dynamic>> loadedQuestions = [];
 
       for (var row in csvData) {
+
+        loadedQuestions.add({
+
+          "questionNumber": row[0],
+
+          "question": row[1],
+
+          "options": [row[2], row[3], row[4], row[5]],
+
+          "answerIndex": row[6],
+
+        });
+
+      }
+
+      subjectQuestions[i] = loadedQuestions;
+      subjectAnswers[i] = {};
+    }
+
+    setState(() {});
+  }
+  //to test for file loading error
+  /*Future<void> loadQuestions() async {
+
+  try {
+
+    for (int i = 0; i < csvFiles.length; i++) {
+
+      final rawData = await rootBundle.loadString(csvFiles[i]);
+
+      List<List<dynamic>> csvData =
+          CsvToListConverter().convert(rawData);
+
+      List<Map<String, dynamic>> loadedQuestions = [];
+
+      for (var row in csvData) {
+
+        if (row.length < 7) continue;
 
         loadedQuestions.add({
           "questionNumber": row[0],
@@ -245,12 +335,22 @@ class _MyThirdPageState extends State<ThirdPage> {
 
       subjectQuestions[i] = loadedQuestions;
       subjectAnswers[i] = {};
+
     }
 
     setState(() {});
+
+  } catch (e) {
+
+    print("CSV LOAD ERROR: $e");
+
   }
 
+}*/
+
+
   void startTimer() {
+
     countdownTimer =
         Timer.periodic(Duration(seconds: 1), (timer) {
 
@@ -268,6 +368,7 @@ class _MyThirdPageState extends State<ThirdPage> {
       }
 
     });
+
   }
 
   String formatTime(int seconds) {
@@ -276,6 +377,7 @@ class _MyThirdPageState extends State<ThirdPage> {
     int secs = seconds % 60;
 
     return "$minutes:${secs.toString().padLeft(2, '0')}";
+
   }
 
   void nextQuestion() {
@@ -304,14 +406,12 @@ class _MyThirdPageState extends State<ThirdPage> {
 
   }
 
-  /// SWITCH SUBJECT
   void changeSubject(int index) {
 
     setState(() {
 
       currentSubject = index;
 
-      /// RESET QUESTION POSITION
       currentQuestionIndex = 0;
 
     });
@@ -343,11 +443,14 @@ class _MyThirdPageState extends State<ThirdPage> {
     });
 
     Navigator.pushReplacement(
+
       context,
+
       MaterialPageRoute(
         builder: (context) =>
             ResultPage(score: score, total: total),
       ),
+
     );
   }
 
@@ -370,23 +473,29 @@ class _MyThirdPageState extends State<ThirdPage> {
     }
 
     var questions = subjectQuestions[currentSubject]!;
-
     var currentQuestion = questions[currentQuestionIndex];
-
     List options = currentQuestion["options"];
 
     return Scaffold(
+
       appBar: AppBar(
         title: Text("CBT App"),
+
         actions: [
+
           Padding(
             padding: EdgeInsets.only(right: 16),
+
             child: Center(
+
               child: Text(
+
                 formatTime(remainingSeconds),
+
                 style: TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.bold),
+
               ),
             ),
           ),
@@ -399,22 +508,24 @@ class _MyThirdPageState extends State<ThirdPage> {
           /// SUBJECT SWITCHER
           Padding(
             padding: EdgeInsets.all(8),
+
             child: SegmentedButton<int>(
 
               segments: List.generate(
+
                 subjects.length,
+
                 (index) => ButtonSegment(
                   value: index,
                   label: Text(subjects[index]),
                 ),
+
               ),
 
               selected: {currentSubject},
 
               onSelectionChanged: (value) {
-
                 changeSubject(value.first);
-
               },
             ),
           ),
@@ -426,6 +537,7 @@ class _MyThirdPageState extends State<ThirdPage> {
 
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
+
                 children: [
 
                   Text(
@@ -453,31 +565,28 @@ class _MyThirdPageState extends State<ThirdPage> {
                       value: index,
 
                       groupValue:
-                          subjectAnswers[currentSubject]![
-                              currentQuestionIndex],
+                          subjectAnswers[currentSubject]![currentQuestionIndex],
 
                       onChanged: (value) {
 
                         setState(() {
 
-                          subjectAnswers[currentSubject]![
-                              currentQuestionIndex] = value!;
+                          subjectAnswers[currentSubject]![currentQuestionIndex] =
+                              value!;
 
                         });
 
                       },
                     );
-
                   }),
                 ],
               ),
             ),
           ),
 
-          /// BUTTON SECTION
+          /// BUTTONS
           Padding(
-            padding: EdgeInsets.symmetric(
-                horizontal: 16, vertical: 8),
+            padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
 
             child: Row(
               children: [
@@ -485,9 +594,7 @@ class _MyThirdPageState extends State<ThirdPage> {
                 Expanded(
                   child: ElevatedButton(
                     onPressed:
-                        currentQuestionIndex == 0
-                            ? null
-                            : previousQuestion,
+                        currentQuestionIndex == 0 ? null : previousQuestion,
                     child: Text("Previous"),
                   ),
                 ),
@@ -496,11 +603,10 @@ class _MyThirdPageState extends State<ThirdPage> {
 
                 Expanded(
                   child: ElevatedButton(
-                    onPressed:
-                        currentQuestionIndex ==
-                                questions.length - 1
-                            ? null
-                            : nextQuestion,
+                    onPressed: currentQuestionIndex ==
+                            questions.length - 1
+                        ? null
+                        : nextQuestion,
                     child: Text("Next"),
                   ),
                 ),
@@ -540,8 +646,7 @@ class _MyThirdPageState extends State<ThirdPage> {
               itemBuilder: (context, index) {
 
                 bool isAnswered =
-                    subjectAnswers[currentSubject]!
-                        .containsKey(index);
+                    subjectAnswers[currentSubject]!.containsKey(index);
 
                 bool isCurrent =
                     index == currentQuestionIndex;
@@ -573,7 +678,9 @@ class _MyThirdPageState extends State<ThirdPage> {
                     ),
 
                     child: Text(
+
                       "${index + 1}",
+
                       style: TextStyle(
                         fontSize: 12,
                         fontWeight: FontWeight.bold,
@@ -592,6 +699,7 @@ class _MyThirdPageState extends State<ThirdPage> {
     );
   }
 }
+//modify this code to include the corrections to make the code run faster
 
 class ResultPage extends StatelessWidget {
   final int score;

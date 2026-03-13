@@ -19,7 +19,7 @@ void main() async {
   for (String line in lines) {
     if (line.trim().isEmpty) continue;
 
-    // Split line by comma
+    // Split csv line at each comma 
     List<String> values = line.split(',');
 
     String question = values[0];

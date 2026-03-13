@@ -11,7 +11,7 @@ void main() => runApp(MaterialApp(
   home:HomePage(),
 ));
 
-
+//class to create page 1 or screen 1
 class HomePage extends StatelessWidget{
 //  const HomePage({super.key});;u
 
@@ -52,9 +52,9 @@ class SecondPage extends StatefulWidget{
 
 class _MySecondPageState extends State<SecondPage> {
 
-  Map<String, bool> hobbies = {
+  Map<String, bool> checkbox_pick = {
     "ENS211": false,
-    "PRE11": false,
+    "PRE211": false,
     "CPE481": false,
     "CPE461": false,
   };
@@ -63,7 +63,7 @@ class _MySecondPageState extends State<SecondPage> {
   String selectedDuration = "30 Minutes";
 
   void updateSelectedSubjects() {
-    selectedSubjects = hobbies.entries
+    selectedSubjects = checkbox_pick.entries
         .where((entry) => entry.value)
         .map((entry) => entry.key)
         .toList();
@@ -92,13 +92,13 @@ class _MySecondPageState extends State<SecondPage> {
             child: Padding(
               padding: EdgeInsets.all(16),
               child: ListView(
-                children: hobbies.keys.map((String key) {
+                children: checkbox_pick.keys.map((String key) {
                   return CheckboxListTile(
                     title: Text(key),
-                    value: hobbies[key],
+                    value: checkbox_pick[key],
                     onChanged: (bool? value) {
                       setState(() {
-                        hobbies[key] = value!;
+                        checkbox_pick[key] = value!;
                       });
                     },
                   );
@@ -182,9 +182,31 @@ class ThirdPage extends StatefulWidget {
 }
 
 class _MyThirdPageState extends State<ThirdPage> {
+
+  /// CSV FILES
+  final List<String> csvFiles = [
+    "assets/CPE461.csv",
+    "assets/CPE481.csv",
+    "assets/ENS211.csv",
+    "assets/PRE211.csv",
+  ];
+
+  /// SUBJECT NAMES
+  final List<String> subjects = [
+    "CPE461",
+    "CPE481",
+    "ENS211",
+    "PRE211",
+  ];
+
+  /// QUESTIONS PER SUBJECT
+  Map<int, List<Map<String, dynamic>>> subjectQuestions = {};
+
+  /// ANSWERS PER SUBJECT
+  Map<int, Map<int, int>> subjectAnswers = {};
+
+  int currentSubject = 0;
   int currentQuestionIndex = 0;
-  List<Map<String, dynamic>> questions = [];
-  Map<int, int> selectedAnswers = {};
 
   late int remainingSeconds;
   Timer? countdownTimer;
@@ -194,78 +216,137 @@ class _MyThirdPageState extends State<ThirdPage> {
     super.initState();
     remainingSeconds = widget.examDuration;
     loadQuestions();
-    startTimer(); // Auto start timer
+    startTimer();
   }
 
+  /// LOAD MULTIPLE CSV FILES
   Future<void> loadQuestions() async {
-    final rawData = await rootBundle.loadString("assets/questions.csv");
-    List<List<dynamic>> csvData = CsvToListConverter().convert(rawData);
 
-    List<Map<String, dynamic>> loadedQuestions = [];
-    for (var row in csvData) {
-      loadedQuestions.add({
-        "questionNumber": row[0],
-        "question": row[1],
-        "options": [row[2], row[3], row[4], row[5]],
-        "answerIndex": row[6],
-      });
+    for (int i = 0; i < csvFiles.length; i++) {
+
+      final rawData =
+          await rootBundle.loadString(csvFiles[i]);
+
+      List<List<dynamic>> csvData =
+          CsvToListConverter().convert(rawData);
+
+      List<Map<String, dynamic>> loadedQuestions = [];
+
+      for (var row in csvData) {
+
+        loadedQuestions.add({
+          "questionNumber": row[0],
+          "question": row[1],
+          "options": [row[2], row[3], row[4], row[5]],
+          "answerIndex": row[6],
+        });
+
+      }
+
+      subjectQuestions[i] = loadedQuestions;
+      subjectAnswers[i] = {};
     }
 
-    setState(() {
-      questions = loadedQuestions;
-    });
+    setState(() {});
   }
 
   void startTimer() {
-    countdownTimer = Timer.periodic(Duration(seconds: 1), (timer) {
+    countdownTimer =
+        Timer.periodic(Duration(seconds: 1), (timer) {
+
       if (remainingSeconds > 0) {
+
         setState(() {
           remainingSeconds--;
         });
+
       } else {
+
         timer.cancel();
-        submitQuiz(); // auto submit when time ends
+        submitQuiz();
+
       }
+
     });
   }
 
   String formatTime(int seconds) {
+
     int minutes = seconds ~/ 60;
     int secs = seconds % 60;
+
     return "$minutes:${secs.toString().padLeft(2, '0')}";
   }
 
   void nextQuestion() {
+
+    var questions = subjectQuestions[currentSubject]!;
+
     if (currentQuestionIndex < questions.length - 1) {
+
       setState(() {
         currentQuestionIndex++;
       });
+
     }
+
   }
 
   void previousQuestion() {
+
     if (currentQuestionIndex > 0) {
+
       setState(() {
         currentQuestionIndex--;
       });
+
     }
+
+  }
+
+  /// SWITCH SUBJECT
+  void changeSubject(int index) {
+
+    setState(() {
+
+      currentSubject = index;
+
+      /// RESET QUESTION POSITION
+      currentQuestionIndex = 0;
+
+    });
+
   }
 
   void submitQuiz() {
+
     countdownTimer?.cancel();
 
     int score = 0;
-    for (int i = 0; i < questions.length; i++) {
-      if (selectedAnswers[i] == questions[i]["answerIndex"]) score++;
-    }
+    int total = 0;
+
+    subjectQuestions.forEach((subjectIndex, questions) {
+
+      for (int i = 0; i < questions.length; i++) {
+
+        total++;
+
+        if (subjectAnswers[subjectIndex]![i] ==
+            questions[i]["answerIndex"]) {
+
+          score++;
+
+        }
+
+      }
+
+    });
 
     Navigator.pushReplacement(
       context,
       MaterialPageRoute(
-        builder: (context) => ResultPage(
-          score: score,
-          total: questions.length,
-        ),
+        builder: (context) =>
+            ResultPage(score: score, total: total),
       ),
     );
   }
@@ -278,14 +359,20 @@ class _MyThirdPageState extends State<ThirdPage> {
 
   @override
   Widget build(BuildContext context) {
-    if (questions.isEmpty) {
+
+    if (subjectQuestions.isEmpty) {
+
       return Scaffold(
         appBar: AppBar(title: Text("CBT App")),
         body: Center(child: CircularProgressIndicator()),
       );
+
     }
 
+    var questions = subjectQuestions[currentSubject]!;
+
     var currentQuestion = questions[currentQuestionIndex];
+
     List options = currentQuestion["options"];
 
     return Scaffold(
@@ -297,7 +384,9 @@ class _MyThirdPageState extends State<ThirdPage> {
             child: Center(
               child: Text(
                 formatTime(remainingSeconds),
-                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                style: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold),
               ),
             ),
           ),
@@ -306,60 +395,123 @@ class _MyThirdPageState extends State<ThirdPage> {
 
       body: Column(
         children: [
+
+          /// SUBJECT SWITCHER
+          Padding(
+            padding: EdgeInsets.all(8),
+            child: SegmentedButton<int>(
+
+              segments: List.generate(
+                subjects.length,
+                (index) => ButtonSegment(
+                  value: index,
+                  label: Text(subjects[index]),
+                ),
+              ),
+
+              selected: {currentSubject},
+
+              onSelectionChanged: (value) {
+
+                changeSubject(value.first);
+
+              },
+            ),
+          ),
+
           /// QUESTION AREA
           Expanded(
             child: Padding(
               padding: EdgeInsets.all(16),
+
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
+
                   Text(
                     "Question ${currentQuestionIndex + 1}/${questions.length}",
-                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                    style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold),
                   ),
+
                   SizedBox(height: 15),
-                  Text(currentQuestion["question"], style: TextStyle(fontSize: 22)),
+
+                  Text(
+                    currentQuestion["question"],
+                    style: TextStyle(fontSize: 22),
+                  ),
+
                   SizedBox(height: 15),
+
                   ...List.generate(options.length, (index) {
+
                     return RadioListTile<int>(
+
                       title: Text(options[index].toString()),
+
                       value: index,
-                      groupValue: selectedAnswers[currentQuestionIndex],
+
+                      groupValue:
+                          subjectAnswers[currentSubject]![
+                              currentQuestionIndex],
+
                       onChanged: (value) {
+
                         setState(() {
-                          selectedAnswers[currentQuestionIndex] = value!;
+
+                          subjectAnswers[currentSubject]![
+                              currentQuestionIndex] = value!;
+
                         });
+
                       },
                     );
+
                   }),
                 ],
               ),
             ),
           ),
 
-          /// BUTTON SECTION (Previous, Next, Submit)
+          /// BUTTON SECTION
           Padding(
-            padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+            padding: EdgeInsets.symmetric(
+                horizontal: 16, vertical: 8),
+
             child: Row(
               children: [
+
                 Expanded(
                   child: ElevatedButton(
-                    onPressed: currentQuestionIndex == 0 ? null : previousQuestion,
+                    onPressed:
+                        currentQuestionIndex == 0
+                            ? null
+                            : previousQuestion,
                     child: Text("Previous"),
                   ),
                 ),
+
                 SizedBox(width: 10),
+
                 Expanded(
                   child: ElevatedButton(
-                    onPressed: currentQuestionIndex == questions.length - 1 ? null : nextQuestion,
+                    onPressed:
+                        currentQuestionIndex ==
+                                questions.length - 1
+                            ? null
+                            : nextQuestion,
                     child: Text("Next"),
                   ),
                 ),
+
                 SizedBox(width: 10),
+
                 Expanded(
                   child: ElevatedButton(
                     onPressed: submitQuiz,
-                    style: ElevatedButton.styleFrom(backgroundColor: Colors.black12),
+                    style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.black12),
                     child: Text("Submit"),
                   ),
                 ),
@@ -371,40 +523,63 @@ class _MyThirdPageState extends State<ThirdPage> {
           Container(
             height: 100,
             padding: EdgeInsets.all(8),
+
             child: GridView.builder(
+
               itemCount: questions.length,
-              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 20, // adjust based on your needs
+
+              gridDelegate:
+                  SliverGridDelegateWithFixedCrossAxisCount(
+
+                crossAxisCount: 20,
                 crossAxisSpacing: 4,
                 mainAxisSpacing: 4,
                 childAspectRatio: 1,
               ),
+
               itemBuilder: (context, index) {
-                bool isAnswered = selectedAnswers.containsKey(index);
-                bool isCurrent = index == currentQuestionIndex;
+
+                bool isAnswered =
+                    subjectAnswers[currentSubject]!
+                        .containsKey(index);
+
+                bool isCurrent =
+                    index == currentQuestionIndex;
 
                 return GestureDetector(
+
                   onTap: () {
+
                     setState(() {
                       currentQuestionIndex = index;
                     });
+
                   },
+
                   child: Container(
+
                     alignment: Alignment.center,
+
                     decoration: BoxDecoration(
+
                       color: isCurrent
                           ? Colors.blue
                           : isAnswered
                               ? Colors.green
                               : Colors.grey[300],
-                      borderRadius: BorderRadius.circular(4),
+
+                      borderRadius:
+                          BorderRadius.circular(4),
                     ),
+
                     child: Text(
                       "${index + 1}",
                       style: TextStyle(
                         fontSize: 12,
                         fontWeight: FontWeight.bold,
-                        color: isCurrent || isAnswered ? Colors.white : Colors.black,
+                        color: isCurrent || isAnswered
+                            ? Colors.white
+                            : Colors.black,
                       ),
                     ),
                   ),
@@ -417,7 +592,6 @@ class _MyThirdPageState extends State<ThirdPage> {
     );
   }
 }
-
 
 class ResultPage extends StatelessWidget {
   final int score;

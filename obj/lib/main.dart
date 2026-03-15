@@ -32,7 +32,7 @@ class HomePage extends StatelessWidget{
         child: Text("click"),)*/
     ),
     body: Center(
-      child: Image.asset('assets/new.png'),
+      child: Image.asset('assets/quotes.webp'),
     ),
    
     floatingActionButton: FloatingActionButton(
@@ -272,8 +272,59 @@ class _MyThirdPageState extends State<ThirdPage> {
     startTimer();
 
   }
-
   Future<void> loadQuestions() async {
+
+  try {
+
+    /// LOAD ALL CSV FILES IN PARALLEL
+    List<String> rawFiles = await Future.wait(
+      csvFiles.map((file) => rootBundle.loadString(file)),
+    );
+
+    for (int i = 0; i < rawFiles.length; i++) {
+
+      List<List<dynamic>> csvData =
+          CsvToListConverter().convert(rawFiles[i]);
+
+      List<Map<String, dynamic>> loadedQuestions = [];
+
+      for (var row in csvData) {
+
+        /// Skip invalid rows
+        if (row.length < 7) continue;
+
+        loadedQuestions.add({
+          "questionNumber": row[0],
+          "question": row[1],
+          "options": [
+            row[2].toString(),
+            row[3].toString(),
+            row[4].toString(),
+            row[5].toString(),
+          ],
+          "answerIndex": row[6],
+        });
+
+      }
+
+      subjectQuestions[i] = loadedQuestions;
+      subjectAnswers[i] = {};
+
+    }
+
+    if (mounted) {
+      setState(() {});
+    }
+
+  } catch (e) {
+
+    print("CSV LOAD ERROR: $e");
+
+  }
+}
+
+
+  /*Future<void> loadQuestions() async {
 
     for (int i = 0; i < csvFiles.length; i++) {
 
@@ -305,7 +356,8 @@ class _MyThirdPageState extends State<ThirdPage> {
     }
 
     setState(() {});
-  }
+  } */
+
   //to test for file loading error
   /*Future<void> loadQuestions() async {
 
@@ -348,8 +400,32 @@ class _MyThirdPageState extends State<ThirdPage> {
 
 }*/
 
-
   void startTimer() {
+
+  countdownTimer = Timer.periodic(
+    Duration(seconds: 1),
+    (timer) {
+
+      if (remainingSeconds <= 0) {
+
+        timer.cancel();
+        submitQuiz();
+        return;
+
+      }
+
+      remainingSeconds--;
+
+      if (mounted) {
+        setState(() {});
+      }
+
+    },
+  );
+}
+
+  // old timer, trying to prevent unnecessary crashes
+  /*void startTimer() {
 
     countdownTimer =
         Timer.periodic(Duration(seconds: 1), (timer) {
@@ -369,7 +445,7 @@ class _MyThirdPageState extends State<ThirdPage> {
 
     });
 
-  }
+  }*/
 
   String formatTime(int seconds) {
 
@@ -463,8 +539,7 @@ class _MyThirdPageState extends State<ThirdPage> {
   @override
   Widget build(BuildContext context) {
 
-    if (subjectQuestions.isEmpty) {
-
+    if (subjectQuestions.isEmpty && csvFiles.isNotEmpty) {
       return Scaffold(
         appBar: AppBar(title: Text("CBT App")),
         body: Center(child: CircularProgressIndicator()),

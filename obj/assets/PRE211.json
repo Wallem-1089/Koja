@@ -1,0 +1,63 @@
+[
+  {
+    "questionNumber": 1,
+    "question": "What is 2+2?",
+    "options": ["2", "3", "4", "5"],
+    "answerIndex": 2
+  },
+  {
+    "questionNumber": 2,
+    "question": "Capital of France?",
+    "options": ["Berlin", "Madrid", "Paris", "Rome"],
+    "answerIndex": 2
+  },
+  {
+    "questionNumber": 3,
+    "question": "Capital of Nigeria?",
+    "options": ["Lagos","Abuja","Kano","Ibadan"],
+    "answerIndex": 1
+  },
+  {
+   "questionNumber": 4,
+    "question": "Flutter is developed by?",
+    "options": ["Apple","Microsoft","Google","Meta"],
+    "answerIndex": 2
+  },
+  {
+    "questionNumber": 5,
+    "question": "what is my name",
+    "options": ["walter","james","mark","john"],
+    "answerIndex": 0
+  },
+  {
+    "questionNumber": 6,
+    "question": "what is my name",
+    "options": ["walter","james","mark","john"],
+    "answerIndex": 0
+  },
+  {
+    "questionNumber": 7,
+    "question": "what is my name",
+    "options": ["walter","james","mark","john"],
+    "answerIndex": 0
+  },
+  {
+    "questionNumber": 8,
+    "question": "what is my name",
+    "options": ["walter","james","mark","john"],
+    "answerIndex": 0
+  },
+  {
+    "questionNumber": 9,
+    "question": "what is my name",
+    "options": ["walter","james","mark","john"],
+    "answerIndex": 0
+  },
+  {
+    "questionNumber": 10,
+    "question": "what is my name",
+    "options": ["walter","james","mark","john"],
+    "answerIndex": 0
+  }
+
+]

@@ -1,9 +1,10 @@
 /*import 'package:flutter/material.dart';
 import 'package:flutter/services.dart' show rootBundle;*/
 //import 'dart:io';
+//import 'package:csv/csv.dart';
+import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:csv/csv.dart';
 import 'dart:async';
 
 
@@ -240,7 +241,7 @@ class ThirdPage extends StatefulWidget {
 
 class _MyThirdPageState extends State<ThirdPage> {
 
-  late List<String> csvFiles;
+  late List<String> jsonFiles;
   late List<String> subjects;
 
   Map<int, List<Map<String, dynamic>>> subjectQuestions = {};
@@ -252,6 +253,8 @@ class _MyThirdPageState extends State<ThirdPage> {
   late int remainingSeconds;
   Timer? countdownTimer;
 
+  bool isLoading = true; // ✅ FIX LOADING BUG
+
   @override
   void initState() {
 
@@ -262,190 +265,69 @@ class _MyThirdPageState extends State<ThirdPage> {
     /// SUBJECTS FROM SCREEN 2
     subjects = widget.selectedSubjects;
 
-    /// CONVERT TO CSV PATHS
-    csvFiles = subjects.map((subject) {
-      return "assets/$subject.csv";
+    /// JSON FILE PATHS
+    jsonFiles = subjects.map((subject) {
+      return "assets/$subject.json";
     }).toList();
 
     loadQuestions();
-
     startTimer();
-
   }
+
+  /// 🚀 FAST JSON LOADING
   Future<void> loadQuestions() async {
 
-  try {
+    try {
 
-    /// LOAD ALL CSV FILES IN PARALLEL
-    List<String> rawFiles = await Future.wait(
-      csvFiles.map((file) => rootBundle.loadString(file)),
-    );
+      final rawFiles = await Future.wait(
+        jsonFiles.map((file) => rootBundle.loadString(file)),
+      );
 
-    for (int i = 0; i < rawFiles.length; i++) {
+      for (int i = 0; i < rawFiles.length; i++) {
 
-      List<List<dynamic>> csvData =
-          CsvToListConverter().convert(rawFiles[i]);
+        final List data = jsonDecode(rawFiles[i]);
 
-      List<Map<String, dynamic>> loadedQuestions = [];
+        subjectQuestions[i] = data.map((q) {
+          return {
+            "question": q["question"],
+            "options": List<String>.from(q["options"]),
+            "answerIndex": q["answerIndex"],
+          };
+        }).toList();
 
-      for (var row in csvData) {
-
-        /// Skip invalid rows
-        if (row.length < 7) continue;
-
-        loadedQuestions.add({
-          "questionNumber": row[0],
-          "question": row[1],
-          "options": [
-            row[2].toString(),
-            row[3].toString(),
-            row[4].toString(),
-            row[5].toString(),
-          ],
-          "answerIndex": row[6],
-        });
-
+        subjectAnswers[i] = {};
       }
 
-      subjectQuestions[i] = loadedQuestions;
-      subjectAnswers[i] = {};
-
+    } catch (e) {
+      print("JSON LOAD ERROR: $e");
     }
 
     if (mounted) {
-      setState(() {});
+      setState(() {
+        isLoading = false; // ✅ stop loader
+      });
     }
-
-  } catch (e) {
-
-    print("CSV LOAD ERROR: $e");
-
-  }
-}
-
-
-  /*Future<void> loadQuestions() async {
-
-    for (int i = 0; i < csvFiles.length; i++) {
-
-      final rawData = await rootBundle.loadString(csvFiles[i]);
-
-      List<List<dynamic>> csvData =
-          CsvToListConverter().convert(rawData);
-
-      List<Map<String, dynamic>> loadedQuestions = [];
-
-      for (var row in csvData) {
-
-        loadedQuestions.add({
-
-          "questionNumber": row[0],
-
-          "question": row[1],
-
-          "options": [row[2], row[3], row[4], row[5]],
-
-          "answerIndex": row[6],
-
-        });
-
-      }
-
-      subjectQuestions[i] = loadedQuestions;
-      subjectAnswers[i] = {};
-    }
-
-    setState(() {});
-  } */
-
-  //to test for file loading error
-  /*Future<void> loadQuestions() async {
-
-  try {
-
-    for (int i = 0; i < csvFiles.length; i++) {
-
-      final rawData = await rootBundle.loadString(csvFiles[i]);
-
-      List<List<dynamic>> csvData =
-          CsvToListConverter().convert(rawData);
-
-      List<Map<String, dynamic>> loadedQuestions = [];
-
-      for (var row in csvData) {
-
-        if (row.length < 7) continue;
-
-        loadedQuestions.add({
-          "questionNumber": row[0],
-          "question": row[1],
-          "options": [row[2], row[3], row[4], row[5]],
-          "answerIndex": row[6],
-        });
-
-      }
-
-      subjectQuestions[i] = loadedQuestions;
-      subjectAnswers[i] = {};
-
-    }
-
-    setState(() {});
-
-  } catch (e) {
-
-    print("CSV LOAD ERROR: $e");
-
   }
 
-}*/
-
+  /// ⏱ TIMER (OPTIMIZED)
   void startTimer() {
 
-  countdownTimer = Timer.periodic(
-    Duration(seconds: 1),
-    (timer) {
+    countdownTimer = Timer.periodic(
+      Duration(seconds: 1),
+      (timer) {
 
-      if (remainingSeconds <= 0) {
+        if (remainingSeconds <= 0) {
+          timer.cancel();
+          submitQuiz();
+          return;
+        }
 
-        timer.cancel();
-        submitQuiz();
-        return;
+        remainingSeconds--;
 
-      }
-
-      remainingSeconds--;
-
-      if (mounted) {
-        setState(() {});
-      }
-
-    },
-  );
-}
-
-  // old timer, trying to prevent unnecessary crashes
-  /*void startTimer() {
-
-    countdownTimer =
-        Timer.periodic(Duration(seconds: 1), (timer) {
-
-      if (remainingSeconds > 0) {
-
-        setState(() {
-          remainingSeconds--;
-        });
-
-      } else {
-
-        timer.cancel();
-        submitQuiz();
-
-      }
-
-    });
-
-  }*/
+        if (mounted) setState(() {});
+      },
+    );
+  }
 
   String formatTime(int seconds) {
 
@@ -453,45 +335,36 @@ class _MyThirdPageState extends State<ThirdPage> {
     int secs = seconds % 60;
 
     return "$minutes:${secs.toString().padLeft(2, '0')}";
-
   }
 
   void nextQuestion() {
 
-    var questions = subjectQuestions[currentSubject]!;
+    var questions = subjectQuestions[currentSubject];
+
+    if (questions == null) return;
 
     if (currentQuestionIndex < questions.length - 1) {
-
       setState(() {
         currentQuestionIndex++;
       });
-
     }
-
   }
 
   void previousQuestion() {
 
     if (currentQuestionIndex > 0) {
-
       setState(() {
         currentQuestionIndex--;
       });
-
     }
-
   }
 
   void changeSubject(int index) {
 
     setState(() {
-
       currentSubject = index;
-
       currentQuestionIndex = 0;
-
     });
-
   }
 
   void submitQuiz() {
@@ -507,26 +380,19 @@ class _MyThirdPageState extends State<ThirdPage> {
 
         total++;
 
-        if (subjectAnswers[subjectIndex]![i] ==
+        if (subjectAnswers[subjectIndex]?[i] ==
             questions[i]["answerIndex"]) {
-
           score++;
-
         }
-
       }
-
     });
 
     Navigator.pushReplacement(
-
       context,
-
       MaterialPageRoute(
         builder: (context) =>
             ResultPage(score: score, total: total),
       ),
-
     );
   }
 
@@ -539,12 +405,20 @@ class _MyThirdPageState extends State<ThirdPage> {
   @override
   Widget build(BuildContext context) {
 
-    if (subjectQuestions.isEmpty && csvFiles.isNotEmpty) {
+    /// ✅ FIX: Proper loading check
+    if (isLoading) {
       return Scaffold(
         appBar: AppBar(title: Text("CBT App")),
         body: Center(child: CircularProgressIndicator()),
       );
+    }
 
+    /// EXTRA SAFETY
+    if (subjectQuestions.isEmpty) {
+      return Scaffold(
+        appBar: AppBar(title: Text("Error")),
+        body: Center(child: Text("No questions loaded")),
+      );
     }
 
     var questions = subjectQuestions[currentSubject]!;
@@ -555,22 +429,15 @@ class _MyThirdPageState extends State<ThirdPage> {
 
       appBar: AppBar(
         title: Text("CBT App"),
-
         actions: [
-
           Padding(
             padding: EdgeInsets.only(right: 16),
-
             child: Center(
-
               child: Text(
-
                 formatTime(remainingSeconds),
-
                 style: TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.bold),
-
               ),
             ),
           ),
@@ -585,20 +452,14 @@ class _MyThirdPageState extends State<ThirdPage> {
             padding: EdgeInsets.all(8),
 
             child: SegmentedButton<int>(
-
               segments: List.generate(
-
                 subjects.length,
-
                 (index) => ButtonSegment(
                   value: index,
                   label: Text(subjects[index]),
                 ),
-
               ),
-
               selected: {currentSubject},
-
               onSelectionChanged: (value) {
                 changeSubject(value.first);
               },
@@ -634,23 +495,15 @@ class _MyThirdPageState extends State<ThirdPage> {
                   ...List.generate(options.length, (index) {
 
                     return RadioListTile<int>(
-
-                      title: Text(options[index].toString()),
-
+                      title: Text(options[index]),
                       value: index,
-
                       groupValue:
-                          subjectAnswers[currentSubject]![currentQuestionIndex],
-
+                          subjectAnswers[currentSubject]?[currentQuestionIndex],
                       onChanged: (value) {
-
                         setState(() {
-
-                          subjectAnswers[currentSubject]![currentQuestionIndex] =
+                          subjectAnswers[currentSubject]?[currentQuestionIndex] =
                               value!;
-
                         });
-
                       },
                     );
                   }),
@@ -678,10 +531,10 @@ class _MyThirdPageState extends State<ThirdPage> {
 
                 Expanded(
                   child: ElevatedButton(
-                    onPressed: currentQuestionIndex ==
-                            questions.length - 1
-                        ? null
-                        : nextQuestion,
+                    onPressed:
+                        currentQuestionIndex == questions.length - 1
+                            ? null
+                            : nextQuestion,
                     child: Text("Next"),
                   ),
                 ),
@@ -700,18 +553,16 @@ class _MyThirdPageState extends State<ThirdPage> {
             ),
           ),
 
-          /// NAVIGATION GRID
+          /// NAVIGATION GRID (UNCHANGED)
           Container(
             height: 100,
             padding: EdgeInsets.all(8),
 
             child: GridView.builder(
-
               itemCount: questions.length,
 
               gridDelegate:
                   SliverGridDelegateWithFixedCrossAxisCount(
-
                 crossAxisCount: 20,
                 crossAxisSpacing: 4,
                 mainAxisSpacing: 4,
@@ -729,33 +580,25 @@ class _MyThirdPageState extends State<ThirdPage> {
                 return GestureDetector(
 
                   onTap: () {
-
                     setState(() {
                       currentQuestionIndex = index;
                     });
-
                   },
 
                   child: Container(
-
                     alignment: Alignment.center,
 
                     decoration: BoxDecoration(
-
                       color: isCurrent
                           ? Colors.blue
                           : isAnswered
                               ? Colors.green
                               : Colors.grey[300],
-
-                      borderRadius:
-                          BorderRadius.circular(4),
+                      borderRadius: BorderRadius.circular(4),
                     ),
 
                     child: Text(
-
                       "${index + 1}",
-
                       style: TextStyle(
                         fontSize: 12,
                         fontWeight: FontWeight.bold,
@@ -774,6 +617,7 @@ class _MyThirdPageState extends State<ThirdPage> {
     );
   }
 }
+
 //modify this code to include the corrections to make the code run faster
 
 class ResultPage extends StatelessWidget {

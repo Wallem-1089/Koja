@@ -51,32 +51,91 @@ class SecondPage extends StatefulWidget {
 }
 
 class _MySecondPageState extends State<SecondPage> {
+/// SUBJECT & YEAR OPTIONS
+  List<String> subjectOptions = ["ENS211", "PRE211", "CPE481", "CPE461"];
+  List<String> yearOptions = ["2020", "2021", "2022", "2023", "2024"];
 
-  Map<String, bool> checkbox_pick = {
-    "ENS211": false,
-    "PRE211": false,
-    "CPE481": false,
-    "CPE461": false,
-  };
+  /// 4 SUBJECT SLOTS (Subject + Year)
+  List<Map<String, String?>> selectedSubjectsData = [
+    {"subject": null, "year": null},
+    {"subject": null, "year": null},
+    {"subject": null, "year": null},
+    {"subject": null, "year": null},
+  ];
 
-  List<String> selectedSubjects = [];
   String selectedDuration = "30 Minutes";
 
-  void updateSelectedSubjects() {
-
-    selectedSubjects = checkbox_pick.entries
-        .where((entry) => entry.value)
-        .map((entry) => entry.key)
+  /// BUILD FINAL SUBJECT LIST (e.g. CPE461_2022)
+  List<String> getSelectedSubjects() {
+    return selectedSubjectsData
+        .where((item) => item["subject"] != null && item["year"] != null)
+        .map((item) => "${item["subject"]}_${item["year"]}")
         .toList();
-
   }
 
   int getDurationInSeconds() {
-
     if (selectedDuration == "30 Minutes") return 1800;
     if (selectedDuration == "45 Minutes") return 2700;
     return 3600;
+  }
 
+  /// SUBJECT CARD WIDGET
+  Widget subjectSelector(int index) {
+    return Card(
+      elevation: 3,
+      child: Padding(
+        padding: EdgeInsets.all(10),
+        child: Column(
+          children: [
+
+            Text(
+              "Subject ${index + 1}",
+              style: TextStyle(fontWeight: FontWeight.bold),
+            ),
+
+            SizedBox(height: 10),
+
+            /// SUBJECT DROPDOWN
+            DropdownButton<String>(
+              hint: Text("Select Subject"),
+              value: selectedSubjectsData[index]["subject"],
+              isExpanded: true,
+              items: subjectOptions.map((value) {
+                return DropdownMenuItem(
+                  value: value,
+                  child: Text(value),
+                );
+              }).toList(),
+              onChanged: (value) {
+                setState(() {
+                  selectedSubjectsData[index]["subject"] = value;
+                });
+              },
+            ),
+
+            SizedBox(height: 10),
+
+            /// YEAR DROPDOWN
+            DropdownButton<String>(
+              hint: Text("Select Year"),
+              value: selectedSubjectsData[index]["year"],
+              isExpanded: true,
+              items: yearOptions.map((value) {
+                return DropdownMenuItem(
+                  value: value,
+                  child: Text(value),
+                );
+              }).toList(),
+              onChanged: (value) {
+                setState(() {
+                  selectedSubjectsData[index]["year"] = value;
+                });
+              },
+            ),
+          ],
+        ),
+      ),
+    );
   }
 
   @override
@@ -93,39 +152,41 @@ class _MySecondPageState extends State<SecondPage> {
       body: Row(
         children: [
 
-          /// LEFT SIDE — SUBJECT CHECKBOXES
+          /// LEFT SIDE — SUBJECT SELECTORS (2x2 GRID)
           Expanded(
             child: Padding(
-              padding: EdgeInsets.all(16),
+              padding: EdgeInsets.all(12),
+              child: Column(
+                children: [
 
-              child: ListView(
+                  /// ROW 1
+                  Row(
+                    children: [
+                      Expanded(child: subjectSelector(0)),
+                      SizedBox(width: 10),
+                      Expanded(child: subjectSelector(1)),
+                    ],
+                  ),
 
-                children: checkbox_pick.keys.map((String key) {
+                  SizedBox(height: 15),
 
-                  return CheckboxListTile(
+                  /// ROW 2
+                  Row(
+                    children: [
+                      Expanded(child: subjectSelector(2)),
+                      SizedBox(width: 10),
+                      Expanded(child: subjectSelector(3)),
+                    ],
+                  ),
 
-                    title: Text(key),
-
-                    value: checkbox_pick[key],
-
-                    onChanged: (bool? value) {
-
-                      setState(() {
-                        checkbox_pick[key] = value!;
-                      });
-
-                    },
-
-                  );
-
-                }).toList(),
+                ],
               ),
             ),
           ),
 
           VerticalDivider(),
 
-          /// RIGHT SIDE — DROPDOWN
+          /// RIGHT SIDE — DURATION
           Expanded(
             child: Padding(
               padding: EdgeInsets.all(16),
@@ -145,30 +206,22 @@ class _MySecondPageState extends State<SecondPage> {
                   SizedBox(height: 20),
 
                   DropdownButton<String>(
-
                     value: selectedDuration,
-
                     isExpanded: true,
-
                     items: [
                       "30 Minutes",
                       "45 Minutes",
                       "60 Minutes"
                     ].map((value) {
-
                       return DropdownMenuItem(
                         value: value,
                         child: Text(value),
                       );
-
                     }).toList(),
-
                     onChanged: (value) {
-
                       setState(() {
                         selectedDuration = value!;
                       });
-
                     },
                   ),
                 ],
@@ -182,44 +235,30 @@ class _MySecondPageState extends State<SecondPage> {
 
         onPressed: () {
 
-          updateSelectedSubjects();
+          List<String> selectedSubjects = getSelectedSubjects();
 
           if (selectedSubjects.isEmpty) {
-
             ScaffoldMessenger.of(context).showSnackBar(
               SnackBar(
-                content: Text("Please select at least one subject"),
+                content: Text("Please select at least one subject + year"),
               ),
             );
-
             return;
-
           }
 
           Navigator.push(
-
             context,
-
             MaterialPageRoute(
-
               builder: (context) => ThirdPage(
-
                 examDuration: getDurationInSeconds(),
-
                 selectedSubjects: selectedSubjects,
-
               ),
-
             ),
-
           );
-
         },
 
         backgroundColor: Colors.blueGrey,
-
         child: Icon(Icons.arrow_forward),
-
       ),
     );
   }
@@ -676,8 +715,232 @@ class ResultPage extends StatelessWidget {
               },
               child: Text("Back to Home Page"),
             ),
+            /*ElevatedButton(
+              onPressed: () {
+                 Navigator.push(context,MaterialPageRoute(builder: (context)=> TestPage()));
+              },
+              child: Text("Go to Test Page"),
+            ),*/
           ],
         ),
+      ),
+    );
+  }
+}
+class TestPage extends StatefulWidget{
+  @override
+   _MyTestPageState createState() => _MyTestPageState();
+}
+class _MyTestPageState extends State<TestPage> {
+
+  /// SUBJECT & YEAR OPTIONS
+  List<String> subjectOptions = ["ENS211", "PRE211", "CPE481", "CPE461"];
+  List<String> yearOptions = ["2020", "2021", "2022", "2023", "2024"];
+
+  /// 4 SUBJECT SLOTS (Subject + Year)
+  List<Map<String, String?>> selectedSubjectsData = [
+    {"subject": null, "year": null},
+    {"subject": null, "year": null},
+    {"subject": null, "year": null},
+    {"subject": null, "year": null},
+  ];
+
+  String selectedDuration = "30 Minutes";
+
+  /// BUILD FINAL SUBJECT LIST (e.g. CPE461_2022)
+  List<String> getSelectedSubjects() {
+    return selectedSubjectsData
+        .where((item) => item["subject"] != null && item["year"] != null)
+        .map((item) => "${item["subject"]}_${item["year"]}")
+        .toList();
+  }
+
+  int getDurationInSeconds() {
+    if (selectedDuration == "30 Minutes") return 1800;
+    if (selectedDuration == "45 Minutes") return 2700;
+    return 3600;
+  }
+
+  /// SUBJECT CARD WIDGET
+  Widget subjectSelector(int index) {
+    return Card(
+      elevation: 3,
+      child: Padding(
+        padding: EdgeInsets.all(10),
+        child: Column(
+          children: [
+
+            Text(
+              "Subject ${index + 1}",
+              style: TextStyle(fontWeight: FontWeight.bold),
+            ),
+
+            SizedBox(height: 10),
+
+            /// SUBJECT DROPDOWN
+            DropdownButton<String>(
+              hint: Text("Select Subject"),
+              value: selectedSubjectsData[index]["subject"],
+              isExpanded: true,
+              items: subjectOptions.map((value) {
+                return DropdownMenuItem(
+                  value: value,
+                  child: Text(value),
+                );
+              }).toList(),
+              onChanged: (value) {
+                setState(() {
+                  selectedSubjectsData[index]["subject"] = value;
+                });
+              },
+            ),
+
+            SizedBox(height: 10),
+
+            /// YEAR DROPDOWN
+            DropdownButton<String>(
+              hint: Text("Select Year"),
+              value: selectedSubjectsData[index]["year"],
+              isExpanded: true,
+              items: yearOptions.map((value) {
+                return DropdownMenuItem(
+                  value: value,
+                  child: Text(value),
+                );
+              }).toList(),
+              onChanged: (value) {
+                setState(() {
+                  selectedSubjectsData[index]["year"] = value;
+                });
+              },
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+
+    return Scaffold(
+
+      appBar: AppBar(
+        title: Text("Pick Your Subjects"),
+        centerTitle: true,
+        backgroundColor: Colors.blueGrey,
+      ),
+
+      body: Row(
+        children: [
+
+          /// LEFT SIDE — SUBJECT SELECTORS (2x2 GRID)
+          Expanded(
+            child: Padding(
+              padding: EdgeInsets.all(12),
+              child: Column(
+                children: [
+
+                  /// ROW 1
+                  Row(
+                    children: [
+                      Expanded(child: subjectSelector(0)),
+                      SizedBox(width: 10),
+                      Expanded(child: subjectSelector(1)),
+                    ],
+                  ),
+
+                  SizedBox(height: 15),
+
+                  /// ROW 2
+                  Row(
+                    children: [
+                      Expanded(child: subjectSelector(2)),
+                      SizedBox(width: 10),
+                      Expanded(child: subjectSelector(3)),
+                    ],
+                  ),
+
+                ],
+              ),
+            ),
+          ),
+
+          VerticalDivider(),
+
+          /// RIGHT SIDE — DURATION
+          Expanded(
+            child: Padding(
+              padding: EdgeInsets.all(16),
+
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+
+                children: [
+
+                  Text(
+                    "Select Exam Duration",
+                    style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold),
+                  ),
+
+                  SizedBox(height: 20),
+
+                  DropdownButton<String>(
+                    value: selectedDuration,
+                    isExpanded: true,
+                    items: [
+                      "30 Minutes",
+                      "45 Minutes",
+                      "60 Minutes"
+                    ].map((value) {
+                      return DropdownMenuItem(
+                        value: value,
+                        child: Text(value),
+                      );
+                    }).toList(),
+                    onChanged: (value) {
+                      setState(() {
+                        selectedDuration = value!;
+                      });
+                    },
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ],
+      ),
+
+      floatingActionButton: FloatingActionButton(
+
+        onPressed: () {
+
+          List<String> selectedSubjects = getSelectedSubjects();
+
+          if (selectedSubjects.isEmpty) {
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(
+                content: Text("Please select at least one subject + year"),
+              ),
+            );
+            return;
+          }
+
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => ThirdPage(
+                examDuration: getDurationInSeconds(),
+                selectedSubjects: selectedSubjects,
+              ),
+            ),
+          );
+        },
+
+        backgroundColor: Colors.blueGrey,
+        child: Icon(Icons.arrow_forward),
       ),
     );
   }

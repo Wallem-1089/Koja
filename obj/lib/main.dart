@@ -81,62 +81,80 @@ class _MySecondPageState extends State<SecondPage> {
 
   /// SUBJECT CARD WIDGET
   Widget subjectSelector(int index) {
-    return Card(
-      elevation: 3,
-      child: Padding(
-        padding: EdgeInsets.all(10),
-        child: Column(
-          children: [
+  return Card(
+    elevation: 3,
+    child: Padding(
+      padding: EdgeInsets.all(10),
+      child: Column(
+        children: [
 
-            Text(
-              "Subject ${index + 1}",
-              style: TextStyle(fontWeight: FontWeight.bold),
-            ),
+          Text(
+            "Subject ${index + 1}",
+            style: TextStyle(fontWeight: FontWeight.bold),
+          ),
 
-            SizedBox(height: 10),
+          SizedBox(height: 10),
 
-            /// SUBJECT DROPDOWN
-            DropdownButton<String>(
-              hint: Text("Select Subject"),
-              value: selectedSubjectsData[index]["subject"],
-              isExpanded: true,
-              items: subjectOptions.map((value) {
+          /// SUBJECT DROPDOWN (WITH CLEAR OPTION)
+          DropdownButton<String>(
+            value: selectedSubjectsData[index]["subject"],
+            hint: Text("Select Subject"),
+            isExpanded: true,
+
+            items: [
+              DropdownMenuItem(
+                value: null,
+                child: Text("None"),
+              ),
+              ...subjectOptions.map((value) {
                 return DropdownMenuItem(
                   value: value,
                   child: Text(value),
                 );
               }).toList(),
-              onChanged: (value) {
-                setState(() {
-                  selectedSubjectsData[index]["subject"] = value;
-                });
-              },
-            ),
+            ],
 
-            SizedBox(height: 10),
+            onChanged: (value) {
+              setState(() {
+                selectedSubjectsData[index]["subject"] = value;
 
-            /// YEAR DROPDOWN
-            DropdownButton<String>(
-              hint: Text("Select Year"),
-              value: selectedSubjectsData[index]["year"],
-              isExpanded: true,
-              items: yearOptions.map((value) {
-                return DropdownMenuItem(
-                  value: value,
-                  child: Text(value),
-                );
-              }).toList(),
-              onChanged: (value) {
-                setState(() {
-                  selectedSubjectsData[index]["year"] = value;
-                });
-              },
-            ),
-          ],
-        ),
+                /// 🔥 IMPORTANT: reset year if subject cleared
+                if (value == null) {
+                  selectedSubjectsData[index]["year"] = null;
+                }
+              });
+            },
+          ),
+
+          SizedBox(height: 10),
+
+          /// YEAR DROPDOWN (DISABLED IF NO SUBJECT)
+          DropdownButton<String>(
+            value: selectedSubjectsData[index]["year"],
+            hint: Text("Select Year"),
+            isExpanded: true,
+
+            items: yearOptions.map((value) {
+              return DropdownMenuItem(
+                value: value,
+                child: Text(value),
+              );
+            }).toList(),
+
+            onChanged: selectedSubjectsData[index]["subject"] == null
+                ? null // disable if no subject selected
+                : (value) {
+                    setState(() {
+                      selectedSubjectsData[index]["year"] = value;
+                    });
+                  },
+          ),
+        ],
       ),
-    );
-  }
+    ),
+  );
+}
+
 
   @override
   Widget build(BuildContext context) {

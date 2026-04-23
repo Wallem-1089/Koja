@@ -65,6 +65,7 @@ class _MySecondPageState extends State<SecondPage> {
   ];
 
   String selectedDuration = "30 Minutes";
+  String selectedExamMode = "Mock"; // new
 
   /// BUILD FINAL SUBJECT LIST (e.g. CPE461_2022)
   List<String> getSelectedSubjects() {
@@ -268,12 +269,38 @@ class _MySecondPageState extends State<SecondPage> {
                       });
                     },
                   ),
+                  SizedBox(height: 30),
+
+                /// ✅ NEW: EXAM MODE DROPDOWN
+                Text(
+                  "Select Exam Mode",
+                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                ),
+
+                 SizedBox(height: 20),
+
+              DropdownButton<String>(
+                value: selectedExamMode,
+                isExpanded: true,
+                items: ["Mock", "Exam"]
+                    .map((value) => DropdownMenuItem(
+                          value: value,
+                          child: Text(value),
+                        ))
+                    .toList(),
+                onChanged: (value) {
+                  setState(() {
+                    selectedExamMode = value!;
+                  });
+                },
+              ),
                 ],
               ),
             ),
           ),
         ],
       ),
+      
 
       floatingActionButton: FloatingActionButton(
 
@@ -290,7 +317,7 @@ class _MySecondPageState extends State<SecondPage> {
             return;
           }
 
-          Navigator.push(
+          /*Navigator.push(
             context,
             MaterialPageRoute(
               builder: (context) => ThirdPage(
@@ -298,7 +325,18 @@ class _MySecondPageState extends State<SecondPage> {
                 selectedSubjects: selectedSubjects,
               ),
             ),
-          );
+          );*/
+          Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => ThirdPage(
+              examDuration: getDurationInSeconds(),
+              selectedSubjects: selectedSubjects,
+              examMode: selectedExamMode, // ✅ NEW
+    ),
+  ),
+);
+
         },
 
         backgroundColor: Colors.blueGrey,
@@ -312,10 +350,12 @@ class ThirdPage extends StatefulWidget {
 
   final int examDuration;
   final List<String> selectedSubjects;
+  final String examMode; // ✅ NEW
 
   ThirdPage({
     required this.examDuration,
     required this.selectedSubjects,
+    required this.examMode,
   });
 
   @override
@@ -581,7 +621,13 @@ class _MyThirdPageState extends State<ThirdPage> {
       context,
       MaterialPageRoute(
         builder: (context) =>
-            ResultPage(score: score, total: total),
+            ResultPage(
+              score: score,
+              total: total,
+              examMode: widget.examMode,
+              subjectQuestions: subjectQuestions,
+),
+
       ),
     );
   }
@@ -840,287 +886,180 @@ class _MyThirdPageState extends State<ThirdPage> {
 class ResultPage extends StatelessWidget {
   final int score;
   final int total;
+  final String examMode;
+  final Map<int, List<Map<String, dynamic>>> subjectQuestions;
 
-  ResultPage({required this.score, required this.total});
+  ResultPage({
+    required this.score,
+    required this.total,
+    required this.examMode,
+    required this.subjectQuestions,
+  });
 
-  @override
-  Widget build(BuildContext context) {
-    double percentage = (score / total) * 100;
+//Math Render Function
+Widget buildContent(String text) {
 
-    return Scaffold(
-      appBar: AppBar(title: Text("Exam Result")),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
+  final regex = RegExp(r'\$(.*?)\$');
 
-            Text(
-              "Your Score",
-              style: TextStyle(
-                fontSize: 26,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
+  if (!regex.hasMatch(text)) {
+    return Text(
+      text,
+      style: TextStyle(fontSize: 16),
+    );
+  }
 
-            SizedBox(height: 20),
+  List<InlineSpan> spans = [];
+  int lastIndex = 0;
 
-            Text(
-              "$score / $total",
-              style: TextStyle(
-                fontSize: 40,
-                color: Colors.blue,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
+  for (final match in regex.allMatches(text)) {
 
-            SizedBox(height: 20),
+    if (match.start > lastIndex) {
+      spans.add(
+        TextSpan(
+          text: text.substring(lastIndex, match.start),
+          style: TextStyle(color: Colors.black, fontSize: 16),
+        ),
+      );
+    }
 
-            Text(
-              "${percentage.toStringAsFixed(1)}%",
-              style: TextStyle(
-                fontSize: 28,
-                color: percentage >= 50
-                    ? Colors.green
-                    : Colors.red,
-              ),
-            ),
-
-            SizedBox(height: 30),
-
-            ElevatedButton(
-              onPressed: () {
-                 Navigator.push(context,MaterialPageRoute(builder: (context)=> HomePage()));
-              },
-              child: Text("Back to Home Page"),
-            ),
-            /*ElevatedButton(
-              onPressed: () {
-                 Navigator.push(context,MaterialPageRoute(builder: (context)=> TestPage()));
-              },
-              child: Text("Go to Test Page"),
-            ),*/
-          ],
+    spans.add(
+      WidgetSpan(
+        alignment: PlaceholderAlignment.middle,
+        child: Math.tex(
+          match.group(1)!,
+          textStyle: TextStyle(fontSize: 16),
         ),
       ),
     );
+
+    lastIndex = match.end;
   }
+
+  if (lastIndex < text.length) {
+    spans.add(
+      TextSpan(
+        text: text.substring(lastIndex),
+        style: TextStyle(color: Colors.black, fontSize: 16),
+      ),
+    );
+  }
+
+  return RichText(
+    text: TextSpan(children: spans),
+  );
 }
-class TestPage extends StatefulWidget{
+
   @override
-   _MyTestPageState createState() => _MyTestPageState();
-}
-class _MyTestPageState extends State<TestPage> {
+Widget build(BuildContext context) {
+  double percentage = (score / total) * 100;
 
-  /// SUBJECT & YEAR OPTIONS
-  List<String> subjectOptions = ["ENS211", "PRE211", "CPE481", "CPE461"];
-  List<String> yearOptions = ["2020", "2021", "2022", "2023", "2024"];
+  return Scaffold(
+    appBar: AppBar(title: Text("Exam Result")),
 
-  /// 4 SUBJECT SLOTS (Subject + Year)
-  List<Map<String, String?>> selectedSubjectsData = [
-    {"subject": null, "year": null},
-    {"subject": null, "year": null},
-    {"subject": null, "year": null},
-    {"subject": null, "year": null},
-  ];
+    body: Column(
+      children: [
 
-  String selectedDuration = "30 Minutes";
+        /// RESULT SUMMARY
+        Expanded(
+          flex: 2,
+          child: Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
 
-  /// BUILD FINAL SUBJECT LIST (e.g. CPE461_2022)
-  List<String> getSelectedSubjects() {
-    return selectedSubjectsData
-        .where((item) => item["subject"] != null && item["year"] != null)
-        .map((item) => "${item["subject"]}_${item["year"]}")
-        .toList();
-  }
+                Text(
+                  "Your Score",
+                  style: TextStyle(fontSize: 26, fontWeight: FontWeight.bold),
+                ),
 
-  int getDurationInSeconds() {
-    if (selectedDuration == "30 Minutes") return 1800;
-    if (selectedDuration == "45 Minutes") return 2700;
-    return 3600;
-  }
+                SizedBox(height: 20),
 
-  /// SUBJECT CARD WIDGET
-  Widget subjectSelector(int index) {
-    return Card(
-      elevation: 3,
-      child: Padding(
-        padding: EdgeInsets.all(10),
-        child: Column(
-          children: [
+                Text(
+                  "$score / $total",
+                  style: TextStyle(
+                    fontSize: 40,
+                    color: Colors.blue,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
 
-            Text(
-              "Subject ${index + 1}",
-              style: TextStyle(fontWeight: FontWeight.bold),
+                SizedBox(height: 20),
+
+                Text(
+                  "${percentage.toStringAsFixed(1)}%",
+                  style: TextStyle(
+                    fontSize: 28,
+                    color: percentage >= 50 ? Colors.green : Colors.red,
+                  ),
+                ),
+              ],
             ),
-
-            SizedBox(height: 10),
-
-            /// SUBJECT DROPDOWN
-            DropdownButton<String>(
-              hint: Text("Select Subject"),
-              value: selectedSubjectsData[index]["subject"],
-              isExpanded: true,
-              items: subjectOptions.map((value) {
-                return DropdownMenuItem(
-                  value: value,
-                  child: Text(value),
-                );
-              }).toList(),
-              onChanged: (value) {
-                setState(() {
-                  selectedSubjectsData[index]["subject"] = value;
-                });
-              },
-            ),
-
-            SizedBox(height: 10),
-
-            /// YEAR DROPDOWN
-            DropdownButton<String>(
-              hint: Text("Select Year"),
-              value: selectedSubjectsData[index]["year"],
-              isExpanded: true,
-              items: yearOptions.map((value) {
-                return DropdownMenuItem(
-                  value: value,
-                  child: Text(value),
-                );
-              }).toList(),
-              onChanged: (value) {
-                setState(() {
-                  selectedSubjectsData[index]["year"] = value;
-                });
-              },
-            ),
-          ],
+          ),
         ),
-      ),
-    );
-  }
 
-  @override
-  Widget build(BuildContext context) {
-
-    return Scaffold(
-
-      appBar: AppBar(
-        title: Text("Pick Your Subjects"),
-        centerTitle: true,
-        backgroundColor: Colors.blueGrey,
-      ),
-
-      body: Row(
-        children: [
-
-          /// LEFT SIDE — SUBJECT SELECTORS (2x2 GRID)
+        /// ✅ MOCK MODE REVIEW
+        if (examMode == "Mock")
           Expanded(
-            child: Padding(
-              padding: EdgeInsets.all(12),
-              child: Column(
-                children: [
+            flex: 3,
+            child: ListView(
+              padding: EdgeInsets.all(10),
+              children: subjectQuestions.entries.expand((entry) {
+                return entry.value.map((q) {
+                  return Card(
+                    //style: TextStyle(color: Colors.green),
+                    child: ListTile(
+                      title: buildContent(q["question"]),
 
-                  /// ROW 1
-                  Row(
-                    children: [
-                      Expanded(child: subjectSelector(0)),
-                      SizedBox(width: 10),
-                      Expanded(child: subjectSelector(1)),
-                    ],
-                  ),
+                      subtitle: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
 
-                  SizedBox(height: 15),
+                          SizedBox(height: 5),
 
-                  /// ROW 2
-                  Row(
-                    children: [
-                      Expanded(child: subjectSelector(2)),
-                      SizedBox(width: 10),
-                      Expanded(child: subjectSelector(3)),
-                    ],
-                  ),
+                          Row(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                "Correct Answer: ",
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.green,
+                                ),
+                              ),
+                              Expanded(
+                                child: buildContent(
+                                  q["options"][q["answerIndex"]],
+                                ),
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
 
-                ],
-              ),
+                    ),
+                  );
+                });
+              }).toList(),
             ),
           ),
 
-          VerticalDivider(),
-
-          /// RIGHT SIDE — DURATION
-          Expanded(
-            child: Padding(
-              padding: EdgeInsets.all(16),
-
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-
-                children: [
-
-                  Text(
-                    "Select Exam Duration",
-                    style: TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold),
-                  ),
-
-                  SizedBox(height: 20),
-
-                  DropdownButton<String>(
-                    value: selectedDuration,
-                    isExpanded: true,
-                    items: [
-                      "30 Minutes",
-                      "45 Minutes",
-                      "60 Minutes"
-                    ].map((value) {
-                      return DropdownMenuItem(
-                        value: value,
-                        child: Text(value),
-                      );
-                    }).toList(),
-                    onChanged: (value) {
-                      setState(() {
-                        selectedDuration = value!;
-                      });
-                    },
-                  ),
-                ],
-              ),
-            ),
+        /// BUTTON
+        Padding(
+          padding: EdgeInsets.all(16),
+          child: ElevatedButton(
+            onPressed: () {
+              Navigator.pushAndRemoveUntil(
+                context,
+                MaterialPageRoute(builder: (_) => HomePage()),
+                (route) => false,
+              );
+            },
+            child: Text("Back to Home Page"),
           ),
-        ],
-      ),
-
-      floatingActionButton: FloatingActionButton(
-
-        onPressed: () {
-
-          List<String> selectedSubjects = getSelectedSubjects();
-
-          if (selectedSubjects.isEmpty) {
-            ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(
-                content: Text("Please select at least one subject + year"),
-              ),
-            );
-            return;
-          }
-
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => ThirdPage(
-                examDuration: getDurationInSeconds(),
-                selectedSubjects: selectedSubjects,
-              ),
-            ),
-          );
-        },
-
-        backgroundColor: Colors.blueGrey,
-        child: Icon(Icons.arrow_forward),
-      ),
-    );
-  }
+        ),
+      ],
+    ),
+  );
+}
 }
 //modify this code to include the changes given in the last prompt result

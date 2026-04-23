@@ -58,6 +58,11 @@
     "question": "what is my name",
     "options": ["walter","james","mark","john"],
     "answerIndex": 0
+  },
+  {
+    "questionNumber": 11,
+    "question": "Solve: $x^2 + 5x + 6 = 0$    the president of nigeria ",
+    "options": ["$x=2,3$","$x=-2,-3$","$x=1,6$","$x=0,5$"],
+    "answerIndex": 0
   }
-
 ]

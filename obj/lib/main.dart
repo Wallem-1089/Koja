@@ -6,6 +6,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'dart:async';
+import 'package:flutter_math_fork/flutter_math.dart';
 
 
 void main() => runApp(MaterialApp(
@@ -448,6 +449,65 @@ class _MyThirdPageState extends State<ThirdPage> {
       currentQuestionIndex = 0;
     });
   }
+///Math Render Function
+  Widget buildContent(String text) {
+
+  /// Detect LaTeX ($...$)
+  final regex = RegExp(r'\$(.*?)\$');
+
+  if (!regex.hasMatch(text)) {
+    return Text(
+      text,
+      style: TextStyle(fontSize: 22),
+    );
+  }
+
+  /// Split text + math parts
+  List<InlineSpan> spans = [];
+
+  int lastIndex = 0;
+
+  for (final match in regex.allMatches(text)) {
+
+    /// Normal text before math
+    if (match.start > lastIndex) {
+      spans.add(
+        TextSpan(
+          text: text.substring(lastIndex, match.start),
+          style: TextStyle(color: Colors.black, fontSize: 22),
+        ),
+      );
+    }
+
+    /// Math part
+    spans.add(
+      WidgetSpan(
+        alignment: PlaceholderAlignment.middle,
+        child: Math.tex(
+          match.group(1)!,
+          textStyle: TextStyle(fontSize: 22),
+        ),
+      ),
+    );
+
+    lastIndex = match.end;
+  }
+
+  /// Remaining text
+  if (lastIndex < text.length) {
+    spans.add(
+      TextSpan(
+        text: text.substring(lastIndex),
+        style: TextStyle(color: Colors.black, fontSize: 22),
+      ),
+    );
+  }
+
+  return RichText(
+    text: TextSpan(children: spans),
+  );
+}
+
 
   void submitQuiz() {
 
@@ -505,7 +565,9 @@ class _MyThirdPageState extends State<ThirdPage> {
 
     var questions = subjectQuestions[currentSubject]!;
     var currentQuestion = questions[currentQuestionIndex];
-    List options = currentQuestion["options"];
+    /*List options = currentQuestion["options"];*/
+    List<String> options = List<String>.from(currentQuestion["options"]);
+
 
     return Scaffold(
 
@@ -567,17 +629,14 @@ class _MyThirdPageState extends State<ThirdPage> {
 
                   SizedBox(height: 15),
 
-                  Text(
-                    currentQuestion["question"],
-                    style: TextStyle(fontSize: 22),
-                  ),
+                  buildContent(currentQuestion["question"]),
 
                   SizedBox(height: 15),
 
                   ...List.generate(options.length, (index) {
 
                     return RadioListTile<int>(
-                      title: Text(options[index]),
+                      title: buildContent(options[index]),
                       value: index,
                       groupValue:
                           subjectAnswers[currentSubject]?[currentQuestionIndex],
@@ -988,3 +1047,4 @@ class _MyTestPageState extends State<TestPage> {
     );
   }
 }
+//modify this code to include the changes given in the last prompt result

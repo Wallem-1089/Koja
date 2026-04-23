@@ -79,8 +79,28 @@ class _MySecondPageState extends State<SecondPage> {
     return 3600;
   }
 
+  List<String> getAvailableSubjects(int currentIndex) {
+
+  /// Get all selected subjects except current slot
+  List<String> selected = selectedSubjectsData
+      .asMap()
+      .entries
+      .where((entry) =>
+          entry.key != currentIndex &&
+          entry.value["subject"] != null)
+      .map((entry) => entry.value["subject"]!)
+      .toList();
+
+  /// Return subjects not already selected
+  return subjectOptions.where((subj) => !selected.contains(subj)).toList();
+}
+
+
   /// SUBJECT CARD WIDGET
   Widget subjectSelector(int index) {
+
+  List<String> availableSubjects = getAvailableSubjects(index);
+
   return Card(
     elevation: 3,
     child: Padding(
@@ -95,18 +115,22 @@ class _MySecondPageState extends State<SecondPage> {
 
           SizedBox(height: 10),
 
-          /// SUBJECT DROPDOWN (WITH CLEAR OPTION)
+          /// SUBJECT DROPDOWN (NO DUPLICATES)
           DropdownButton<String>(
             value: selectedSubjectsData[index]["subject"],
             hint: Text("Select Subject"),
             isExpanded: true,
 
             items: [
+
+              /// CLEAR OPTION
               DropdownMenuItem(
                 value: null,
                 child: Text("None"),
               ),
-              ...subjectOptions.map((value) {
+
+              /// FILTERED SUBJECTS
+              ...availableSubjects.map((value) {
                 return DropdownMenuItem(
                   value: value,
                   child: Text(value),
@@ -118,7 +142,7 @@ class _MySecondPageState extends State<SecondPage> {
               setState(() {
                 selectedSubjectsData[index]["subject"] = value;
 
-                /// 🔥 IMPORTANT: reset year if subject cleared
+                /// reset year if cleared
                 if (value == null) {
                   selectedSubjectsData[index]["year"] = null;
                 }
@@ -128,7 +152,7 @@ class _MySecondPageState extends State<SecondPage> {
 
           SizedBox(height: 10),
 
-          /// YEAR DROPDOWN (DISABLED IF NO SUBJECT)
+          /// YEAR DROPDOWN
           DropdownButton<String>(
             value: selectedSubjectsData[index]["year"],
             hint: Text("Select Year"),
@@ -142,7 +166,7 @@ class _MySecondPageState extends State<SecondPage> {
             }).toList(),
 
             onChanged: selectedSubjectsData[index]["subject"] == null
-                ? null // disable if no subject selected
+                ? null
                 : (value) {
                     setState(() {
                       selectedSubjectsData[index]["year"] = value;
@@ -154,6 +178,7 @@ class _MySecondPageState extends State<SecondPage> {
     ),
   );
 }
+
 
 
   @override

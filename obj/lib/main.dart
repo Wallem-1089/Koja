@@ -336,7 +336,7 @@ class _MyThirdPageState extends State<ThirdPage> {
   late int remainingSeconds;
   Timer? countdownTimer;
 
-  bool isLoading = true; // ✅ FIX LOADING BUG
+  bool isLoading = true; //  FIX LOADING BUG
 
   @override
   void initState() {
@@ -357,7 +357,7 @@ class _MyThirdPageState extends State<ThirdPage> {
     startTimer();
   }
 
-  /// 🚀 FAST JSON LOADING
+  ///  FAST JSON LOADING
   Future<void> loadQuestions() async {
 
     try {
@@ -387,12 +387,60 @@ class _MyThirdPageState extends State<ThirdPage> {
 
     if (mounted) {
       setState(() {
-        isLoading = false; // ✅ stop loader
+        isLoading = false; //  stop loader
       });
     }
   }
 
-  /// ⏱ TIMER (OPTIMIZED)
+  Future<void> confirmExit() async {
+
+  bool? shouldExit = await showDialog<bool>(
+    context: context,
+    barrierDismissible: false, // user must choose
+
+    builder: (context) {
+      return AlertDialog(
+        title: Text("Exit Quiz"),
+        content: Text("Are you sure you want to exit? Your progress will be lost."),
+
+        actions: [
+
+          TextButton(
+            onPressed: () {
+              Navigator.pop(context, false); // ❌ Stay
+            },
+            child: Text("Cancel"),
+          ),
+
+          TextButton(
+            onPressed: () {
+              Navigator.pop(context, true); // ✅ Exit
+            },
+            child: Text(
+              "Exit",
+              style: TextStyle(color: Colors.red),
+            ),
+          ),
+        ],
+      );
+    },
+  );
+
+  /// If user confirmed exit
+  if (shouldExit == true) {
+
+    countdownTimer?.cancel();
+
+    Navigator.pushAndRemoveUntil(
+      context,
+      MaterialPageRoute(builder: (context) => HomePage()),
+      (route) => false,
+    );
+  }
+}
+
+
+  /// TIMER (OPTIMIZED)
   void startTimer() {
 
     countdownTimer = Timer.periodic(
@@ -547,7 +595,7 @@ class _MyThirdPageState extends State<ThirdPage> {
   @override
   Widget build(BuildContext context) {
 
-    /// ✅ FIX: Proper loading check
+    /// FIX: Proper loading check
     if (isLoading) {
       return Scaffold(
         appBar: AppBar(title: Text("CBT App")),
@@ -568,11 +616,38 @@ class _MyThirdPageState extends State<ThirdPage> {
     /*List options = currentQuestion["options"];*/
     List<String> options = List<String>.from(currentQuestion["options"]);
 
+    return WillPopScope(
+      onWillPop: () async {
+        await confirmExit();
+        return false; // block default back
+      },
+    child: Scaffold(
 
-    return Scaffold(
-
+      /*appBar: AppBar(
+        title: Text("CBT App"),
+        actions: [
+          Padding(
+            padding: EdgeInsets.only(right: 16),
+            child: Center(
+              child: Text(
+                formatTime(remainingSeconds),
+                style: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold),
+              ),
+            ),
+          ),
+        ],
+      ),*/
       appBar: AppBar(
         title: Text("CBT App"),
+        automaticallyImplyLeading: false, // ❌ removes default back arrow
+
+        leading: IconButton(
+          icon: Icon(Icons.home),
+          onPressed: confirmExit, // ✅ use dialog
+        ),
+
         actions: [
           Padding(
             padding: EdgeInsets.only(right: 16),
@@ -755,6 +830,7 @@ class _MyThirdPageState extends State<ThirdPage> {
           ),
         ],
       ),
+    )
     );
   }
 }

@@ -13,9 +13,7 @@ void main() => runApp(MaterialApp(
   home:HomePage(),
 ));
 
-//class to create page 1 or screen 1
 class HomePage extends StatelessWidget{
-//  const HomePage({super.key});;u
 
   @override
   Widget build(BuildContext context){
@@ -28,10 +26,7 @@ class HomePage extends StatelessWidget{
         ),  
         ),
       centerTitle: true,
-      backgroundColor: Colors.blueGrey,
-      /*floatingActionButton:FloatingActionButton(
-        onPressed: null,
-        child: Text("click"),)*/
+      backgroundColor: Colors.blueGrey,  
     ),
     body: Center(
       child: Image.asset('assets/quotes.webp'),
@@ -43,8 +38,9 @@ class HomePage extends StatelessWidget{
       child: Text("Next")
     )
   );
+  }
 }
-}
+
 class SecondPage extends StatefulWidget {
 
   @override
@@ -77,7 +73,9 @@ class _MySecondPageState extends State<SecondPage> {
 
   int getDurationInSeconds() {
     if (selectedDuration == "30 Minutes") return 1800;
+    if (selectedDuration == "15 Minutes") return 900;
     if (selectedDuration == "45 Minutes") return 2700;
+    if (selectedDuration == "2 Hours") return 10800;
     return 3600;
   }
 
@@ -254,9 +252,11 @@ class _MySecondPageState extends State<SecondPage> {
                     value: selectedDuration,
                     isExpanded: true,
                     items: [
+                      "15 Minutes",
                       "30 Minutes",
                       "45 Minutes",
-                      "60 Minutes"
+                      "60 Minutes", 
+                      "2 Hours"
                     ].map((value) {
                       return DropdownMenuItem(
                         value: value,
@@ -454,7 +454,7 @@ class _MyThirdPageState extends State<ThirdPage> {
 
           TextButton(
             onPressed: () {
-              Navigator.pop(context, true); // ✅ Exit
+              Navigator.pop(context, true); //  Exit
             },
             child: Text(
               "Exit",
@@ -481,24 +481,40 @@ class _MyThirdPageState extends State<ThirdPage> {
 
 
   /// TIMER (OPTIMIZED)
-  void startTimer() {
+ void startTimer() {
 
-    countdownTimer = Timer.periodic(
-      Duration(seconds: 1),
-      (timer) {
+  countdownTimer = Timer.periodic(
+    Duration(seconds: 1),
+    (timer) {
 
-        if (remainingSeconds <= 0) {
-          timer.cancel();
-          submitQuiz();
-          return;
-        }
+      if (remainingSeconds <= 0) {
+        timer.cancel();
+        submitQuiz();
+        return;
+      }
 
-        remainingSeconds--;
+      /// ✅ 5-minute warning (300 seconds)
+      if (remainingSeconds == 300) {
+        showFiveMinuteWarning();
+      }
 
-        if (mounted) setState(() {});
-      },
-    );
-  }
+      remainingSeconds--;
+
+      if (mounted) setState(() {});
+    },
+  );
+}
+  void showFiveMinuteWarning() {
+
+  ScaffoldMessenger.of(context).showSnackBar(
+    SnackBar(
+      content: Text("5 minutes left!"),
+      duration: Duration(seconds: 5),
+    ),
+  );
+}
+
+
 
   String formatTime(int seconds) {
 
@@ -669,29 +685,13 @@ class _MyThirdPageState extends State<ThirdPage> {
       },
     child: Scaffold(
 
-      /*appBar: AppBar(
-        title: Text("CBT App"),
-        actions: [
-          Padding(
-            padding: EdgeInsets.only(right: 16),
-            child: Center(
-              child: Text(
-                formatTime(remainingSeconds),
-                style: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold),
-              ),
-            ),
-          ),
-        ],
-      ),*/
       appBar: AppBar(
         title: Text("CBT App"),
-        automaticallyImplyLeading: false, // ❌ removes default back arrow
+        automaticallyImplyLeading: false, //  removes default back arrow
 
         leading: IconButton(
           icon: Icon(Icons.home),
-          onPressed: confirmExit, // ✅ use dialog
+          onPressed: confirmExit, //  use dialog
         ),
 
         actions: [
@@ -881,8 +881,6 @@ class _MyThirdPageState extends State<ThirdPage> {
   }
 }
 
-//modify this code to include the corrections to make the code run faster
-
 class ResultPage extends StatelessWidget {
   final int score;
   final int total;
@@ -997,7 +995,7 @@ Widget build(BuildContext context) {
           ),
         ),
 
-        /// ✅ MOCK MODE REVIEW
+        ///  MOCK MODE REVIEW
         if (examMode == "Mock")
           Expanded(
             flex: 3,
@@ -1063,3 +1061,4 @@ Widget build(BuildContext context) {
 }
 }
 //modify this code to include the changes given in the last prompt result
+//modify this code to include the corrections to make the code run faster

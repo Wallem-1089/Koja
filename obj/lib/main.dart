@@ -1,5 +1,4 @@
-/*import 'package:flutter/material.dart';
-import 'package:flutter/services.dart' show rootBundle;*/
+//import 'package:flutter/material.dart';//
 //import 'dart:io';
 //import 'package:csv/csv.dart';
 import 'dart:convert';
@@ -678,11 +677,62 @@ class _MyThirdPageState extends State<ThirdPage> {
     /*List options = currentQuestion["options"];*/
     List<String> options = List<String>.from(currentQuestion["options"]);
 
+    void selectOption(int index) {
+  // Option Selection Function
+  var questions = subjectQuestions[currentSubject];
+  if (questions == null) return;
+
+  var currentQuestion = questions[currentQuestionIndex];
+  List options = currentQuestion["options"];
+
+  /// Prevent crash if question has less than 4 options
+  if (index >= options.length) return;
+
+  setState(() {
+    subjectAnswers[currentSubject]?[currentQuestionIndex] = index;
+  });
+}
+
+
     return WillPopScope(
       onWillPop: () async {
         await confirmExit();
         return false; // block default back
       },
+    child: Focus(
+    autofocus: true,
+    onKeyEvent: (node, event) {
+
+      if (event is KeyDownEvent) {
+
+        final key = event.logicalKey;
+
+        /// A B C D → Select options
+        if (key == LogicalKeyboardKey.keyA) {
+          selectOption(0);
+        } else if (key == LogicalKeyboardKey.keyB) {
+          selectOption(1);
+        } else if (key == LogicalKeyboardKey.keyC) {
+          selectOption(2);
+        } else if (key == LogicalKeyboardKey.keyD) {
+          selectOption(3);
+        }
+
+        /// Navigation
+        else if (key == LogicalKeyboardKey.keyN) {
+          nextQuestion();
+        } else if (key == LogicalKeyboardKey.keyP) {
+          previousQuestion();
+        }
+
+        /// Submit
+        else if (key == LogicalKeyboardKey.keyS) {
+          submitQuiz();
+        }
+      }
+
+      return KeyEventResult.handled;
+    },
     child: Scaffold(
 
       appBar: AppBar(
@@ -754,7 +804,7 @@ class _MyThirdPageState extends State<ThirdPage> {
 
                   SizedBox(height: 15),
 
-                  ...List.generate(options.length, (index) {
+                  /*...List.generate(options.length, (index) {
 
                     return RadioListTile<int>(
                       title: buildContent(options[index]),
@@ -765,6 +815,24 @@ class _MyThirdPageState extends State<ThirdPage> {
                         setState(() {
                           subjectAnswers[currentSubject]?[currentQuestionIndex] =
                               value!;
+                        });
+                      },
+                    );
+                  }),*/
+                  ...List.generate(options.length, (index) {
+                    String optionLetter = ["A", "B", "C", "D"][index];
+                    return RadioListTile<int>(
+                      title: Row(
+                        children: [
+                          Text("$optionLetter. "),
+                          Expanded(child: buildContent(options[index])),
+                        ],
+                      ),
+                      value: index,
+                      groupValue: subjectAnswers[currentSubject]?[currentQuestionIndex],
+                      onChanged: (value) {
+                        setState(() {
+                          subjectAnswers[currentSubject]?[currentQuestionIndex] = value!;
                         });
                       },
                     );
@@ -877,6 +945,7 @@ class _MyThirdPageState extends State<ThirdPage> {
         ],
       ),
     )
+    ),
     );
   }
 }

@@ -641,6 +641,7 @@ class _MyThirdPageState extends State<ThirdPage> {
               total: total,
               examMode: widget.examMode,
               subjectQuestions: subjectQuestions,
+              subjectAnswers: subjectAnswers, //new
 ),
 
       ),
@@ -955,12 +956,14 @@ class ResultPage extends StatelessWidget {
   final int total;
   final String examMode;
   final Map<int, List<Map<String, dynamic>>> subjectQuestions;
+  final Map<int, Map<int, int>> subjectAnswers; // NEW
 
   ResultPage({
     required this.score,
     required this.total,
     required this.examMode,
     required this.subjectQuestions,
+    required this.subjectAnswers, // NEW
   });
 
 //Math Render Function
@@ -1071,18 +1074,59 @@ Widget build(BuildContext context) {
             child: ListView(
               padding: EdgeInsets.all(10),
               children: subjectQuestions.entries.expand((entry) {
-                return entry.value.map((q) {
-                  return Card(
-                    //style: TextStyle(color: Colors.green),
-                    child: ListTile(
-                      title: buildContent(q["question"]),
 
-                      subtitle: Column(
+                int subjectIndex = entry.key;
+                List questions = entry.value;
+
+                return List.generate(questions.length, (i) {
+
+                  var q = questions[i];
+
+                  int correctIndex = q["answerIndex"];
+                  int? userIndex = subjectAnswers[subjectIndex]?[i];
+
+                  bool isCorrect = userIndex == correctIndex;
+
+                  return Card(
+                    margin: EdgeInsets.symmetric(vertical: 6),
+                    child: Padding(
+                      padding: EdgeInsets.all(10),
+                      child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
 
+                          /// QUESTION
+                          Text(
+                            "Q${i + 1}",
+                            style: TextStyle(fontWeight: FontWeight.bold),
+                          ),
+                          SizedBox(height: 5),
+                          buildContent(q["question"]),
+
+                          SizedBox(height: 10),
+
+                          /// USER ANSWER
+                          Row(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                "Your Answer: ",
+                                style: TextStyle(fontWeight: FontWeight.bold),
+                              ),
+                              Expanded(
+                                child: userIndex == null
+                                    ? Text(
+                                        "Not Answered",
+                                        style: TextStyle(color: Colors.orange),
+                                      )
+                                    : buildContent(q["options"][userIndex]),
+                              ),
+                            ],
+                          ),
+
                           SizedBox(height: 5),
 
+                          /// CORRECT ANSWER
                           Row(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
@@ -1095,17 +1139,36 @@ Widget build(BuildContext context) {
                               ),
                               Expanded(
                                 child: buildContent(
-                                  q["options"][q["answerIndex"]],
+                                  q["options"][correctIndex],
                                 ),
                               ),
                             ],
                           ),
+
+                          SizedBox(height: 8),
+
+                          /// RESULT STATUS
+                          Text(
+                            userIndex == null
+                                ? "Not Attempted"
+                                : isCorrect
+                                    ? "Correct"
+                                    : "Wrong",
+                            style: TextStyle(
+                              color: userIndex == null
+                                  ? Colors.orange
+                                  : isCorrect
+                                      ? Colors.green
+                                      : Colors.red,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
                         ],
                       ),
-
                     ),
                   );
                 });
+
               }).toList(),
             ),
           ),

@@ -74,7 +74,7 @@ class _MySecondPageState extends State<SecondPage> {
     if (selectedDuration == "30 Minutes") return 1800;
     if (selectedDuration == "15 Minutes") return 900;
     if (selectedDuration == "45 Minutes") return 2700;
-    if (selectedDuration == "2 Hours") return 10800;
+    if (selectedDuration == "2 Hours") return 7200;
     return 3600;
   }
 
@@ -563,11 +563,22 @@ Future<void> confirmSubmit() async {
 
   String formatTime(int seconds) {
 
-    int minutes = seconds ~/ 60;
-    int secs = seconds % 60;
+  int hours = seconds ~/ 3600;
+  int minutes = (seconds % 3600) ~/ 60;
+  int secs = seconds % 60;
 
-    return "$minutes:${secs.toString().padLeft(2, '0')}";
+  /// ✅ If 1 hour or more → HH:MM:SS
+  if (hours > 0) {
+    return "${hours.toString().padLeft(2, '0')}:"
+           "${minutes.toString().padLeft(2, '0')}:"
+           "${secs.toString().padLeft(2, '0')}";
   }
+
+  /// ✅ If less than 1 hour → MM:SS
+  return "${minutes.toString().padLeft(2, '0')}:"
+         "${secs.toString().padLeft(2, '0')}";
+}
+
 
   void nextQuestion() {
 

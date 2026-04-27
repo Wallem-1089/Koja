@@ -270,7 +270,7 @@ class _MySecondPageState extends State<SecondPage> {
                   ),
                   SizedBox(height: 30),
 
-                /// ✅ NEW: EXAM MODE DROPDOWN
+                ///  NEW: EXAM MODE DROPDOWN
                 Text(
                   "Select Exam Mode",
                   style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
@@ -281,7 +281,7 @@ class _MySecondPageState extends State<SecondPage> {
               DropdownButton<String>(
                 value: selectedExamMode,
                 isExpanded: true,
-                items: ["Mock", "Exam"]
+                items: ["Mock", "Exam", "Study"] //new
                     .map((value) => DropdownMenuItem(
                           value: value,
                           child: Text(value),
@@ -331,7 +331,7 @@ class _MySecondPageState extends State<SecondPage> {
             builder: (context) => ThirdPage(
               examDuration: getDurationInSeconds(),
               selectedSubjects: selectedSubjects,
-              examMode: selectedExamMode, // ✅ NEW
+              examMode: selectedExamMode, //  NEW
     ),
   ),
 );
@@ -349,7 +349,7 @@ class ThirdPage extends StatefulWidget {
 
   final int examDuration;
   final List<String> selectedSubjects;
-  final String examMode; // ✅ NEW
+  final String examMode; //  NEW
 
   ThirdPage({
     required this.examDuration,
@@ -368,6 +368,7 @@ class _MyThirdPageState extends State<ThirdPage> {
 
   Map<int, List<Map<String, dynamic>>> subjectQuestions = {};
   Map<int, Map<int, int>> subjectAnswers = {};
+  Map<int, Map<int, bool>> checkedQuestions = {};// new 2
 
   int currentSubject = 0;
   int currentQuestionIndex = 0;
@@ -418,6 +419,7 @@ class _MyThirdPageState extends State<ThirdPage> {
         }).toList();
 
         subjectAnswers[i] = {};
+        checkedQuestions[i] = {};// new 2
       }
 
     } catch (e) {
@@ -805,21 +807,6 @@ class _MyThirdPageState extends State<ThirdPage> {
 
                   SizedBox(height: 15),
 
-                  /*...List.generate(options.length, (index) {
-
-                    return RadioListTile<int>(
-                      title: buildContent(options[index]),
-                      value: index,
-                      groupValue:
-                          subjectAnswers[currentSubject]?[currentQuestionIndex],
-                      onChanged: (value) {
-                        setState(() {
-                          subjectAnswers[currentSubject]?[currentQuestionIndex] =
-                              value!;
-                        });
-                      },
-                    );
-                  }),*/
                   ...List.generate(options.length, (index) {
                     String optionLetter = ["A", "B", "C", "D"][index];
                     return RadioListTile<int>(
@@ -831,15 +818,98 @@ class _MyThirdPageState extends State<ThirdPage> {
                       ),
                       value: index,
                       groupValue: subjectAnswers[currentSubject]?[currentQuestionIndex],
-                      onChanged: (value) {
-                        setState(() {
-                          subjectAnswers[currentSubject]?[currentQuestionIndex] = value!;
-                        });
-                      },
+                      onChanged: checkedQuestions[currentSubject]?[currentQuestionIndex] == true
+                          ? null // disable if checked
+                          : (value) {
+                              setState(() {
+                                subjectAnswers[currentSubject]?[currentQuestionIndex] = value!;
+                              });
+                            },
                     );
                   }),
-                ],
+                  /// ✅ STUDY MODE CHECK BUTTON
+            if (widget.examMode == "Study")
+              Padding(
+                padding: EdgeInsets.only(top: 10),
+                child: ElevatedButton(
+                    onPressed: () {
+                      setState(() {
+                        checkedQuestions[currentSubject]?[currentQuestionIndex] = true;
+                      });
+                    },
+                    child: Text("Check"),
+                  ),
               ),
+
+            if (checkedQuestions[currentSubject]?[currentQuestionIndex] == true)
+              Builder(
+                builder: (_) {
+
+                  int correctIndex = currentQuestion["answerIndex"];
+                  int? userIndex =
+                      subjectAnswers[currentSubject]?[currentQuestionIndex];
+
+                  bool isCorrect = userIndex == correctIndex;
+
+                  return Container(
+                    margin: EdgeInsets.only(top: 10),
+                    padding: EdgeInsets.all(10),
+                    decoration: BoxDecoration(
+                      border: Border.all(color: Colors.grey),
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+
+                        /// USER ANSWER
+                        Text(
+                          "Your Answer:",
+                          style: TextStyle(fontWeight: FontWeight.bold),
+                        ),
+                        userIndex == null
+                            ? Text("Not Answered", style: TextStyle(color: Colors.orange))
+                            : buildContent(currentQuestion["options"][userIndex]),
+
+                        SizedBox(height: 5),
+
+                        /// CORRECT ANSWER
+                        Text(
+                          "Correct Answer:",
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            color: Colors.green,
+                          ),
+                        ),
+                        buildContent(currentQuestion["options"][correctIndex]),
+
+                        SizedBox(height: 5),
+
+                        /// STATUS
+                        Text(
+                          userIndex == null
+                              ? "Not Attempted"
+                              : isCorrect
+                                  ? "Correct"
+                                  : "Wrong",
+                          style: TextStyle(
+                            color: userIndex == null
+                                ? Colors.orange
+                                : isCorrect
+                                    ? Colors.green
+                                    : Colors.red,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ],
+                    ),
+                  );
+                },
+              ),
+
+
+                            ],
+                          ),
             ),
           ),
 
@@ -1192,5 +1262,3 @@ Widget build(BuildContext context) {
   );
 }
 }
-//modify this code to include the changes given in the last prompt result
-//modify this code to include the corrections to make the code run faster

@@ -480,6 +480,47 @@ class _MyThirdPageState extends State<ThirdPage> {
   }
 }
 
+Future<void> confirmSubmit() async {
+
+  bool? shouldSubmit = await showDialog<bool>(
+    context: context,
+    barrierDismissible: false, // user must choose
+
+    builder: (context) {
+      return AlertDialog(
+        title: Text("Submit Exam"),
+        content: Text("Are you sure you want to submit your answers?"),
+
+        actions: [
+
+          TextButton(
+            onPressed: () {
+              Navigator.pop(context, false); //  Cancel
+            },
+            child: Text("Cancel"),
+          ),
+
+          TextButton(
+            onPressed: () {
+              Navigator.pop(context, true); //  Confirm
+            },
+            child: Text(
+              "Submit",
+              style: TextStyle(color: Colors.red),
+            ),
+          ),
+        ],
+      );
+    },
+  );
+
+  /// If user confirmed → submit
+  if (shouldSubmit == true) {
+    submitQuiz();
+  }
+}
+
+
 
   /// TIMER (OPTIMIZED)
  void startTimer() {
@@ -730,7 +771,7 @@ class _MyThirdPageState extends State<ThirdPage> {
 
         /// Submit
         else if (key == LogicalKeyboardKey.keyS) {
-          submitQuiz();
+          confirmSubmit();
         }
       }
 
@@ -944,7 +985,7 @@ class _MyThirdPageState extends State<ThirdPage> {
 
                 Expanded(
                   child: ElevatedButton(
-                    onPressed: submitQuiz,
+                    onPressed: confirmSubmit,
                     style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.black12),
                     child: Text("Submit"),

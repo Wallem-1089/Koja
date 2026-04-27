@@ -683,6 +683,7 @@ Future<void> confirmSubmit() async {
 
     int score = 0;
     int total = 0;
+    int timeSpentSeconds = widget.examDuration - remainingSeconds; // new
 
     subjectQuestions.forEach((subjectIndex, questions) {
 
@@ -696,7 +697,8 @@ Future<void> confirmSubmit() async {
         }
       }
     });
-
+    /// (capture current time)
+    DateTime submissionTime = DateTime.now();
     Navigator.pushReplacement(
       context,
       MaterialPageRoute(
@@ -707,6 +709,8 @@ Future<void> confirmSubmit() async {
               examMode: widget.examMode,
               subjectQuestions: subjectQuestions,
               subjectAnswers: subjectAnswers, //new
+              submissionTime: submissionTime, // new
+              timeSpentSeconds: timeSpentSeconds, // new
 ),
 
       ),
@@ -1126,6 +1130,8 @@ class ResultPage extends StatelessWidget {
   final String examMode;
   final Map<int, List<Map<String, dynamic>>> subjectQuestions;
   final Map<int, Map<int, int>> subjectAnswers; // NEW
+  final DateTime submissionTime; //new
+  final int timeSpentSeconds; // new
 
   ResultPage({
     required this.score,
@@ -1133,7 +1139,26 @@ class ResultPage extends StatelessWidget {
     required this.examMode,
     required this.subjectQuestions,
     required this.subjectAnswers, // NEW
+    required this.submissionTime, // NEW
+    required this.timeSpentSeconds,
   });
+String formatTimeSpent(int seconds) {
+  int hours = seconds ~/ 3600;
+  int minutes = (seconds % 3600) ~/ 60;
+  int secs = seconds % 60;
+
+  if (hours > 0) {
+    return "$hours:${minutes.toString().padLeft(2, '0')}:${secs.toString().padLeft(2, '0')}";
+  } else {
+    return "$minutes:${secs.toString().padLeft(2, '0')}";
+  }
+}
+
+String formatSubmissionTime(DateTime time) {
+  return "${time.day}/${time.month}/${time.year} "
+         "${time.hour.toString().padLeft(2, '0')}:"
+         "${time.minute.toString().padLeft(2, '0')}";
+}
 
 //Math Render Function
 Widget buildContent(String text) {
@@ -1230,6 +1255,20 @@ Widget build(BuildContext context) {
                     fontSize: 28,
                     color: percentage >= 50 ? Colors.green : Colors.red,
                   ),
+                ),
+
+                SizedBox(height: 10),
+
+                Text(
+                  "Submitted at: ${formatSubmissionTime(submissionTime)}",
+                  style: TextStyle(fontSize: 16, color: Colors.grey[700]),
+                ),
+                
+                SizedBox(height: 10),
+
+                Text(
+                  "Time Spent: ${formatTimeSpent(timeSpentSeconds)}",
+                  style: TextStyle(fontSize: 16, color: Colors.grey[700]),
                 ),
               ],
             ),

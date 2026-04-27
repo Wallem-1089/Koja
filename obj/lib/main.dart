@@ -710,7 +710,8 @@ Future<void> confirmSubmit() async {
               subjectQuestions: subjectQuestions,
               subjectAnswers: subjectAnswers, //new
               submissionTime: submissionTime, // new
-              timeSpentSeconds: timeSpentSeconds, // new
+              timeSpentSeconds: timeSpentSeconds,
+              totalDuration: widget.examDuration, // new
 ),
 
       ),
@@ -1132,6 +1133,7 @@ class ResultPage extends StatelessWidget {
   final Map<int, Map<int, int>> subjectAnswers; // NEW
   final DateTime submissionTime; //new
   final int timeSpentSeconds; // new
+  final int totalDuration;
 
   ResultPage({
     required this.score,
@@ -1141,6 +1143,7 @@ class ResultPage extends StatelessWidget {
     required this.subjectAnswers, // NEW
     required this.submissionTime, // NEW
     required this.timeSpentSeconds,
+    required this.totalDuration,
   });
 String formatTimeSpent(int seconds) {
   int hours = seconds ~/ 3600;
@@ -1158,6 +1161,13 @@ String formatSubmissionTime(DateTime time) {
   return "${time.day}/${time.month}/${time.year} "
          "${time.hour.toString().padLeft(2, '0')}:"
          "${time.minute.toString().padLeft(2, '0')}";
+}
+
+String formatSeconds(double seconds) {
+  int mins = seconds ~/ 60;
+  int secs = seconds.toInt() % 60;
+
+  return "$mins:${secs.toString().padLeft(2, '0')}";
 }
 
 //Math Render Function
@@ -1216,6 +1226,8 @@ Widget buildContent(String text) {
   @override
 Widget build(BuildContext context) {
   double percentage = (score / total) * 100;
+  double avgTimePerQuestion = timeSpentSeconds / total; //new
+  double efficiency = (timeSpentSeconds / totalDuration) * 100;
 
   return Scaffold(
     appBar: AppBar(title: Text("Exam Result")),
@@ -1257,18 +1269,34 @@ Widget build(BuildContext context) {
                   ),
                 ),
 
-                SizedBox(height: 10),
+                SizedBox(height: 5),
 
                 Text(
                   "Submitted at: ${formatSubmissionTime(submissionTime)}",
                   style: TextStyle(fontSize: 16, color: Colors.grey[700]),
                 ),
-                
-                SizedBox(height: 10),
+
+                SizedBox(height: 2),
 
                 Text(
                   "Time Spent: ${formatTimeSpent(timeSpentSeconds)}",
                   style: TextStyle(fontSize: 16, color: Colors.grey[700]),
+                ),
+                SizedBox(height: 2),
+
+                Text(
+                  "Avg Time / Question: ${formatSeconds(avgTimePerQuestion)}",
+                  style: TextStyle(fontSize: 16, color: Colors.grey[700]),
+                ),
+
+                SizedBox(height: 2),
+
+                Text(
+                  "Time Efficiency: ${efficiency.toStringAsFixed(1)}%",
+                  style: TextStyle(
+                    fontSize: 16,
+                    color: efficiency < 50 ? Colors.green : Colors.orange,
+                  ),
                 ),
               ],
             ),

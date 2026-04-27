@@ -3,66 +3,77 @@
     "questionNumber": 1,
     "question": "What is 2+2?",
     "options": ["2", "3", "4", "5"],
-    "answerIndex": 2
+    "answerIndex": 2,
+    "explanation": "Adding gives $2 + 2 = 4$"
   },
   {
     "questionNumber": 2,
     "question": "Capital of France?",
     "options": ["Berlin", "Madrid", "Paris", "Rome"],
-    "answerIndex": 2
+    "answerIndex": 2,
+    "explanation": "Adding gives $2 + 2 = 4$"
   },
   {
     "questionNumber": 3,
     "question": "Capital of Nigeria?",
     "options": ["Lagos","Abuja","Kano","Ibadan"],
-    "answerIndex": 1
+    "answerIndex": 1,
+    "explanation": "Adding gives $2 + 2 = 4$"
   },
   {
    "questionNumber": 4,
     "question": "Flutter is developed by?",
     "options": ["Apple","Microsoft","Google","Meta"],
-    "answerIndex": 2
+    "answerIndex": 2,
+    "explanation": "Adding gives $2 + 2 = 4$"
   },
   {
     "questionNumber": 5,
     "question": "what is my name",
     "options": ["walter","james","mark","john"],
-    "answerIndex": 0
+    "answerIndex": 0,
+    "explanation": "Adding gives $2 + 2 = 4$"
   },
   {
     "questionNumber": 6,
     "question": "what is my name",
     "options": ["walter","james","mark","john"],
-    "answerIndex": 0
+    "answerIndex": 0,
+    "explanation": "Adding gives $2 + 2 = 4$"
   },
   {
     "questionNumber": 7,
     "question": "what is my name",
     "options": ["walter","james","mark","john"],
-    "answerIndex": 0
+    "answerIndex": 0,
+    "explanation": "Adding gives $2 + 2 = 4$"
   },
   {
     "questionNumber": 8,
     "question": "what is my name",
     "options": ["walter","james","mark","john"],
-    "answerIndex": 0
+    "answerIndex": 0,
+    "explanation": "Adding gives $2 + 2 = 4$"
   },
   {
     "questionNumber": 9,
     "question": "what is my name",
     "options": ["walter","james","mark","john"],
-    "answerIndex": 0
+    "answerIndex": 0,
+    "explanation": "Adding gives $2 + 2 = 4$"
   },
   {
     "questionNumber": 10,
     "question": "what is my name",
     "options": ["walter","james","mark","john"],
-    "answerIndex": 0
+    "answerIndex": 0,
+    "explanation": "Adding gives $2 + 2 = 4$"
   },
   {
     "questionNumber": 11,
     "question": "Solve: $x^2 + 5x + 6 = 0$    the president of nigeria ",
     "options": ["$x=2,3$","$x=-2,-3$","$x=1,6$","$x=0,5$"],
-    "answerIndex": 0
+    "answerIndex": 0,
+    "explanation": "Adding gives $2 + 2 = 4$"
   }
 ]

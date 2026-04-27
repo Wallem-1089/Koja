@@ -416,6 +416,7 @@ class _MyThirdPageState extends State<ThirdPage> {
             "question": q["question"],
             "options": List<String>.from(q["options"]),
             "answerIndex": q["answerIndex"],
+            "explanation": q["explanation"] ?? "", //  NEW
           };
         }).toList();
 
@@ -962,6 +963,22 @@ Future<void> confirmSubmit() async {
                             fontWeight: FontWeight.bold,
                           ),
                         ),
+                        SizedBox(height: 8),
+
+                        /// EXPLANATION
+                        if ((currentQuestion["explanation"] ?? "").toString().isNotEmpty) ...[
+                          Text(
+                            "Explanation:",
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              color: Colors.blueGrey,
+                            ),
+                          ),
+
+                          SizedBox(height: 5),
+
+                          buildContent(currentQuestion["explanation"]),
+                        ],
                       ],
                     ),
                   );
@@ -1299,6 +1316,24 @@ Widget build(BuildContext context) {
                               fontWeight: FontWeight.bold,
                             ),
                           ),
+                          SizedBox(height: 8),
+
+                          ///  EXPLANATION
+                          if ((q["explanation"] ?? "").toString().isNotEmpty) ...[
+
+                            Text(
+                              "Explanation:",
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                color: Colors.blueGrey,
+                              ),
+                            ),
+
+                            SizedBox(height: 5),
+
+                            buildContent(q["explanation"]),
+                          ],
+
                         ],
                       ),
                     ),

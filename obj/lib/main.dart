@@ -379,6 +379,9 @@ class _MyThirdPageState extends State<ThirdPage> {
   bool isLoading = true; //  FIX LOADING BUG
   bool isSubmitting = false;
 
+  final ScrollController _scrollController = ScrollController(); // scroller for study mode
+
+
   @override
   void initState() {
 
@@ -850,10 +853,12 @@ Future<void> confirmSubmit() async {
           Expanded(
             child: Padding(
               padding: EdgeInsets.all(16),
-
+              
+              child: SingleChildScrollView(
+              controller: _scrollController, // new
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
-
+                
                 children: [
 
                   Text(
@@ -863,11 +868,11 @@ Future<void> confirmSubmit() async {
                         fontWeight: FontWeight.bold),
                   ),
 
-                  SizedBox(height: 15),
+                  SizedBox(height: 8),
 
                   buildContent(currentQuestion["question"]),
 
-                  SizedBox(height: 15),
+                  SizedBox(height: 8),
 
                   ...List.generate(options.length, (index) {
                     String optionLetter = ["A", "B", "C", "D"][index];
@@ -897,7 +902,18 @@ Future<void> confirmSubmit() async {
                     onPressed: () {
                       setState(() {
                         checkedQuestions[currentSubject]?[currentQuestionIndex] = true;
+                        checkedQuestions[currentSubject] ??= {}; // new
                       });
+                    /// ✅ Smooth scroll after UI builds
+                    Future.delayed(Duration(milliseconds: 100), () {
+                      if (_scrollController.hasClients) {
+                        _scrollController.animateTo(
+                          _scrollController.position.maxScrollExtent,
+                          duration: Duration(milliseconds: 400),
+                          curve: Curves.easeOut,
+                        );
+                      }
+                    });  
                     },
                     child: Text("Check"),
                   ),
@@ -978,18 +994,18 @@ Future<void> confirmSubmit() async {
                           SizedBox(height: 5),
 
                           buildContent(currentQuestion["explanation"]),
+                          SizedBox(height: 40),
                         ],
                       ],
                     ),
                   );
                 },
               ),
-
-
                             ],
                           ),
             ),
           ),
+      ),
 
           /// BUTTONS
           Padding(
@@ -1318,7 +1334,7 @@ Widget build(BuildContext context) {
                           ),
                           SizedBox(height: 8),
 
-                          ///  EXPLANATION
+                          /// ✅ EXPLANATION
                           if ((q["explanation"] ?? "").toString().isNotEmpty) ...[
 
                             Text(
@@ -1359,7 +1375,7 @@ Widget build(BuildContext context) {
           ),
         ),
       ],
-    ),
+    ), 
   );
 }
 }

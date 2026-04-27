@@ -377,6 +377,7 @@ class _MyThirdPageState extends State<ThirdPage> {
   Timer? countdownTimer;
 
   bool isLoading = true; //  FIX LOADING BUG
+  bool isSubmitting = false;
 
   @override
   void initState() {
@@ -481,6 +482,8 @@ class _MyThirdPageState extends State<ThirdPage> {
 }
 
 Future<void> confirmSubmit() async {
+  ///  Block if already submitting
+  if (isSubmitting) return;
 
   bool? shouldSubmit = await showDialog<bool>(
     context: context,
@@ -656,6 +659,10 @@ Future<void> confirmSubmit() async {
 
 
   void submitQuiz() {
+     ///  Prevent double submission
+    if (isSubmitting) return;
+
+    isSubmitting = true;
 
     countdownTimer?.cancel();
 
@@ -771,7 +778,9 @@ Future<void> confirmSubmit() async {
 
         /// Submit
         else if (key == LogicalKeyboardKey.keyS) {
-          confirmSubmit();
+          if (!isSubmitting) {
+            confirmSubmit();
+  }
         }
       }
 
@@ -988,7 +997,12 @@ Future<void> confirmSubmit() async {
                     onPressed: confirmSubmit,
                     style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.black12),
-                    child: Text("Submit"),
+                    child: isSubmitting
+                      ? SizedBox(
+                          height: 18,
+                          width: 18,
+                          child: CircularProgressIndicator(strokeWidth: 2),
+                        ) : Text("Submit"),
                   ),
                 ),
               ],

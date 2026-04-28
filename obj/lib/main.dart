@@ -350,11 +350,13 @@ class ThirdPage extends StatefulWidget {
   final int examDuration;
   final List<String> selectedSubjects;
   final String examMode; //  NEW
+  final Map<int, List<Map<String, dynamic>>>? preloadedQuestions;// new
 
   ThirdPage({
     required this.examDuration,
     required this.selectedSubjects,
     required this.examMode,
+     this.preloadedQuestions, // NEW
   });
 
   @override
@@ -392,12 +394,25 @@ class _MyThirdPageState extends State<ThirdPage> {
     /// SUBJECTS FROM SCREEN 2
     subjects = widget.selectedSubjects;
 
+    /// IF RETRY MODE → USE PRELOADED QUESTIONS
+  if (widget.preloadedQuestions != null) {
+    subjectQuestions = widget.preloadedQuestions!;
+
+    /// initialize empty answers
+    subjectQuestions.forEach((key, value) {
+      subjectAnswers[key] = {};
+      checkedQuestions[key] = {};
+    });
+
+    isLoading = false;
+  } else {
     /// JSON FILE PATHS
     jsonFiles = subjects.map((subject) {
       return "assets/$subject.json";
     }).toList();
 
     loadQuestions();
+  }
     startTimer();
   }
 
@@ -607,7 +622,7 @@ Future<void> confirmSubmit() async {
   }
 
   void changeSubject(int index) {
-
+    if (!subjectQuestions.containsKey(index)) return;
     setState(() {
       currentSubject = index;
       currentQuestionIndex = 0;
@@ -822,7 +837,9 @@ Future<void> confirmSubmit() async {
     child: Scaffold(
 
       appBar: AppBar(
-        title: Text("CBT App"),
+        title: Text(
+          widget.examMode == "Retry" ? "Retry Wrong Questions" : "CBT App",
+        ),
         automaticallyImplyLeading: false, //  removes default back arrow
 
         leading: IconButton(
@@ -853,19 +870,21 @@ Future<void> confirmSubmit() async {
             padding: EdgeInsets.all(8),
 
             child: SegmentedButton<int>(
-              segments: List.generate(
-                subjects.length,
-                (index) => ButtonSegment(
+              segments: subjectQuestions.keys.map((index) {
+                return ButtonSegment(
                   value: index,
                   label: Text(subjects[index]),
-                ),
-              ),
+                );
+              }).toList(),
+
               selected: {currentSubject},
+
               onSelectionChanged: (value) {
                 changeSubject(value.first);
               },
             ),
           ),
+
 
           /// QUESTION AREA
           Expanded(
@@ -1242,6 +1261,73 @@ Widget buildContent(String text) {
     text: TextSpan(children: spans),
   );
 }
+List<Map<String, dynamic>> getWrongQuestions() {
+  List<Map<String, dynamic>> wrong = [];
+
+  subjectQuestions.forEach((subjectIndex, questions) {
+    for (int i = 0; i < questions.length; i++) {
+      int correct = questions[i]["answerIndex"];
+      int? user = subjectAnswers[subjectIndex]?[i];
+
+      if (user != correct) {
+        wrong.add({
+          "subject": subjectIndex,
+          "questionIndex": i,
+          "data": questions[i],
+        });
+      }
+    }
+  });
+
+  return wrong;
+}
+void retryWrongQuestions(BuildContext context) {
+  if (examMode != "Mock" && examMode != "Study") return;
+
+  Map<int, List<Map<String, dynamic>>> retryQuestions = {};
+
+  subjectQuestions.forEach((subjectIndex, questions) {
+
+    List<Map<String, dynamic>> wrongList = [];
+
+    for (int i = 0; i < questions.length; i++) {
+
+      int correct = questions[i]["answerIndex"];
+      int? user = subjectAnswers[subjectIndex]?[i];
+
+      if (user != correct) {
+        wrongList.add(questions[i]);
+      }
+    }
+
+    if (wrongList.isNotEmpty) {
+      retryQuestions[subjectIndex] = wrongList;
+    }
+  });
+
+  if (retryQuestions.isEmpty) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(content: Text("No wrong questions to retry!")),
+    );
+    return;
+  }
+  int totalRetryQuestions = retryQuestions.values
+    .fold(0, (sum, list) => sum + list.length);
+
+  int retryDuration = (totalRetryQuestions * 30).clamp(60, 3600);
+  Navigator.pushReplacement(
+    context,
+    MaterialPageRoute(
+      builder: (_) => ThirdPage(
+        selectedSubjects: subjects,
+        examMode: "Retry", // 🔥 NEW MODE
+        examDuration: retryDuration, // or shorter if you want
+        preloadedQuestions: retryQuestions, // 🔥 IMPORTANT
+      ),
+    ),
+  );
+}
+
 
   @override
 Widget build(BuildContext context) {
@@ -1493,19 +1579,91 @@ Widget build(BuildContext context) {
         /// BUTTON
         Padding(
           padding: EdgeInsets.all(16),
-          child: ElevatedButton(
-            onPressed: () {
-              Navigator.pushAndRemoveUntil(
-                context,
-                MaterialPageRoute(builder: (_) => HomePage()),
-                (route) => false,
-              );
-            },
-            child: Text("Back to Home Page"),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center, // 🔥 centers both buttons
+            children: [
+
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.pushAndRemoveUntil(
+                    context,
+                    MaterialPageRoute(builder: (_) => HomePage()),
+                    (route) => false,
+                  );
+                },
+                child: Text("Back to Home Page"),
+              ),
+
+              SizedBox(width: 15),
+
+              /// 🔥 NEW RETRY BUTTON
+              if (examMode == "Mock" || examMode == "Study")
+                ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.orange,
+                  ),
+                  onPressed: () => retryWrongQuestions(context),
+                  child: Text("Retry Wrong Questions"),
+                ),
+            ],
           ),
         ),
+
       ],
     ), 
   );
 }
+}
+class RetryPage extends StatelessWidget {
+  final List<Map<String, dynamic>> wrongQuestions;
+
+  RetryPage({required this.wrongQuestions});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: Text("Retry Wrong Questions")),
+
+      body: ListView.builder(
+        itemCount: wrongQuestions.length,
+        itemBuilder: (context, index) {
+          var q = wrongQuestions[index]["data"];
+
+          return Card(
+            margin: EdgeInsets.all(10),
+            child: Padding(
+              padding: EdgeInsets.all(10),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+
+                  Text(
+                    "Question ${index + 1}",
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
+
+                  SizedBox(height: 5),
+
+                  Text(q["question"]),
+
+                  SizedBox(height: 10),
+
+                  ...List.generate(q["options"].length, (i) {
+                    return Text("${["A","B","C","D"][i]}. ${q["options"][i]}");
+                  }),
+
+                  SizedBox(height: 10),
+
+                  Text(
+                    "Correct Answer: ${q["options"][q["answerIndex"]]}",
+                    style: TextStyle(color: Colors.green),
+                  ),
+                ],
+              ),
+            ),
+          );
+        },
+      ),
+    );
+  }
 }

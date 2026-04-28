@@ -685,7 +685,13 @@ Future<void> confirmSubmit() async {
     int total = 0;
     int timeSpentSeconds = widget.examDuration - remainingSeconds; // new
 
+    /// NEW: per subject tracking
+    Map<int, int> subjectScores = {};
+    Map<int, int> subjectTotals = {};
+
     subjectQuestions.forEach((subjectIndex, questions) {
+      int subScore = 0;
+      int subTotal = questions.length;
 
       for (int i = 0; i < questions.length; i++) {
 
@@ -694,8 +700,11 @@ Future<void> confirmSubmit() async {
         if (subjectAnswers[subjectIndex]?[i] ==
             questions[i]["answerIndex"]) {
           score++;
+          subScore++;
         }
       }
+      subjectScores[subjectIndex] = subScore;
+      subjectTotals[subjectIndex] = subTotal;
     });
     /// (capture current time)
     DateTime submissionTime = DateTime.now();
@@ -712,6 +721,10 @@ Future<void> confirmSubmit() async {
               submissionTime: submissionTime, // new
               timeSpentSeconds: timeSpentSeconds,
               totalDuration: widget.examDuration, // new
+              /// ✅ NEW
+              subjectScores: subjectScores,
+              subjectTotals: subjectTotals,
+              subjects: subjects,
 ),
 
       ),
@@ -1134,6 +1147,9 @@ class ResultPage extends StatelessWidget {
   final DateTime submissionTime; //new
   final int timeSpentSeconds; // new
   final int totalDuration;
+  final Map<int, int> subjectScores;
+  final Map<int, int> subjectTotals;
+  final List<String> subjects;
 
   ResultPage({
     required this.score,
@@ -1144,6 +1160,10 @@ class ResultPage extends StatelessWidget {
     required this.submissionTime, // NEW
     required this.timeSpentSeconds,
     required this.totalDuration,
+    ///  NEW
+    required this.subjectScores,
+    required this.subjectTotals,
+    required this.subjects,
   });
 String formatTimeSpent(int seconds) {
   int hours = seconds ~/ 3600;
@@ -1248,7 +1268,7 @@ Widget build(BuildContext context) {
                   style: TextStyle(fontSize: 26, fontWeight: FontWeight.bold),
                 ),
 
-                SizedBox(height: 20),
+                SizedBox(height: 7), //20
 
                 Text(
                   "$score / $total",
@@ -1259,7 +1279,7 @@ Widget build(BuildContext context) {
                   ),
                 ),
 
-                SizedBox(height: 20),
+                SizedBox(height: 7), //20
 
                 Text(
                   "${percentage.toStringAsFixed(1)}%",
@@ -1271,42 +1291,85 @@ Widget build(BuildContext context) {
 
                 SizedBox(height: 5),
 
-                Text(
-                  "Submitted at: ${formatSubmissionTime(submissionTime)}",
-                  style: TextStyle(fontSize: 16, color: Colors.grey[700]),
-                ),
+                Wrap(
+                  spacing: 16, // horizontal space between items
+                  runSpacing: 8, // vertical space if it wraps
+                  children: [
+                    Text(
+                      "Submitted: ${formatSubmissionTime(submissionTime)}",
+                      style: TextStyle(fontSize: 14, color: Colors.grey[700]),
+                    ),
 
-                SizedBox(height: 2),
+                    Text(
+                      "Time: ${formatTimeSpent(timeSpentSeconds)}",
+                      style: TextStyle(fontSize: 14, color: Colors.grey[700]),
+                    ),
 
-                Text(
-                  "Time Spent: ${formatTimeSpent(timeSpentSeconds)}",
-                  style: TextStyle(fontSize: 16, color: Colors.grey[700]),
-                ),
-                SizedBox(height: 2),
+                    Text(
+                      "Avg/Q: ${formatSeconds(avgTimePerQuestion)}",
+                      style: TextStyle(fontSize: 14, color: Colors.grey[700]),
+                    ),
 
-                Text(
-                  "Avg Time / Question: ${formatSeconds(avgTimePerQuestion)}",
-                  style: TextStyle(fontSize: 16, color: Colors.grey[700]),
-                ),
-
-                SizedBox(height: 2),
-
-                Text(
-                  "Time Efficiency: ${efficiency.toStringAsFixed(1)}%",
-                  style: TextStyle(
-                    fontSize: 16,
-                    color: efficiency < 50 ? Colors.green : Colors.orange,
-                  ),
-                ),
+                    Text(
+                      "Efficiency: ${efficiency.toStringAsFixed(1)}%",
+                      style: TextStyle(
+                        fontSize: 14,
+                        color: efficiency < 50 ? Colors.green : Colors.orange,
+                      ),
+                    ),
+                  ],
+                )
               ],
             ),
           ),
         ),
+        /// PERFORMANCE PER SUBJECT (TEXT STYLE)
+        Expanded(
+          flex: 2,
+          child: Padding(
+            padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+
+                SizedBox(height: 2),
+
+                Wrap(
+                  spacing: 12,   // space between items horizontally
+                  runSpacing: 8, // space between rows if they wrap down
+
+                  children: List.generate(subjects.length, (index) {
+
+                    int subScore = subjectScores[index] ?? 0;
+                    int subTotal = subjectTotals[index] ?? 0;
+
+                    double percent =
+                        subTotal == 0 ? 0 : (subScore / subTotal) * 100;
+
+                    return Container(
+                      padding: EdgeInsets.symmetric(horizontal: 10, vertical: 6),
+                      decoration: BoxDecoration(
+                        border: Border.all(color: Colors.grey.shade400),
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                      child: Text(
+                        "${subjects[index]}: $subScore/$subTotal (${percent.toStringAsFixed(1)}%)",
+                        style: TextStyle(
+                          fontSize: 14,
+                          color: percent >= 50 ? Colors.green : Colors.red,
+                        ),
+                      ),
+                    );
+                  }),
+                ),
+              ],
+            ), ), ),
+
 
         ///  MOCK MODE REVIEW
         if (examMode == "Mock")
           Expanded(
-            flex: 3,
+            flex: 4,
             child: ListView(
               padding: EdgeInsets.all(10),
               children: subjectQuestions.entries.expand((entry) {

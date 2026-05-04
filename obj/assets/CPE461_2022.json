@@ -4,11 +4,11 @@
     "image":"assets/images/duo.jpg",
     "question": "Which document describes system requiremnets",
     "options": [
-  {"text": "Option A", "image": "assets/images/duo.jpg"},
-  {"text": "Option B", "image": "assets/images/duo.jpg"},
-  {"text": "Option C", "image": "assets/images/duo.jpg"},
-  {"text": "Option D", "image": "assets/images/duo.jpg"}
-],
+      {"text": "Option A", "image": ""},
+      {"text": "Option B", "image": ""},
+      {"text": "Option C", "image": ""},
+      {"text": "Option D", "image": ""}
+    ],
     "answerIndex": 0,
     "explanation": "This is the document for that"
   },

@@ -434,7 +434,8 @@ class _MyThirdPageState extends State<ThirdPage> {
             "question": q["question"],
             "options": q["options"],
             "answerIndex": q["answerIndex"],
-            "explanation": q["explanation"] ?? "", //  NEW
+            "explanation": q["explanation"] ?? "",
+            "image": q["image"] ?? "", // //  NEW
           };
         }).toList();
 

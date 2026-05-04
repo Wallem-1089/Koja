@@ -1,76 +1,92 @@
 [
   {
     "questionNumber": 1,
-    "question": "What is 2+2?",
-    "options": ["2", "3", "4", "5"],
-    "answerIndex": 2,
-    "explanation": "Adding gives $2 + 2 = 4$"
+    "image":"assets/images/duo.jpg",
+    "question": "Which document describes system requiremnets",
+    "options": [
+  {"text": "Option A", "image": "assets/images/duo.jpg"},
+  {"text": "Option B", "image": "assets/images/duo.jpg"},
+  {"text": "Option C", "image": "assets/images/duo.jpg"},
+  {"text": "Option D", "image": "assets/images/duo.jpg"}
+],
+    "answerIndex": 0,
+    "explanation": "This is the document for that"
   },
   {
     "questionNumber": 2,
-    "question": "Capital of France?",
-    "options": ["Berlin", "Madrid", "Paris", "Rome"],
-    "answerIndex": 2,
-    "explanation": "Adding gives $2 + 2 = 4$"
+    "image":"",
+    "question": "What is Software Engineering",
+    "options": ["Writing only code", "system approach to developing software", "debugging programs only", "designing hardware"],
+    "answerIndex": 1,
+    "explanation": "Null"
   },
   {
     "questionNumber": 3,
-    "question": "Capital of Nigeria?",
-    "options": ["Lagos","Abuja","Kano","Ibadan"],
-    "answerIndex": 1,
-    "explanation": "Adding gives $2 + 2 = 4$"
+    "image":"",
+    "question": "Which Model follows a linear sequential approach",
+    "options": ["Agile Model","Spiral Model","Waterfall Model","Incremental Model"],
+    "answerIndex": 2,
+    "explanation": "Goes from top to bottom"
   },
   {
    "questionNumber": 4,
-    "question": "Flutter is developed by?",
-    "options": ["Apple","Microsoft","Google","Meta"],
+   "image":"",
+    "question": "What does SDLC stand for",
+    "options": ["Sotware Design Logic Cycle","Sotware Development Life Cycle","Software Development Life Cycle","Meta"],
     "answerIndex": 2,
-    "explanation": "Adding gives $2 + 2 = 4$"
+    "explanation": "Null"
   },
   {
     "questionNumber": 5,
-    "question": "what is my name",
-    "options": ["walter","james","mark","john"],
+    "image":"",
+    "question": "what phase involves gathering user requirements",
+    "options": ["testing","design","implementation","analysis"],
     "answerIndex": 0,
-    "explanation": "Adding gives $2 + 2 = 4$"
+    "explanation": "Null"
   },
   {
     "questionNumber": 6,
-    "question": "what is my name",
-    "options": ["walter","james","mark","john"],
-    "answerIndex": 0,
-    "explanation": "Adding gives $2 + 2 = 4$"
+    "image":"",
+    "question": "what is the use case diagram used for ",
+    "options": ["database diagram","showing system interactions with users","writing code","debugging"],
+    "answerIndex": 1,
+    "explanation": "Null"
   },
   {
     "questionNumber": 7,
-    "question": "what is my name",
-    "options": ["walter","james","mark","john"],
-    "answerIndex": 0,
-    "explanation": "Adding gives $2 + 2 = 4$"
+    "image":"",
+    "question": "what is version control used for",
+    "options": ["desiging UI","tracking code changes","testing software","writing algorithms"],
+    "answerIndex": 1,
+    "explanation": "Null"
   },
   {
     "questionNumber": 8,
-    "question": "what is my name",
-    "options": ["walter","james","mark","john"],
-    "answerIndex": 0,
-    "explanation": "Adding gives $2 + 2 = 4$"
+    "image":"",
+    "question": "which of the following is an agile methodology",
+    "options": ["waterfall","V-model","Scrum","RAD"],
+    "answerIndex": 2,
+    "explanation": "Null"
   },
   {
     "questionNumber": 9,
-    "question": "what is my name",
-    "options": ["walter","james","mark","john"],
-    "answerIndex": 0,
-    "explanation": "Adding gives $2 + 2 = 4$"
+    "image":"",
+    "question": "what does debugging mean",
+    "options": ["writing new code","removing errors","designing software","compiling code"],
+    "answerIndex": 1,
+    "explanation": "Null"
   },
   {
     "questionNumber": 10,
-    "question": "what is my name",
-    "options": ["walter","james","mark","john"],
-    "answerIndex": 0,
-    "explanation": "Adding gives $2 + 2 = 4$"
+    "image":"",
+    "question": "what does debugging mean",
+    "options": ["writing new code","removing errors","designing software","compiling code"],
+    "answerIndex": 1,
+    "explanation": "Null"
   },
   {
     "questionNumber": 11,
+    "image":"",
     "question": "Solve: $x^2 + 5x + 6 = 0$    the president of nigeria ",
     "options": ["$x=2,3$","$x=-2,-3$","$x=1,6$","$x=0,5$"],
     "answerIndex": 0,

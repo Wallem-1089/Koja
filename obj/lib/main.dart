@@ -432,7 +432,7 @@ class _MyThirdPageState extends State<ThirdPage> {
         subjectQuestions[i] = data.map((q) {
           return {
             "question": q["question"],
-            "options": List<String>.from(q["options"]),
+            "options": q["options"],
             "answerIndex": q["answerIndex"],
             "explanation": q["explanation"] ?? "", //  NEW
           };
@@ -774,7 +774,7 @@ Future<void> confirmSubmit() async {
     var questions = subjectQuestions[currentSubject]!;
     var currentQuestion = questions[currentQuestionIndex];
     /*List options = currentQuestion["options"];*/
-    List<String> options = List<String>.from(currentQuestion["options"]);
+    List options = currentQuestion["options"];
 
     void selectOption(int index) {
   // Option Selection Function
@@ -908,6 +908,32 @@ Future<void> confirmSubmit() async {
                   SizedBox(height: 8),
 
                   buildContent(currentQuestion["question"]),
+                  if ((currentQuestion["image"] ?? "").toString().isNotEmpty)
+  Padding(
+    padding: EdgeInsets.symmetric(vertical: 10),
+    child: GestureDetector(
+      onTap: () {
+        showDialog(
+          context: context,
+          builder: (_) => Dialog(
+            child: InteractiveViewer(
+              child: Image.asset(currentQuestion["image"]),
+            ),
+          ),
+        );
+      },
+      child: ConstrainedBox(
+        constraints: BoxConstraints(
+          maxHeight: 200,
+        ),
+        child: Image.asset(
+          currentQuestion["image"],
+          fit: BoxFit.contain,
+        ),
+      ),
+    ),
+  ),
+
 
                   SizedBox(height: 8),
 
@@ -917,7 +943,49 @@ Future<void> confirmSubmit() async {
                       title: Row(
                         children: [
                           Text("$optionLetter. "),
-                          Expanded(child: buildContent(options[index])),
+                          Expanded(
+  child: Column(
+    crossAxisAlignment: CrossAxisAlignment.start,
+    children: [
+
+      /// ✅ HANDLE STRING FORMAT (OLD)
+      if (options[index] is String)
+        buildContent(options[index]),
+
+      /// ✅ HANDLE MAP FORMAT (NEW)
+      if (options[index] is Map) ...[
+
+        if ((options[index]["text"] ?? "").toString().isNotEmpty)
+          buildContent(options[index]["text"]),
+
+        if ((options[index]["image"] ?? "").toString().isNotEmpty)
+          Padding(
+            padding: EdgeInsets.only(top: 5),
+            child: GestureDetector(
+              onTap: () {
+                showDialog(
+                  context: context,
+                  builder: (_) => Dialog(
+                    child: InteractiveViewer(
+                      child: Image.asset(options[index]["image"]),
+                    ),
+                  ),
+                );
+              },
+              child: ConstrainedBox(
+                constraints: BoxConstraints(maxHeight: 100),
+                child: Image.asset(
+                  options[index]["image"],
+                  fit: BoxFit.contain,
+                ),
+              ),
+            ),
+          ),
+      ],
+    ],
+  ),
+),
+
                         ],
                       ),
                       value: index,
@@ -1327,6 +1395,35 @@ void retryWrongQuestions(BuildContext context) {
     ),
   );
 }
+Widget optionsDisplay(dynamic option) {
+
+  /// TEXT OPTION
+  if (option is String) {
+    return buildContent(option);
+  }
+
+  /// IMAGE OPTION
+  if (option is Map && option["type"] == "image") {
+    return Image.asset(
+      option["value"],
+      height: 120,
+      fit: BoxFit.contain,
+      errorBuilder: (context, error, stackTrace) {
+        return Text(
+          "Image not found",
+          style: TextStyle(color: Colors.red),
+        );
+      },
+    );
+  }
+
+  /// TEXT (MAP FORMAT)
+  if (option is Map && option["type"] == "text") {
+    return buildContent(option["value"]);
+  }
+
+  return Text("Invalid option format");
+}
 
 
   @override
@@ -1504,7 +1601,8 @@ Widget build(BuildContext context) {
                                         "Not Answered",
                                         style: TextStyle(color: Colors.orange),
                                       )
-                                    : buildContent(q["options"][userIndex]),
+                                    : /*buildContent(q["options"][userIndex])*/
+                                    optionsDisplay(q["options"][userIndex]),
                               ),
                             ],
                           ),
@@ -1523,8 +1621,8 @@ Widget build(BuildContext context) {
                                 ),
                               ),
                               Expanded(
-                                child: buildContent(
-                                  q["options"][correctIndex],
+                                child: /*buildContent(q["options"][correctIndex]*/
+                                optionsDisplay(q["options"][correctIndex]
                                 ),
                               ),
                             ],

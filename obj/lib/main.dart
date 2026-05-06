@@ -6,12 +6,31 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'dart:async';
 import 'package:flutter_math_fork/flutter_math.dart';
+import 'package:path_provider/path_provider.dart';
+import 'package:isar/isar.dart';
+import 'result_model.dart';
+import 'isar_service.dart';
 
 
-void main() => runApp(MaterialApp(
-  home:HomePage(),
-));
+late Isar isar; // global instance
 
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  final dir = await getApplicationDocumentsDirectory();
+
+  isar = await Isar.open(
+    [
+      ResultModelSchema,
+      /*SubjectPerformanceSchema,*/
+    ],
+    directory: dir.path,
+  );
+
+  runApp(MaterialApp(
+    home: HomePage(),
+  ));
+}
 class HomePage extends StatelessWidget{
 
   @override
@@ -24,6 +43,17 @@ class HomePage extends StatelessWidget{
           fontSize: 15.0,
         ),  
         ),
+      actions: [
+    IconButton(
+      icon: Icon(Icons.history),
+      onPressed: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (_) => ResultHistoryPage()),
+        );
+      },
+    )
+  ],
       centerTitle: true,
       backgroundColor: Colors.blueGrey,  
     ),
@@ -629,6 +659,40 @@ Future<void> confirmSubmit() async {
       currentQuestionIndex = 0;
     });
   }
+  Future<void> saveResult(
+  int score,
+  int total,
+  List<String> subjects,
+  String mode,
+  int duration,
+  int timeSpent,
+  Map<int, int> subjectScores,
+  Map<int, int> subjectTotals,
+) async {
+  final result = ResultModel()
+    ..score = score
+    ..total = total
+    ..subjects = subjects
+    ..mode = mode
+    ..duration = duration
+    ..timeSpent = timeSpent
+    ..date = DateTime.now()
+    ..percentage = (score / total) * 100
+    ..performances = [];
+
+  for (int i = 0; i < subjects.length; i++) {
+    result.performances.add(
+      SubjectPerformance()
+        ..subject = subjects[i]
+        ..score = subjectScores[i] ?? 0
+        ..total = subjectTotals[i] ?? 0,
+    );
+  }
+
+  await isar.writeTxn(() async {
+    await isar.resultModels.put(result);
+  });
+}
 ///Math Render Function
   Widget buildContent(String text) {
 
@@ -689,63 +753,84 @@ Future<void> confirmSubmit() async {
 }
 
 
-  void submitQuiz() {
-     ///  Prevent double submission
-    if (isSubmitting) return;
+  void submitQuiz() async {
+  if (isSubmitting) return;
 
-    isSubmitting = true;
+  isSubmitting = true;
 
-    countdownTimer?.cancel();
+  countdownTimer?.cancel();
 
-    int score = 0;
-    int total = 0;
-    int timeSpentSeconds = widget.examDuration - remainingSeconds; // new
+  int score = 0;
+  int total = 0;
+  int timeSpentSeconds = widget.examDuration - remainingSeconds;
 
-    /// NEW: per subject tracking
-    Map<int, int> subjectScores = {};
-    Map<int, int> subjectTotals = {};
+  Map<int, int> subjectScores = {};
+  Map<int, int> subjectTotals = {};
 
-    subjectQuestions.forEach((subjectIndex, questions) {
-      int subScore = 0;
-      int subTotal = questions.length;
+  subjectQuestions.forEach((subjectIndex, questions) {
+    int subScore = 0;
+    int subTotal = questions.length;
 
-      for (int i = 0; i < questions.length; i++) {
+    for (int i = 0; i < questions.length; i++) {
+      total++;
 
-        total++;
-
-        if (subjectAnswers[subjectIndex]?[i] ==
-            questions[i]["answerIndex"]) {
-          score++;
-          subScore++;
-        }
+      if (subjectAnswers[subjectIndex]?[i] ==
+          questions[i]["answerIndex"]) {
+        score++;
+        subScore++;
       }
-      subjectScores[subjectIndex] = subScore;
-      subjectTotals[subjectIndex] = subTotal;
-    });
-    /// (capture current time)
-    DateTime submissionTime = DateTime.now();
-    Navigator.pushReplacement(
-      context,
-      MaterialPageRoute(
-        builder: (context) =>
-            ResultPage(
-              score: score,
-              total: total,
-              examMode: widget.examMode,
-              subjectQuestions: subjectQuestions,
-              subjectAnswers: subjectAnswers, //new
-              submissionTime: submissionTime, // new
-              timeSpentSeconds: timeSpentSeconds,
-              totalDuration: widget.examDuration, // new
-              /// ✅ NEW
-              subjectScores: subjectScores,
-              subjectTotals: subjectTotals,
-              subjects: subjects,
-),
+    }
 
-      ),
+    subjectScores[subjectIndex] = subScore;
+    subjectTotals[subjectIndex] = subTotal;
+  });
+
+  DateTime submissionTime = DateTime.now();
+
+  /// ✅ STEP 3: CONVERT TO ISAR FORMAT
+  List<SubjectPerformance> performances = [];
+
+  for (int i = 0; i < subjects.length; i++) {
+    performances.add(
+      SubjectPerformance()
+        ..subject = subjects[i]
+        ..score = subjectScores[i] ?? 0
+        ..total = subjectTotals[i] ?? 0,
     );
   }
+
+  /// ✅ SAVE TO ISAR
+  await saveResultToIsar(
+    score: score,
+    total: total,
+    subjects: subjects,
+    mode: widget.examMode,
+    duration: widget.examDuration,
+    timeSpent: timeSpentSeconds,
+    date: submissionTime,
+    performances: performances,
+  );
+
+  /// 👉 THEN NAVIGATE
+  Navigator.pushReplacement(
+    context,
+    MaterialPageRoute(
+      builder: (context) => ResultPage(
+        score: score,
+        total: total,
+        examMode: widget.examMode,
+        subjectQuestions: subjectQuestions,
+        subjectAnswers: subjectAnswers,
+        submissionTime: submissionTime,
+        timeSpentSeconds: timeSpentSeconds,
+        totalDuration: widget.examDuration,
+        subjectScores: subjectScores,
+        subjectTotals: subjectTotals,
+        subjects: subjects,
+      ),
+    ),
+  );
+}
 
   @override
   void dispose() {
@@ -1712,4 +1797,62 @@ Widget build(BuildContext context) {
     ), 
   );
 }
+}
+
+class ResultHistoryPage extends StatelessWidget {
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: Text("Result History")),
+
+      body: StreamBuilder<List<ResultModel>>(
+        stream: isar.resultModels
+            .where()
+            .sortByDateDesc()
+            .watch(fireImmediately: true),
+
+        builder: (context, snapshot) {
+
+          if (!snapshot.hasData) {
+            return Center(child: CircularProgressIndicator());
+          }
+
+          final results = snapshot.data!;
+
+          if (results.isEmpty) {
+            return Center(child: Text("No results yet"));
+          }
+
+          return ListView.builder(
+            itemCount: results.length,
+
+            itemBuilder: (context, index) {
+              final r = results[index];
+
+              return Card(
+                margin: EdgeInsets.all(10),
+
+                child: ListTile(
+                  title: Text("${r.score}/${r.total} (${r.percentage.toStringAsFixed(1)}%)"),
+
+                  subtitle: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+
+                      Text("Mode: ${r.mode}"),
+                      Text("Subjects: ${r.subjects.join(", ")}"),
+                      Text("Date: ${r.date}"),
+
+                      Text("Time Spent: ${r.timeSpent}s"),
+                    ],
+                  ),
+                ),
+              );
+            },
+          );
+        },
+      ),
+    );
+  }
 }

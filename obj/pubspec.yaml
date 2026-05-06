@@ -32,6 +32,9 @@ dependencies:
     sdk: flutter
   csv: ^5.0.2
   flutter_math_fork: ^0.7.2
+  isar: ^3.1.0
+  isar_flutter_libs: any
+  path_provider: any
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
@@ -40,6 +43,8 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  isar_generator: any
+  build_runner: any
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is

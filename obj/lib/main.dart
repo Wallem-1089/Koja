@@ -1519,9 +1519,16 @@ Widget build(BuildContext context) {
   double efficiency = (timeSpentSeconds / totalDuration) * 100;
 
   return Scaffold(
-    appBar: AppBar(title: Text("Exam Result")),
+    appBar: AppBar(title: Text("Exam Result"),),
 
-    body: Column(
+    body: examMode == "Mock"
+    ? SingleChildScrollView(
+        child: ConstrainedBox(
+          constraints: BoxConstraints(
+            minHeight: MediaQuery.of(context).size.height,
+          ),
+          child: IntrinsicHeight(
+            child: Column(
       children: [
 
         /// RESULT SUMMARY
@@ -1637,10 +1644,9 @@ Widget build(BuildContext context) {
 
         ///  MOCK MODE REVIEW
         if (examMode == "Mock")
-          Expanded(
-            flex: 4,
-            child: ListView(
-              padding: EdgeInsets.all(10),
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 10),
+            child: Column(
               children: subjectQuestions.entries.expand((entry) {
 
                 int subjectIndex = entry.key;
@@ -1734,7 +1740,7 @@ Widget build(BuildContext context) {
                           ),
                           SizedBox(height: 8),
 
-                          /// ✅ EXPLANATION
+                          ///  EXPLANATION
                           if ((q["explanation"] ?? "").toString().isNotEmpty) ...[
 
                             Text(
@@ -1764,7 +1770,7 @@ Widget build(BuildContext context) {
         Padding(
           padding: EdgeInsets.all(16),
           child: Row(
-            mainAxisAlignment: MainAxisAlignment.center, // 🔥 centers both buttons
+            mainAxisAlignment: MainAxisAlignment.center, //  centers both buttons
             children: [
 
               ElevatedButton(
@@ -1780,7 +1786,7 @@ Widget build(BuildContext context) {
 
               SizedBox(width: 15),
 
-              /// 🔥 NEW RETRY BUTTON
+              ///  NEW RETRY BUTTON
               if (examMode == "Mock" || examMode == "Study")
                 ElevatedButton(
                   style: ElevatedButton.styleFrom(
@@ -1788,14 +1794,17 @@ Widget build(BuildContext context) {
                   ),
                   onPressed: () => retryWrongQuestions(context),
                   child: Text("Retry Wrong Questions"),
-                ),
-            ],
+                 ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
           ),
-        ),
-
-      ],
-    ), 
-  );
+        )
+      : Container(),
+);
 }
 }
 

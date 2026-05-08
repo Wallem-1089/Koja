@@ -751,7 +751,42 @@ Future<void> confirmSubmit() async {
     text: TextSpan(children: spans),
   );
 }
+  Widget optionWidget(dynamic option) {
 
+  /// OLD FORMAT (STRING)
+  if (option is String) {
+    return buildContent(option);
+  }
+
+  /// NEW FORMAT (MAP)
+  if (option is Map<String, dynamic>) {
+
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+
+        /// TEXT
+        if ((option["text"] ?? "").toString().isNotEmpty)
+          buildContent(option["text"]),
+
+        /// IMAGE
+        if ((option["image"] ?? "").toString().isNotEmpty)
+          Padding(
+            padding: EdgeInsets.only(top: 5),
+            child: ConstrainedBox(
+              constraints: BoxConstraints(maxHeight: 120),
+              child: Image.asset(
+                option["image"],
+                fit: BoxFit.contain,
+              ),
+            ),
+          ),
+      ],
+    );
+  }
+
+  return Text("Invalid Option");
+}
 
   void submitQuiz() async {
   if (isSubmitting) return;
@@ -798,6 +833,7 @@ Future<void> confirmSubmit() async {
         ..total = subjectTotals[i] ?? 0,
     );
   }
+  
 
   /// ✅ SAVE TO ISAR
   await saveResultToIsar(
@@ -995,82 +1031,82 @@ Future<void> confirmSubmit() async {
 
                   buildContent(currentQuestion["question"]),
                   if ((currentQuestion["image"] ?? "").toString().isNotEmpty)
-  Padding(
-    padding: EdgeInsets.symmetric(vertical: 10),
-    child: GestureDetector(
-      onTap: () {
-        showDialog(
-          context: context,
-          builder: (_) => Dialog(
-            child: InteractiveViewer(
-              child: Image.asset(currentQuestion["image"]),
-            ),
-          ),
-        );
-      },
-      child: ConstrainedBox(
-        constraints: BoxConstraints(
-          maxHeight: 200,
-        ),
-        child: Image.asset(
-          currentQuestion["image"],
-          fit: BoxFit.contain,
-        ),
-      ),
-    ),
-  ),
+                          Padding(
+                            padding: EdgeInsets.symmetric(vertical: 10),
+                            child: GestureDetector(
+                              onTap: () {
+                                showDialog(
+                                  context: context,
+                                  builder: (_) => Dialog(
+                                    child: InteractiveViewer(
+                                      child: Image.asset(currentQuestion["image"]),
+                                    ),
+                                  ),
+                                );
+                              },
+                              child: ConstrainedBox(
+                                constraints: BoxConstraints(
+                                  maxHeight: 200,
+                                ),
+                                child: Image.asset(
+                                  currentQuestion["image"],
+                                  fit: BoxFit.contain,
+                                ),
+                              ),
+                            ),
+                          ),
 
 
-                  SizedBox(height: 8),
+                                          SizedBox(height: 8),
 
-                  ...List.generate(options.length, (index) {
-                    String optionLetter = ["A", "B", "C", "D"][index];
-                    return RadioListTile<int>(
-                      title: Row(
-                        children: [
-                          Text("$optionLetter. "),
-                          Expanded(
-  child: Column(
-    crossAxisAlignment: CrossAxisAlignment.start,
-    children: [
+                                          ...List.generate(options.length, (index) {
+                                            String optionLetter = ["A", "B", "C", "D"][index];
+                                            return RadioListTile<int>(
+                                              title: Row(
+                                                children: [
+                                                  Text("$optionLetter. "),
+                                                  Expanded(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
 
-      /// ✅ HANDLE STRING FORMAT (OLD)
-      if (options[index] is String)
-        buildContent(options[index]),
+                              /// ✅ HANDLE STRING FORMAT (OLD)
+                              if (options[index] is String)
+                                buildContent(options[index]),
 
-      /// ✅ HANDLE MAP FORMAT (NEW)
-      if (options[index] is Map) ...[
+                              /// ✅ HANDLE MAP FORMAT (NEW)
+                              if (options[index] is Map) ...[
 
-        if ((options[index]["text"] ?? "").toString().isNotEmpty)
-          buildContent(options[index]["text"]),
+                                if ((options[index]["text"] ?? "").toString().isNotEmpty)
+                                  buildContent(options[index]["text"]),
 
-        if ((options[index]["image"] ?? "").toString().isNotEmpty)
-          Padding(
-            padding: EdgeInsets.only(top: 5),
-            child: GestureDetector(
-              onTap: () {
-                showDialog(
-                  context: context,
-                  builder: (_) => Dialog(
-                    child: InteractiveViewer(
-                      child: Image.asset(options[index]["image"]),
-                    ),
-                  ),
-                );
-              },
-              child: ConstrainedBox(
-                constraints: BoxConstraints(maxHeight: 100),
-                child: Image.asset(
-                  options[index]["image"],
-                  fit: BoxFit.contain,
-                ),
-              ),
-            ),
-          ),
-      ],
-    ],
-  ),
-),
+                                if ((options[index]["image"] ?? "").toString().isNotEmpty)
+                                  Padding(
+                                    padding: EdgeInsets.only(top: 5),
+                                    child: GestureDetector(
+                                      onTap: () {
+                                        showDialog(
+                                          context: context,
+                                          builder: (_) => Dialog(
+                                            child: InteractiveViewer(
+                                              child: Image.asset(options[index]["image"]),
+                                            ),
+                                          ),
+                                        );
+                                      },
+                                      child: ConstrainedBox(
+                                        constraints: BoxConstraints(maxHeight: 100),
+                                        child: Image.asset(
+                                          options[index]["image"],
+                                          fit: BoxFit.contain,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                              ],
+                            ],
+                          ),
+                        ),
 
                         ],
                       ),
@@ -1138,7 +1174,7 @@ Future<void> confirmSubmit() async {
                         ),
                         userIndex == null
                             ? Text("Not Answered", style: TextStyle(color: Colors.orange))
-                            : buildContent(currentQuestion["options"][userIndex]),
+                            : optionWidget(currentQuestion["options"][userIndex]),
 
                         SizedBox(height: 5),
 
@@ -1150,7 +1186,7 @@ Future<void> confirmSubmit() async {
                             color: Colors.green,
                           ),
                         ),
-                        buildContent(currentQuestion["options"][correctIndex]),
+                        optionWidget(currentQuestion["options"][correctIndex]),
 
                         SizedBox(height: 5),
 
@@ -1474,9 +1510,9 @@ void retryWrongQuestions(BuildContext context) {
     MaterialPageRoute(
       builder: (_) => ThirdPage(
         selectedSubjects: subjects,
-        examMode: "Retry", // 🔥 NEW MODE
+        examMode: "Retry", // NEW MODE
         examDuration: retryDuration, // or shorter if you want
-        preloadedQuestions: retryQuestions, // 🔥 IMPORTANT
+        preloadedQuestions: retryQuestions, //  IMPORTANT
       ),
     ),
   );

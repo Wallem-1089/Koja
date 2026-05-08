@@ -1522,289 +1522,421 @@ Widget build(BuildContext context) {
     appBar: AppBar(title: Text("Exam Result"),),
 
     body: examMode == "Mock"
-    ? SingleChildScrollView(
-        child: ConstrainedBox(
-          constraints: BoxConstraints(
-            minHeight: MediaQuery.of(context).size.height,
-          ),
-          child: IntrinsicHeight(
-            child: Column(
-      children: [
+    ? Stack(
+        children: [
 
-        /// RESULT SUMMARY
-        Expanded(
-          flex: 2,
-          child: Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
+          /// SCROLLABLE CONTENT
+          SingleChildScrollView(
+            padding: EdgeInsets.only(bottom: 100),
 
-                Text(
-                  "Your Score",
-                  style: TextStyle(fontSize: 26, fontWeight: FontWeight.bold),
-                ),
+            child: ConstrainedBox(
+              constraints: BoxConstraints(
+                minHeight: MediaQuery.of(context).size.height,
+              ),
 
-                SizedBox(height: 7), //20
-
-                Text(
-                  "$score / $total",
-                  style: TextStyle(
-                    fontSize: 40,
-                    color: Colors.blue,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-
-                SizedBox(height: 7), //20
-
-                Text(
-                  "${percentage.toStringAsFixed(1)}%",
-                  style: TextStyle(
-                    fontSize: 28,
-                    color: percentage >= 50 ? Colors.green : Colors.red,
-                  ),
-                ),
-
-                SizedBox(height: 5),
-
-                Wrap(
-                  spacing: 16, // horizontal space between items
-                  runSpacing: 8, // vertical space if it wraps
+              child: IntrinsicHeight(
+                child: Column(
                   children: [
-                    Text(
-                      "Submitted: ${formatSubmissionTime(submissionTime)}",
-                      style: TextStyle(fontSize: 14, color: Colors.grey[700]),
-                    ),
 
-                    Text(
-                      "Time: ${formatTimeSpent(timeSpentSeconds)}",
-                      style: TextStyle(fontSize: 14, color: Colors.grey[700]),
-                    ),
+                    /// RESULT SUMMARY
+                    Center(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
 
-                    Text(
-                      "Avg/Q: ${formatSeconds(avgTimePerQuestion)}",
-                      style: TextStyle(fontSize: 14, color: Colors.grey[700]),
-                    ),
+                          Text(
+                            "Your Score",
+                            style: TextStyle(
+                              fontSize: 26,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
 
-                    Text(
-                      "Efficiency: ${efficiency.toStringAsFixed(1)}%",
-                      style: TextStyle(
-                        fontSize: 14,
-                        color: efficiency < 50 ? Colors.green : Colors.orange,
+                          SizedBox(height: 7),
+
+                          Text(
+                            "$score / $total",
+                            style: TextStyle(
+                              fontSize: 40,
+                              color: Colors.blue,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+
+                          SizedBox(height: 7),
+
+                          Text(
+                            "${percentage.toStringAsFixed(1)}%",
+                            style: TextStyle(
+                              fontSize: 28,
+                              color: percentage >= 50
+                                  ? Colors.green
+                                  : Colors.red,
+                            ),
+                          ),
+
+                          SizedBox(height: 5),
+
+                          Wrap(
+                            spacing: 16,
+                            runSpacing: 8,
+
+                            children: [
+
+                              Text(
+                                "Submitted: ${formatSubmissionTime(submissionTime)}",
+                                style: TextStyle(
+                                  fontSize: 14,
+                                  color: Colors.grey[700],
+                                ),
+                              ),
+
+                              Text(
+                                "Time: ${formatTimeSpent(timeSpentSeconds)}",
+                                style: TextStyle(
+                                  fontSize: 14,
+                                  color: Colors.grey[700],
+                                ),
+                              ),
+
+                              Text(
+                                "Avg/Q: ${formatSeconds(avgTimePerQuestion)}",
+                                style: TextStyle(
+                                  fontSize: 14,
+                                  color: Colors.grey[700],
+                                ),
+                              ),
+
+                              Text(
+                                "Efficiency: ${efficiency.toStringAsFixed(1)}%",
+                                style: TextStyle(
+                                  fontSize: 14,
+                                  color: efficiency < 50
+                                      ? Colors.green
+                                      : Colors.orange,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ],
                       ),
                     ),
-                  ],
-                )
-              ],
-            ),
-          ),
-        ),
-        /// PERFORMANCE PER SUBJECT (TEXT STYLE)
-        Expanded(
-          flex: 2,
-          child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
 
-                SizedBox(height: 2),
-
-                Wrap(
-                  spacing: 12,   // space between items horizontally
-                  runSpacing: 8, // space between rows if they wrap down
-
-                  children: List.generate(subjects.length, (index) {
-
-                    int subScore = subjectScores[index] ?? 0;
-                    int subTotal = subjectTotals[index] ?? 0;
-
-                    double percent =
-                        subTotal == 0 ? 0 : (subScore / subTotal) * 100;
-
-                    return Container(
-                      padding: EdgeInsets.symmetric(horizontal: 10, vertical: 6),
-                      decoration: BoxDecoration(
-                        border: Border.all(color: Colors.grey.shade400),
-                        borderRadius: BorderRadius.circular(8),
+                    /// PERFORMANCE PER SUBJECT
+                    Padding(
+                      padding: EdgeInsets.symmetric(
+                        horizontal: 20,
+                        vertical: 10,
                       ),
-                      child: Text(
-                        "${subjects[index]}: $subScore/$subTotal (${percent.toStringAsFixed(1)}%)",
-                        style: TextStyle(
-                          fontSize: 14,
-                          color: percent >= 50 ? Colors.green : Colors.red,
-                        ),
-                      ),
-                    );
-                  }),
-                ),
-              ],
-            ), ), ),
 
-
-        ///  MOCK MODE REVIEW
-        if (examMode == "Mock")
-          Padding(
-            padding: EdgeInsets.symmetric(horizontal: 10),
-            child: Column(
-              children: subjectQuestions.entries.expand((entry) {
-
-                int subjectIndex = entry.key;
-                List questions = entry.value;
-
-                return List.generate(questions.length, (i) {
-
-                  var q = questions[i];
-
-                  int correctIndex = q["answerIndex"];
-                  int? userIndex = subjectAnswers[subjectIndex]?[i];
-
-                  bool isCorrect = userIndex == correctIndex;
-
-                  return Card(
-                    margin: EdgeInsets.symmetric(vertical: 6),
-                    child: Padding(
-                      padding: EdgeInsets.all(10),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
 
-                          /// QUESTION
-                          Text(
-                            "Q${i + 1}",
-                            style: TextStyle(fontWeight: FontWeight.bold),
-                          ),
-                          SizedBox(height: 5),
-                          buildContent(q["question"]),
+                          SizedBox(height: 2),
 
-                          SizedBox(height: 10),
+                          Wrap(
+                            spacing: 12,
+                            runSpacing: 8,
 
-                          /// USER ANSWER
-                          Row(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                "Your Answer: ",
-                                style: TextStyle(fontWeight: FontWeight.bold),
-                              ),
-                              Expanded(
-                                child: userIndex == null
-                                    ? Text(
-                                        "Not Answered",
-                                        style: TextStyle(color: Colors.orange),
-                                      )
-                                    : /*buildContent(q["options"][userIndex])*/
-                                    optionsDisplay(q["options"][userIndex]),
-                              ),
-                            ],
-                          ),
+                            children: List.generate(
+                              subjects.length,
+                              (index) {
 
-                          SizedBox(height: 5),
+                                int subScore =
+                                    subjectScores[index] ?? 0;
 
-                          /// CORRECT ANSWER
-                          Row(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                "Correct Answer: ",
-                                style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.green,
-                                ),
-                              ),
-                              Expanded(
-                                child: /*buildContent(q["options"][correctIndex]*/
-                                optionsDisplay(q["options"][correctIndex]
-                                ),
-                              ),
-                            ],
-                          ),
+                                int subTotal =
+                                    subjectTotals[index] ?? 0;
 
-                          SizedBox(height: 8),
+                                double percent =
+                                    subTotal == 0
+                                        ? 0
+                                        : (subScore / subTotal) * 100;
 
-                          /// RESULT STATUS
-                          Text(
-                            userIndex == null
-                                ? "Not Attempted"
-                                : isCorrect
-                                    ? "Correct"
-                                    : "Wrong",
-                            style: TextStyle(
-                              color: userIndex == null
-                                  ? Colors.orange
-                                  : isCorrect
-                                      ? Colors.green
-                                      : Colors.red,
-                              fontWeight: FontWeight.bold,
+                                return Container(
+                                  padding: EdgeInsets.symmetric(
+                                    horizontal: 10,
+                                    vertical: 6,
+                                  ),
+
+                                  decoration: BoxDecoration(
+                                    border: Border.all(
+                                      color: Colors.grey.shade400,
+                                    ),
+
+                                    borderRadius:
+                                        BorderRadius.circular(8),
+                                  ),
+
+                                  child: Text(
+                                    "${subjects[index]}: "
+                                    "$subScore/$subTotal "
+                                    "(${percent.toStringAsFixed(1)}%)",
+
+                                    style: TextStyle(
+                                      fontSize: 14,
+                                      color: percent >= 50
+                                          ? Colors.green
+                                          : Colors.red,
+                                    ),
+                                  ),
+                                );
+                              },
                             ),
                           ),
-                          SizedBox(height: 8),
-
-                          ///  EXPLANATION
-                          if ((q["explanation"] ?? "").toString().isNotEmpty) ...[
-
-                            Text(
-                              "Explanation:",
-                              style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                color: Colors.blueGrey,
-                              ),
-                            ),
-
-                            SizedBox(height: 5),
-
-                            buildContent(q["explanation"]),
-                          ],
-
                         ],
                       ),
                     ),
-                  );
-                });
 
-              }).toList(),
-            ),
-          ),
+                    /// MOCK MODE REVIEW
+                    Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 10),
 
-        /// BUTTON
-        Padding(
-          padding: EdgeInsets.all(16),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center, //  centers both buttons
-            children: [
+                      child: Column(
+                        children: subjectQuestions.entries
+                            .expand((entry) {
 
-              ElevatedButton(
-                onPressed: () {
-                  Navigator.pushAndRemoveUntil(
-                    context,
-                    MaterialPageRoute(builder: (_) => HomePage()),
-                    (route) => false,
-                  );
-                },
-                child: Text("Back to Home Page"),
-              ),
+                          int subjectIndex = entry.key;
+                          List questions = entry.value;
 
-              SizedBox(width: 15),
+                          return List.generate(
+                            questions.length,
+                            (i) {
 
-              ///  NEW RETRY BUTTON
-              if (examMode == "Mock" || examMode == "Study")
-                ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.orange,
-                  ),
-                  onPressed: () => retryWrongQuestions(context),
-                  child: Text("Retry Wrong Questions"),
-                 ),
-                      ],
+                              var q = questions[i];
+
+                              int correctIndex =
+                                  q["answerIndex"];
+
+                              int? userIndex =
+                                  subjectAnswers[subjectIndex]?[i];
+
+                              bool isCorrect =
+                                  userIndex == correctIndex;
+
+                              return Card(
+                                margin: EdgeInsets.symmetric(
+                                  vertical: 6,
+                                ),
+
+                                child: Padding(
+                                  padding: EdgeInsets.all(10),
+
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+
+                                    children: [
+
+                                      /// QUESTION
+                                      Text(
+                                        "Q${i + 1}",
+                                        style: TextStyle(
+                                          fontWeight:
+                                              FontWeight.bold,
+                                        ),
+                                      ),
+
+                                      SizedBox(height: 5),
+
+                                      buildContent(
+                                        q["question"],
+                                      ),
+
+                                      SizedBox(height: 10),
+
+                                      /// USER ANSWER
+                                      Row(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+
+                                        children: [
+
+                                          Text(
+                                            "Your Answer: ",
+                                            style: TextStyle(
+                                              fontWeight:
+                                                  FontWeight.bold,
+                                            ),
+                                          ),
+
+                                          Expanded(
+                                            child: userIndex == null
+                                                ? Text(
+                                                    "Not Answered",
+                                                    style: TextStyle(
+                                                      color:
+                                                          Colors.orange,
+                                                    ),
+                                                  )
+                                                : optionsDisplay(
+                                                    q["options"]
+                                                        [userIndex],
+                                                  ),
+                                          ),
+                                        ],
+                                      ),
+
+                                      SizedBox(height: 5),
+
+                                      /// CORRECT ANSWER
+                                      Row(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+
+                                        children: [
+
+                                          Text(
+                                            "Correct Answer: ",
+                                            style: TextStyle(
+                                              fontWeight:
+                                                  FontWeight.bold,
+                                              color: Colors.green,
+                                            ),
+                                          ),
+
+                                          Expanded(
+                                            child: optionsDisplay(
+                                              q["options"]
+                                                  [correctIndex],
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+
+                                      SizedBox(height: 8),
+
+                                      /// RESULT STATUS
+                                      Text(
+                                        userIndex == null
+                                            ? "Not Attempted"
+                                            : isCorrect
+                                                ? "Correct"
+                                                : "Wrong",
+
+                                        style: TextStyle(
+                                          color: userIndex == null
+                                              ? Colors.orange
+                                              : isCorrect
+                                                  ? Colors.green
+                                                  : Colors.red,
+
+                                          fontWeight:
+                                              FontWeight.bold,
+                                        ),
+                                      ),
+
+                                      SizedBox(height: 8),
+
+                                      /// EXPLANATION
+                                      if ((q["explanation"] ?? "")
+                                          .toString()
+                                          .isNotEmpty) ...[
+
+                                        Text(
+                                          "Explanation:",
+                                          style: TextStyle(
+                                            fontWeight:
+                                                FontWeight.bold,
+                                            color:
+                                                Colors.blueGrey,
+                                          ),
+                                        ),
+
+                                        SizedBox(height: 5),
+
+                                        buildContent(
+                                          q["explanation"],
+                                        ),
+                                      ],
+                                    ],
+                                  ),
+                                ),
+                              );
+                            },
+                          );
+                        }).toList(),
+                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
           ),
-        )
-      : Container(),
-);
+
+          /// FLOATING BUTTONS
+          Positioned(
+            bottom: 20,
+            left: 0,
+            right: 0,
+
+            child: Center(
+              child: Container(
+                padding: EdgeInsets.symmetric(
+                  horizontal: 16,
+                  vertical: 10,
+                ),
+
+                decoration: BoxDecoration(
+                  color: Colors.white.withOpacity(0.95),
+
+                  borderRadius:
+                      BorderRadius.circular(15),
+
+                  boxShadow: [
+                    BoxShadow(
+                      blurRadius: 10,
+                      color: Colors.black12,
+                    ),
+                  ],
+                ),
+
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+
+                  children: [
+
+                    ElevatedButton(
+                      onPressed: () {
+
+                        Navigator.pushAndRemoveUntil(
+                          context,
+
+                          MaterialPageRoute(
+                            builder: (_) => HomePage(),
+                          ),
+
+                          (route) => false,
+                        );
+                      },
+
+                      child: Text("HomePage"),
+                    ),
+
+                    SizedBox(width: 15),
+
+                    ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.orange,
+                      ),
+
+                      onPressed: () =>
+                          retryWrongQuestions(context),
+
+                      child: Text(
+                        "Retry Wrong Questions",
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ),
+        ],
+      )
+    : Container(),
+  );
 }
 }
 

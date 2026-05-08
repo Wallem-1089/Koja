@@ -1804,7 +1804,64 @@ class ResultHistoryPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Result History")),
+      appBar: AppBar(
+        title: Text("Result History"),
+
+        actions: [
+          IconButton(
+            icon: Icon(Icons.delete),
+
+            onPressed: () async {
+
+              bool? confirm = await showDialog<bool>(
+                context: context,
+                builder: (context) {
+                  return AlertDialog(
+                    title: Text("Clear History"),
+                    content: Text(
+                      "Are you sure you want to delete all saved results?",
+                    ),
+
+                    actions: [
+
+                      TextButton(
+                        onPressed: () {
+                          Navigator.pop(context, false);
+                        },
+                        child: Text("Cancel"),
+                      ),
+
+                      TextButton(
+                        onPressed: () {
+                          Navigator.pop(context, true);
+                        },
+                        child: Text(
+                          "Delete",
+                          style: TextStyle(color: Colors.red),
+                        ),
+                      ),
+                    ],
+                  );
+                },
+              );
+
+              /// DELETE ALL RESULTS
+              if (confirm == true) {
+
+                await isar.writeTxn(() async {
+                  await isar.resultModels.clear();
+                });
+
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(
+                    content: Text("Result history cleared"),
+                  ),
+                );
+              }
+            },
+          ),
+        ],
+      ),
 
       body: StreamBuilder<List<ResultModel>>(
         stream: isar.resultModels

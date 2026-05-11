@@ -1557,7 +1557,7 @@ Widget build(BuildContext context) {
   return Scaffold(
     appBar: AppBar(title: Text("Exam Result"),),
 
-    body: examMode == "Mock"
+    body: (examMode == "Mock" || examMode == "Study" || examMode == "Exam")
     ? Stack(
         children: [
 
@@ -1726,6 +1726,7 @@ Widget build(BuildContext context) {
                     ),
 
                     /// MOCK MODE REVIEW
+                    if (examMode == "Mock" || examMode == "Study")
                     Padding(
                       padding: EdgeInsets.symmetric(horizontal: 10),
 
@@ -1951,7 +1952,7 @@ Widget build(BuildContext context) {
                     ),
 
                     SizedBox(width: 15),
-
+                  if (examMode == "Mock" || examMode == "Study")
                     ElevatedButton(
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.orange,

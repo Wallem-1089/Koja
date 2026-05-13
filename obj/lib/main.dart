@@ -78,7 +78,7 @@ class SecondPage extends StatefulWidget {
 
 class _MySecondPageState extends State<SecondPage> {
 /// SUBJECT & YEAR OPTIONS
-  List<String> subjectOptions = ["ENS211", "PRE211", "CPE481", "CPE461"];
+  List<String> subjectOptions = ["USEOFENGLISH", "PRE211", "CPE481", "CPE461"];
   List<String> yearOptions = ["2020", "2021", "2022", "2023", "2024"];
 
   /// 4 SUBJECT SLOTS (Subject + Year)
@@ -438,7 +438,7 @@ class _MyThirdPageState extends State<ThirdPage> {
   } else {
     /// JSON FILE PATHS
     jsonFiles = subjects.map((subject) {
-      return "assets/$subject.json";
+      return "assets/post_utme/uniben/$subject.json";
     }).toList();
 
     loadQuestions();
@@ -659,6 +659,7 @@ Future<void> confirmSubmit() async {
       currentQuestionIndex = 0;
     });
   }
+  
   Future<void> saveResult(
   int score,
   int total,
@@ -699,40 +700,68 @@ Future<void> confirmSubmit() async {
   /// Detect LaTeX ($...$)
   final regex = RegExp(r'\$(.*?)\$');
 
-  if (!regex.hasMatch(text)) {
+  /// Detect Underline (<u>...</u>)
+  final underlineRegex = RegExp(r'<u>(.*?)<\/u>');
+
+  /// If no math AND no underline → normal text
+  if (!regex.hasMatch(text) && !underlineRegex.hasMatch(text)) {
     return Text(
       text,
       style: TextStyle(fontSize: 22),
     );
   }
 
-  /// Split text + math parts
+  /// Split text + math + underline parts
   List<InlineSpan> spans = [];
 
   int lastIndex = 0;
 
-  for (final match in regex.allMatches(text)) {
+  /// Combined regex
+  final combinedRegex = RegExp(r'\$(.*?)\$|<u>(.*?)<\/u>');
 
-    /// Normal text before math
+  for (final match in combinedRegex.allMatches(text)) {
+
+    /// Normal text before special part
     if (match.start > lastIndex) {
       spans.add(
         TextSpan(
           text: text.substring(lastIndex, match.start),
-          style: TextStyle(color: Colors.black, fontSize: 22),
+          style: TextStyle(
+            color: Colors.black,
+            fontSize: 22,
+          ),
         ),
       );
     }
 
     /// Math part
-    spans.add(
-      WidgetSpan(
-        alignment: PlaceholderAlignment.middle,
-        child: Math.tex(
-          match.group(1)!,
-          textStyle: TextStyle(fontSize: 22),
+    if (match.group(1) != null) {
+
+      spans.add(
+        WidgetSpan(
+          alignment: PlaceholderAlignment.middle,
+          child: Math.tex(
+            match.group(1)!,
+            textStyle: TextStyle(fontSize: 22),
+          ),
         ),
-      ),
-    );
+      );
+    }
+
+    /// Underline part
+    else if (match.group(2) != null) {
+
+      spans.add(
+        TextSpan(
+          text: match.group(2)!,
+          style: TextStyle(
+            color: Colors.black,
+            fontSize: 22,
+            decoration: TextDecoration.underline,
+          ),
+        ),
+      );
+    }
 
     lastIndex = match.end;
   }
@@ -742,7 +771,10 @@ Future<void> confirmSubmit() async {
     spans.add(
       TextSpan(
         text: text.substring(lastIndex),
-        style: TextStyle(color: Colors.black, fontSize: 22),
+        style: TextStyle(
+          color: Colors.black,
+          fontSize: 22,
+        ),
       ),
     );
   }

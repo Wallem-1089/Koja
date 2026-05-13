@@ -1,21 +1,21 @@
 [
   {
     "questionNumber": 1,
-    "question": "What is 2+2?",
-    "options": ["2", "3", "4", "5"],
-    "answerIndex": 2,
+    "question": "The President visited the town with a view to _____ things for himself. Which best completes the sentence?",
+    "options": ["seeing", "having seen", "see", "seen"],
+    "answerIndex": 0,
     "explanation": "Adding gives $2 + 2 = 4$"
   },
   {
     "questionNumber": 2,
-    "question": "Capital of France?",
-    "options": ["Berlin", "Madrid", "Paris", "Rome"],
+    "question": "The pepper was poorly _____. Which best completes the sentence?",
+    "options": ["Grinded", "Grounded", "Ground", "Grind"],
     "answerIndex": 2,
     "explanation": "Adding gives $2 + 2 = 4$"
   },
   {
     "questionNumber": 3,
-    "question": "Capital of Nigeria?",
+    "question": "Choose among the options, the one that has the opposite meaning to the word or group of words underlined in the sentences to fill the missing words. \nA <u>generous</u> main is not expected to marry a ____",
     "options": ["Lagos","Abuja","Kano","Ibadan"],
     "answerIndex": 1,
     "explanation": "Adding gives $2 + 2 = 4$"

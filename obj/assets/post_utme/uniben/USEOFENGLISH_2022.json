@@ -1,0 +1,112 @@
+[
+    {
+    "questionNumber": 1,
+    "question": "After each of the following sentences, a list of possible interpretations is given. Choose the interpretation that you consider most appropriate for each sentence.\nHad it been possible to leave the country then, I would have done so.This means that ",
+    "options": ["I have not left the country and nothing will make me leave", "I wanted to leave the country and I did", "I will definitely leave the country one day", "I would have liked to leave the countyr but I wasn't able to "],
+    "answerIndex": 3,
+    "explanation": "Null"
+    },
+    {
+    "questionNumber": 2,
+    "question": "After each of the following sentences, a list of possible interpretations is given. Choose the interpretation that you consider most appropriate for each sentence.\nThe proprietor and his accountant have had a running battle over the last financial report. This means that they have had",
+    "options": ["an argument which developed into a fight", "a series of arguments on the report", "to work hard to complete the report", "difficulties understanding the report"],
+    "answerIndex": 1,
+    "explanation": "Null"
+    },
+    {
+    "questionNumber": 3,
+    "question": "After each of the following sentences, a list of possible interpretations is given. Choose the interpretation that you consider most appropriate for each sentence.\nUnless you don't want to become a teacher, there's no reason for not accepting the sponsorship. This means that you should ",
+    "options": ["not refuse the sponsorship", "refuse the sponsorship if you want to become a teacher", "not refuse the sponsorship if you don't want to become a teacher", "refuse the sponsorship whether you want to become a teacher or not"],
+    "answerIndex": 0,
+    "explanation": "Null"
+    },
+    {
+    "questionNumber": 4,
+    "question": "After each of the following sentences, a list of possible interpretations is given. Choose the interpretation that you consider most appropriate for each sentence.\nHis chances of passing are very slim. This means that he:",
+    "options": ["will pass", "will not pass", "may not pass", "ought to pass"],
+    "answerIndex": 2,
+    "explanation": "If someone's chances are 'very slim,' it means they are highly unlikely to succeed."
+  },
+  {
+    "questionNumber": 5,
+    "question": "After each of the following sentences, a list of possible interpretations is given. Choose the interpretation that you consider most appropriate for each sentence.\nWe would never have followed his advice if we had known his reputation. This means that we:",
+    "options": [
+      "knew what people said about him so we refused to obey him",
+      "trusted him but did not need any advice",
+      "followed his advice because we didn't know him",
+      "trusted him but did not take his advice"
+    ],
+    "answerIndex": 2,
+    "explanation": "The conditional statement implies the speakers followed the advice only because they were unaware of his reputation at the time."
+  },
+  {
+    "questionNumber": 6,
+    "question": "The second sentence suggests that Tony's farm is good:",
+    "options": ["For religious camping and meditation", "For escaping from the city noise", "As a rendezvous for lovers", "As a location for serious meetings"],
+    "answerIndex": 2,
+    "explanation": "Null"
+  },
+  {
+    "questionNumber": 7,
+    "question": "From the description of the farm and surrounding, we can infer that the barbed wire is",
+    "options": ["Fading because of rain", "An unnecessary addition protection", "Colourless in its appearance", "Probably green in colour"],
+    "answerIndex": 0,
+    "explanation": "Null"
+  },
+  {
+    "questionNumber": 8,
+    "question": "------ They receive their regular clinical attention, this means that",
+    "options": ["The animals are taken to the clinic regularly", "The animals are under constant observation", "The animals are given regular vaccination", "The animals have a doctor at the farm"],
+    "answerIndex": 2,
+    "explanation": "Null"
+  },
+  {
+    "questionNumber": 9,
+    "question": "The farmers who use the animal droppings from Tony's farm think that:",
+    "options": ["Their harvest will increase", "Their crops will remain healthy", "Their farm will be inexpensive", "Their farm will be a model"],
+    "answerIndex": 3,
+    "explanation": "Null"
+  },
+  {
+    "questionNumber": 10,
+    "question": "Tony's farm Manager can be described as",
+    "options": ["a good imitator", "A religious person", "sympathetic individual", "A responsible worker"],
+    "answerIndex": 0,
+    "explanation": "Null"
+  },
+  {
+    "questionNumber": 11,
+    "question": "find under each sentence the group of words that give the nearest meaning to the idiom\nHe killed <u>the goose that laid the golden eggs</u> when he decided to spend his capital on buying a car",
+    "options": ["Sacrificed future profits to satisfy present needs", "was bad-natured", "Became a poor person", "Became an important person"],
+    "answerIndex": 0,
+    "explanation": "Null"
+  },
+  {
+    "questionNumber": 12,
+    "question": "find under each sentence the group of words that give the nearest meaning to the idiom.\nI laughed up my sleeve as he told the tales of his exploits",
+    "options": ["Was very pleased", "Was openly making fun of him", "Was secretly amused", "Laughed myself helpless"],
+    "answerIndex": 2,
+    "explanation": "Null"
+  },
+  {
+    "questionNumber": 13,
+    "question": "Choose the word or set of words that best fits the meaning of the sentence as a whole: _________ the long run, we will make enough profit.",
+    "options": ["In", "On", "At", "For"],
+    "answerIndex": 0,
+    "explanation": "The correct prepositional phrase is 'In the long run.'"
+  },
+  {
+    "questionNumber": 14,
+    "question": "Choose the word or set of words that best fits the meaning of the sentence as a whole: The congregation _________ all sorts and conditions of men.",
+    "options": ["Composes", "Consists", "Comprises", "Conjectures"],
+    "answerIndex": 2,
+    "explanation": "'Comprises' is used to mean 'is made up of' or 'contains.'"
+  },
+  {
+    "questionNumber": 15,
+    "question": "Select the option that is nearest in meaning to the underlined word: The effect of the new policy on the masses is rather <u>negligible</u>.",
+    "options": ["Unimportant", "Useful", "Insignificant", "Negligent"],
+    "answerIndex": 2,
+    "explanation": "Negligible means so small or unimportant as to be not worth considering; 'insignificant' is the closest synonym."
+  }
+]

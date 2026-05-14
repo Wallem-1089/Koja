@@ -1,0 +1,212 @@
+[
+    {
+    "questionNumber": 1,
+    "question": "In a class of 40 students, 32 offer mathematics, 24 offer physics. How many offer both mathematics and physics?",
+    "options": ["20", "16", "8", "4"],
+    "answerIndex": 1,
+    "explanation": "$Using the set formula n(A∪B) = n(A) + n(B) - n(A∩B): 40 = 32 + 24 - X, therefore  X = 16$."
+  },
+    {
+    "questionNumber": 2,
+    "question": "Simplify Simplify $1 - 2 \\frac{1}{3}  \\times 1 \\frac{1}{4}) + \\frac{3}{4}$ ",
+    "options": ["$1 \\frac{1}{5}$", "$1 \\frac{19}{60}$", "$2 \\frac{7}{60}$", "$2 \\frac{31}{60}$"],
+    "answerIndex": 2,
+    "explanation": "Null"
+    },
+    {
+    "questionNumber": 3,
+    "question": "The sum of four numbers is 1214. What is the average expressed in a base five",
+    "options": ["114", "141", "401", "411"],
+    "answerIndex": 3,
+    "explanation": "Null"
+    },
+    {
+    "questionNumber": 4,
+    "question": "The length a person can jump is inversely proportional to his weight. If a 20kg person can jump 1.5m. find the constant proportionality",
+    "options": ["60", "30", "20", "15"],
+    "answerIndex": 1,
+    "explanation": "Null"
+  },
+  {
+    "questionNumber": 5,
+    "question": "A trapezium has two parallel sides of length, 5cm and 9cm. if the area is 21cm² find the distance between the parallel sides",
+    "options": ["3cm", "4cm", "6cm", "7cm"],
+    "answerIndex": 0,
+    "explanation": "Null"
+  },
+  {
+    "questionNumber": 6,
+    "question": "Which of the following zones is NOT part of a non-luminous Bunsen flame?",
+    "options": ["Blue zone", "Unburnt", "Bright yellow luminous zone", "non-luminous zone"],
+    "answerIndex": 0,
+    "explanation": "Null"
+  },
+  {
+    "questionNumber": 7,
+    "question": "Which of the following is a secondary air pollutant?",
+    "options": ["particulate dust", "Sulphur(IV)oxide", "Ozone", "Chlorofluorocarbons"],
+    "answerIndex": 2,
+    "explanation": "Null"
+  },
+  {
+    "questionNumber": 8,
+    "question": "Ammonia can be obtained from diammonium tetraoxosulphate(VI) by heating it with",
+    "options": ["dilute HCl", "conc. H₂SO₄", "CuSO₄", "NaOH"],
+    "answerIndex": 3,
+    "explanation": "Null"
+  },
+  {
+    "questionNumber": 9,
+    "question": "Which of the following compounds is a soapless detergent?",
+    "options": ["C₁₂H₂₅OSO₃ Na", "C₁₇H₂₅COONa", "$C_6H₅OH$", "D. C₄H₉COOC₂H₅"],
+    "answerIndex": 0,
+    "explanation": "Null"
+  },
+  {
+    "questionNumber": 10,
+    "question": "A motor-car is uniformity retarded and brought to rest from a speed of 90km/h in 10s. Find its acceleration.",
+    "options": ["25 ms⁻¹", "2.5 ms⁻²", " -2.5 ms⁻²", " -2.5 ms⁻¹"],
+    "answerIndex": 1,
+    "explanation": "Null"
+  },
+  {
+    "questionNumber": 11,
+    "question": "Determine the quantity of heat in joules given out when a piece of iron of mass 40g and specific heat capacity 460Jkg⁻¹ °C cools from 70°C to 40°C",
+    "options": ["552J", "736J", "1288J", "368.1"],
+    "answerIndex": 0,
+    "explanation": "Null"
+  },
+  {
+    "questionNumber": 12,
+    "question": "Which of the following is not a characteristic of the image formed in a plane mirror",
+    "options": ["The same size as the object", "As far behind the mirror as the object is in front", "Real", "Laterally inverted."],
+    "answerIndex": 2,
+    "explanation": "Null"
+  },
+  {
+    "questionNumber": 13,
+    "question": "The angle between a plane mirror and an incident ray is 35°. Find the angle of reflection.",
+    "options": ["35°", "50°", "45°", "70°"],
+    "answerIndex": 0,
+    "explanation": "Null"
+  },
+  {
+    "questionNumber": 14,
+    "question": "Which of the following properties of radiations from radioactive substances is FALSE",
+    "options": ["Gamma rays are deflected by a magnetic field", "Alpha particle is a helium nucleus", "Beta rays are streams of high energy electrons", "Beta rays are strongly deflected by a magnetic field"],
+    "answerIndex": 2,
+    "explanation": "Null"
+  },
+  {
+    "questionNumber": 15,
+    "question": "A machine with a velocity ratio of 6 requires 800.1J of work to raise a load of 640N through a vertical distance of 1m. Find the efficiency of the machine",
+    "options": ["20%", "64%", "80%", "75%"],
+    "answerIndex": 0,
+    "explanation": "Null"
+  },
+  {
+    "questionNumber": 16,
+    "question": "The overall reaction in glycolysis can be summarized as",
+    "options": ["C₆H₁₂O₆ → C₃H₄O₃ + 4H + ATP", "C₆H₁₂O₆ → 2C₃H₄O₃ + 4H + 2ATP", "C₆H₁₂O₆ → 2C₃H₄O₃ + 4H + ADP", "C₆H₁₂O₆ → 2C₃H₄O₃ + 4H + ADP"],
+    "answerIndex": 1,
+    "explanation": "Null"
+  },
+  {
+    "questionNumber": 17,
+    "question": "The curvature movement of plants in response to the stimulus of water is called",
+    "options": ["hydrotropism.", "Geotropism.", "Phototropism.", "Thigmotropism."],
+    "answerIndex": 0,
+    "explanation": "Null"
+  },
+  {
+    "questionNumber": 18,
+    "question": "Two organelles directly involved in mitotic cell division are",
+    "options": ["nucleus and mitochondrion.", "ribosome and nucleus.", "centriole and Golgi apparatus.", "nucleus and centriole."],
+    "answerIndex": 3,
+    "explanation": "Null"
+  },
+  {
+    "questionNumber": 19,
+    "question": "The following statements about mitotic cell division are correct except that",
+    "options": ["it occurs only in young cells.", "it occurs in somatic cells.", "the chromosome number of the daughter cell is the same as that of the parent.", "the genetic composition of the mother cell is the same as that of the daughter cell."],
+    "answerIndex": 3,
+    "explanation": "Null"
+  },
+  {
+    "questionNumber": 20,
+    "question": "The longest bone in the body is the",
+    "options": ["humerus.", "femur", "scapula.", "tibia."],
+    "answerIndex": 1,
+    "explanation": "Null"
+  },
+  {
+    "questionNumber": 21,
+    "question": "Which of the following structures is not a skeletal material?",
+    "options": ["Chitin", "Cartilage", "Bone", "Muscle"],
+    "answerIndex": 3,
+    "explanation": "Null"
+  },
+  {
+    "questionNumber": 22,
+    "question": "The reason why the flow of blood through the capillaries is very slow is",
+    "options": ["because the walls of capillaries are very thin,", "to avoid high blood pressure.", "to ensure that the individual does not get dizzy.", "to allow adequate time for exchange of materials,"],
+    "answerIndex": 0,
+    "explanation": "Null"
+  },
+  {
+    "questionNumber": 23,
+    "question": "Which of the following features is not characteristic of arteries? Arteries",
+    "options": ["possess valves at intervals throughout their length", "have thick muscular and elastic walls", "carry blood away from the heart", "transport oxygenated blood with the exception of the pulmonary artery"],
+    "answerIndex": 0,
+    "explanation": "Null"
+  },
+  {
+    "questionNumber": 24,
+    "question": "A group of rats placed in an air tight box for some hours died because they",
+    "options": ["breathed in air containing nitrogen", "produced carbon dioxide", "ran short of energy", "Used up the available oxygenl"],
+    "answerIndex": 3,
+    "explanation": "Null"
+  },
+  {
+    "questionNumber": 25,
+    "question": "which of the following instruments has a pure tone",
+    "options": ["Vibrating string", "tuning fork", "Siren", "Violin"],
+    "answerIndex": 1,
+    "explanation": "Null"
+  },
+  {
+    "questionNumber": 26,
+    "question": "A certain radioactive source emits radiations that are found to be deflected by both magnetic and electric fields. The radiations are:",
+    "options": ["Infrared rays", "X-rays", "Gamma rays", "Beta rays"],
+    "answerIndex": 3,
+    "explanation": "Beta rays consist of charged particles (electrons or positrons) and are therefore deflected by both magnetic and electric fields."
+  },
+  {
+    "questionNumber": 27,
+    "question": "Which one of the following has the highest specific heat capacity?",
+    "options": ["Water", "Liquid hydrogen", "Copper", "Lead"],
+    "answerIndex": 0,
+    "explanation": "Null"
+  },
+  {
+    "questionNumber": 28,
+    "question": "Which of the following source of energy is non-renewable?",
+    "options": ["Tides", "Solar", "Ocean waves", "Fuel"],
+    "answerIndex": 3,
+    "explanation": "Null"
+  },
+  {
+    "questionNumber": 29,
+    "question": "Calculate the work done by a bricklayer who lifted a cement block of mass 10kg from the floor to a height of 2.5m (acceleration due to gravity = 9.8m/s²).",
+    "options": ["294.0J", "245.0J", "24.50J", "25.0J"],
+    "answerIndex": 1,
+    "explanation": "Work = mass \\times gravity \\times height: 10kg \\times 9.8m/s² \\times 2.5m = 245.0J."
+  },
+  {
+    "questionNumber": 30,
+    "question": "Determine the wavelength of the fundamental note of a guitar string of length 65cm long.",
+    "options": ["65cm", "260cm", "195cm", "130cm"],
+    "answerIndex": 3,
+    "explanation": "For a string fixed at both ends, the wavelength of the fundamental frequency is twice the length of the string: 2 × 65cm = 130cm."
+  }
+]

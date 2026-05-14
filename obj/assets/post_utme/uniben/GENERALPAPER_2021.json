@@ -1,0 +1,263 @@
+[
+    {
+    "questionNumber": 1,
+    "question": "The purest form of iron is",
+    "options": ["Wrought iron", "steel", "Pig Iron", "nickel steel"],
+    "answerIndex": 0,
+    "explanation": "Null"
+  },
+  {
+    "questionNumber": 2,
+    "question": "Among the following the maximum covalent character is shown by the compound ((i)$MgCl_2$, (ii)$FeCl_2$, (iii)$SnCl_2$, (iv)$AlCl_3$)",
+    "options": ["Option I", "Option ii", "Option iii", "Option iv"],
+    "answerIndex": 3,
+    "explanation": "AlCl3 has the highest covalent character due to Fajans' rule"
+  },
+  {
+    "questionNumber": 3,
+    "question": "Hydrogen bomb is based on the principle of",
+    "options": ["Nuclear fission", "nuclear fusion", "Natural radioactivity", "artificial radioactivity"],
+    "answerIndex": 1,
+    "explanation": "Null"
+  },
+  {
+    "questionNumber": 4,
+    "question": "SI unit of equivalent conductance",
+    "options": ["ohm/cm", "Siemens m²/equivalent", "Siemens/equivalent", "mho/cm"],
+    "answerIndex": 1,
+    "explanation": "Null"
+  },
+  {
+    "questionNumber": 5,
+    "question": "Which pair of atoms has the highest electronegativity difference? Electronegativity - Ca (1.0), F (4.0), H (2.2), Na (0.93)",
+    "options": ["F-F", "Ca-F", "H-F", "Na-F"],
+    "answerIndex": 3,
+    "explanation": "Null"
+  },
+  {
+    "questionNumber": 6,
+    "question": "Brass gets discoloured in air because of the presence of which of the following gases in air?",
+    "options": ["Hydrogen sulphide", "Oxygen", "Nitrogen", "Carbon dioxide"],
+    "answerIndex": 0,
+    "explanation": "Null"
+  },
+  {
+    "questionNumber": 7,
+    "question": "What is the structure of IF7?",
+    "options": ["Triagonal bipyramid", "Pentagonal bipyramid", "Square pyramid", "tetrahedral"],
+    "answerIndex": 1,
+    "explanation": "Null"
+  },
+  {
+    "questionNumber": 8,
+    "question": "What is the IUPAC name for $H_3C–C≡C–H$?",
+    "options": ["Acetylene", "Methyl acetylene", "Butanol", "Decanoic Acid"],
+    "answerIndex": 1,
+    "explanation": "Null"
+  },
+  {
+    "questionNumber": 9,
+    "question": "Name the Scientist who stated that matter can be converted into energy",
+    "options": ["Boyle", "Lavoisier", "Avogadro", "Einstein"],
+    "answerIndex": 3,
+    "explanation": "Null"
+  },
+  {
+    "questionNumber": 10,
+    "question": "The working principle of a washing machine is",
+    "options": ["Reverse osmosis", "Diffusion", "Centrifugation", "Dialysis"],
+    "answerIndex": 2,
+    "explanation": "Null"
+  },
+
+  {
+    "questionNumber": 11,
+    "question": "Nuclear sizes are expressed in a unit named",
+    "options": ["Fermi", "Angstrom", "Newton", "Tesla"],
+    "answerIndex": 0,
+    "explanation": "Null"
+  },
+  {
+    "questionNumber": 12,
+    "question": "The speed of light will be minimum while passing through",
+    "options": ["water", "vacuum", "air", "glass"],
+    "answerIndex": 3,
+    "explanation": "Light travels slowest in glass due to higher refractive index"
+  },
+  {
+    "questionNumber": 13,
+    "question": "An air bubble in water will act like a",
+    "options": ["convex lens", "convex mirror", "concave lens", "concave mirror"],
+    "answerIndex": 2,
+    "explanation": "Null"
+  },
+  {
+    "questionNumber": 14,
+    "question": "Brightness of bulb depends on voltage or current?",
+    "options": ["Current", "Voltage", "Both A & B", "None"],
+    "answerIndex": 2,
+    "explanation": "Null"
+  },
+  {
+    "questionNumber": 15,
+    "question": "If a sound travels from air to water, the quantity that remain unchanged is",
+    "options": ["Velocity", "Frequency", "Wavelength", "Amplitude"],
+    "answerIndex": 1,
+    "explanation": "Frequency remains constant across media"
+  },
+  {
+    "questionNumber": 16,
+    "question": "Sound following a flash of lightning is called",
+    "options": ["Stoning", "Bolting", "Thunder", "Cloud clash"],
+    "answerIndex": 2,
+    "explanation": "Null"
+  },
+  {
+    "questionNumber": 17,
+    "question": "The rate of change of linear momentum of a body falling freely under gravity is equal to its",
+    "options": ["Kinetic Energy", "Weight", "Potential Energy", "Impulse"],
+    "answerIndex": 1,
+    "explanation": "Null"
+  },
+  {
+    "questionNumber": 18,
+    "question": "Which liquid is the most viscous",
+    "options": ["Water", "Diesel", "Milk", "Oil"],
+    "answerIndex": 3,
+    "explanation": "Null"
+  },
+  {
+    "questionNumber": 19,
+    "question": "Ultrasonic waves are used for stirring liquid solutions because they",
+    "options": [
+      "Do not produce noise during the operation",
+      "Are easy to produce",
+      "Can produce perfectly homogeneous solutions",
+      "Do not produce chemical reactions in the solution"
+    ],
+    "answerIndex": 2,
+    "explanation": "Null"
+  },
+  {
+    "questionNumber": 20,
+    "question": "Damage to hearing is caused by sounds which exceed",
+    "options": ["70 decibels", "80 decibels", "100 decibels", "120 decibels"],
+    "answerIndex": 3,
+    "explanation": "Null"
+  },
+  {
+    "questionNumber": 21,
+    "question": "The enzyme that is necessary to bring about clotting of blood is",
+    "options": ["Peptidase", "amylase", "Lipase", "thrombokinase"],
+    "answerIndex": 3,
+    "explanation": "Null"
+  },
+  {
+    "questionNumber": 22,
+    "question": "The group of crop plant that are vegetatively propagated is",
+    "options": [
+      "Potato, papaya and banana",
+      "Sugarcane, potato and banana",
+      "Groundnut, drumstick and cashew nut",
+      "Onion, coriander and lime"
+    ],
+    "answerIndex": 1,
+    "explanation": "Null"
+  },
+  {
+    "questionNumber": 23,
+    "question": "An area of dead myocardial tissue is called",
+    "options": ["An infarct", "stenosis", "An induration", "hypertrophy"],
+    "answerIndex": 0,
+    "explanation": "Null"
+  },
+  {
+    "questionNumber": 24,
+    "question": "Succus Entericus is secreted by",
+    "options": ["Auerbach's plexus", "Peyers patches", "Brunner's glands", "Crypts of Lieberkuhn"],
+    "answerIndex": 3,
+    "explanation": "Null"
+  },
+  {
+    "questionNumber": 25,
+    "question": "What holds the sides of the DNA ladder together?",
+    "options": ["Polar covalent bonds", "Ionic bonds", "Metallic bonds", "Covalent bonds"],
+    "answerIndex": 3,
+    "explanation": "Null"
+  },
+  {
+    "questionNumber": 26,
+    "question": "The Vitamin required for the synthesis of nucleic acid is",
+    "options": ["Tocoferorl", "Folic acid", "Cyanocobalamine", "Riboflavin"],
+    "answerIndex": 1,
+    "explanation": "Null"
+  },
+  {
+    "questionNumber": 27,
+    "question": "Excretion is best described as the removal of",
+    "options": [
+      "Undigested material from the digestive tract",
+      "Metabolic wastes from a cell",
+      "Toxic wastes by the process of cyclosis",
+      "Water molecules from dipeptide hydrolysis"
+    ],
+    "answerIndex": 1,
+    "explanation": "Null"
+  },
+  {
+    "questionNumber": 28,
+    "question": "Which of the following is an Abiotic factor?",
+    "options": ["Plants", "Water", "Consumers", "Animals"],
+    "answerIndex": 1,
+    "explanation": "Null"
+  },
+  {
+    "questionNumber": 29,
+    "question": "Plants growing in sunlight are called",
+    "options": ["Sciophytes", "xerophytes", "Heliophytes", "hydrophytes"],
+    "answerIndex": 2,
+    "explanation": "Null"
+  },
+  {
+    "questionNumber": 30,
+    "question": "A number of cats got together and decided to kill between them 999919 rats. Every cat killed an equal number of rats. Each cat killed more rats than there were cats. How many rats do you think that each cat killed?",
+    "options": ["1009", "991", "2000", "1000"],
+    "answerIndex": 0,
+    "explanation": "Null"
+  },
+  {
+    "questionNumber": 31,
+    "question": "A and B invest in a business in the ratio $3 : 2$. If $5%$ of the total profit goes to charity and A's share is $₦855$, the total profit is",
+    "options": ["500", "1000", "1500", "2000"],
+    "answerIndex": 2,
+    "explanation": "Null"
+  },
+  {
+    "questionNumber": 32,
+    "question": "In an election between two candidates, one got $55%$ of the total valid votes, $20%$ of the votes were invalid. If the total number of votes was 7500, the number of valid votes that the other candidate got, was",
+    "options": ["2500", "2700", "2900", "3100"],
+    "answerIndex": 1,
+    "explanation": "Null"
+  },
+  {
+    "questionNumber": 33,
+    "question": "A student multiplied a number by $3/5$ instead of $5/3$, what is the percentage error in the calculation?",
+    "options": ["$54%$", "$64%$", "$74%$", "$84%$"],
+    "answerIndex": 1,
+    "explanation": "Null"
+  },
+  {
+    "questionNumber": 34,
+    "question": "The distance light travels in one year is approximately $5,870,000,000,000$ miles. The distance light travels in 100 years is",
+    "options": ["$587 X 10^8 miles$", "$587 X 10^{10} miles$", "$587 X 10^{-10} miles$", "$587 X 10^{12} miles$"],
+    "answerIndex": 3,
+    "explanation": "Null"
+  },
+  {
+    "questionNumber": 35,
+    "question": "If Ican ride at a rate of $5m/s$, how long will it take me to cover a distance of $12km$? at the same rate",
+    "options": ["$30$min", "$36$min", "$38$min", "$40$min"],
+    "answerIndex": 3,
+    "explanation": "Null"
+  }
+]

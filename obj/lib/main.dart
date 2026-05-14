@@ -78,8 +78,8 @@ class SecondPage extends StatefulWidget {
 
 class _MySecondPageState extends State<SecondPage> {
 /// SUBJECT & YEAR OPTIONS
-  List<String> subjectOptions = ["USEOFENGLISH", "PRE211", "CPE481", "CPE461"];
-  List<String> yearOptions = ["2020", "2021", "2022", "2023", "2024"];
+  List<String> subjectOptions = ["USEOFENGLISH", "GENERALPAPER", "CPE481", "CPE461"];
+  List<String> yearOptions = ["2021", "2022", "2023", "2023", "2024"];
 
   /// 4 SUBJECT SLOTS (Subject + Year)
   List<Map<String, String?>> selectedSubjectsData = [

@@ -4,70 +4,104 @@
     "question": "The President visited the town with a view to _____ things for himself. Which best completes the sentence?",
     "options": ["seeing", "having seen", "see", "seen"],
     "answerIndex": 0,
-    "explanation": "Adding gives $2 + 2 = 4$"
+    "explanation": "Null"
   },
   {
     "questionNumber": 2,
     "question": "The pepper was poorly _____. Which best completes the sentence?",
     "options": ["Grinded", "Grounded", "Ground", "Grind"],
     "answerIndex": 2,
-    "explanation": "Adding gives $2 + 2 = 4$"
+    "explanation": "Null"
   },
   {
     "questionNumber": 3,
     "question": "Choose among the options, the one that has the opposite meaning to the word or group of words underlined in the sentences to fill the missing words. \nA <u>generous</u> main is not expected to marry a ____",
-    "options": ["Lagos","Abuja","Kano","Ibadan"],
-    "answerIndex": 1,
-    "explanation": "Adding gives $2 + 2 = 4$"
+    "options": ["garrulous","gentle","vociferous","mean"],
+    "answerIndex": 3,
+    "explanation": "Null"
   },
   {
    "questionNumber": 4,
-    "question": "Flutter is developed by?",
-    "options": ["Apple","Microsoft","Google","Meta"],
+    "question": "Choose among the options, the one that has the opposite meaning to the word or group of words underlined in the sentences to fill the missing words. \nWhile Osawe met with ____ in the competition Roli met with <u>fiasco</u>",
+    "options": ["Fidelty","disappointment","success","dangerous"],
     "answerIndex": 2,
-    "explanation": "Adding gives $2 + 2 = 4$"
+    "explanation": "Null"
   },
   {
     "questionNumber": 5,
-    "question": "what is my name",
-    "options": ["walter","james","mark","john"],
+    "question": "Choose among the options, the one that has the opposite meaning to the word or group of words underlined in the sentences to fill the missing words. \nThis expired drug will not <u>assuage</u> your feverish condition; it will rather ____ it",
+    "options": ["worsen","amend","ameliorate","relieve"],
     "answerIndex": 0,
-    "explanation": "Adding gives $2 + 2 = 4$"
+    "explanation": "Null"
   },
   {
     "questionNumber": 6,
-    "question": "what is my name",
-    "options": ["walter","james","mark","john"],
+    "question": "Choose among the options, the one that has the opposite meaning to the word or group of words underlined in the sentences to fill the missing words. \nThe girl is <u>vivacious</u> today, unlike yesterday when she was ____ for the greater part of the day",
+    "options": ["voracious","veracious","ferocious","moody"],
     "answerIndex": 0,
-    "explanation": "Adding gives $2 + 2 = 4$"
+    "explanation": "Null"
   },
   {
     "questionNumber": 7,
-    "question": "what is my name",
-    "options": ["walter","james","mark","john"],
-    "answerIndex": 0,
-    "explanation": "Adding gives $2 + 2 = 4$"
+    "question": "Choose among the options, the one that has the opposite meaning to the word or group of words underlined in the sentences to fill the missing words. \nThe <u>Diligence</u> of the man constrasts with the ____ of the wife",
+    "options": ["insolence","indolence","indiscipline","disguise"],
+    "answerIndex": 1,
+    "explanation": "Null"
   },
   {
     "questionNumber": 8,
-    "question": "what is my name",
-    "options": ["walter","james","mark","john"],
+    "question": "Choose the option nearest in meaning to the underlined word in the sentence. \nEmeka's painting was so <u>realistic</u> that it could almost have been a photograph",
+    "options": ["picturesque","concrete","lively","authentic"],
     "answerIndex": 0,
-    "explanation": "Adding gives $2 + 2 = 4$"
+    "explanation": "Null"
   },
   {
     "questionNumber": 9,
-    "question": "what is my name",
-    "options": ["walter","james","mark","john"],
-    "answerIndex": 0,
-    "explanation": "Adding gives $2 + 2 = 4$"
+    "question": "Choose the option nearest in meaning to the underlined word in the sentence. \n<u>Courteously</u>, Ade stood back to let his teacher go first through the door",
+    "options": ["patiently","politely","carefully","calmly"],
+    "answerIndex": 1,
+    "explanation": "Null"
   },
   {
     "questionNumber": 10,
-    "question": "what is my name",
-    "options": ["walter","james","mark","john"],
+    "question": "Choose the option nearest in meaning to the underlined word in the sentence. \nMany people used to live in <u>poverty</u>",
+    "options": ["instability","want","difficulty","the slums"],
+    "answerIndex": 2,
+    "explanation": "Null"
+  },
+  {
+    "questionNumber": 11,
+    "question": "Choose the option nearest in meaning to the underlined word in the sentence. \nNo wonder Dekemi later became a detective; she has been very <u>observant</u>",
+    "options": ["curious","perceptive","inductive","inquisitive"],
+    "answerIndex": 1,
+    "explanation": "Null"
+  },
+  {
+    "questionNumber": 12,
+    "question": "Guilt and shame, says the allegory, were at first companions and in the beginning of the journey, inseparable kept together, but their union was soon found to be disargeeable and inconvenient to both. Guilt and shame frequently uneasiness and shame often betrayed secret conspiracies of guilt. After long disagreement, therefore, they at length consented to part forever guilt boldly walked alone to overtake fate, that went before in the shape of an executive, but shame being naturally timorous returned back to keep company with virtue, which in the beginning of their journey they had left behind. These children after men have traveled through a few stages in vice, shame fore sakes them and returns...... to wait upon the virtues they have still remaining\nAfter long disagreement therefore, they at length consented to part forever in the passage means",
+    "options": ["They parted at length","They agreed to part since they consented","They argee to part because they were not happy together","They argeed to part because they had disagreed for a long time"],
+    "answerIndex": 2,
+    "explanation": "Null"
+  },
+  {
+    "questionNumber": 13,
+    "question": "Guilt and shame, says the allegory, were at first companions and in the beginning of the journey, inseparable kept together, but their union was soon found to be disargeeable and inconvenient to both. Guilt and shame frequently uneasiness and shame often betrayed secret conspiracies of guilt. After long disagreement, therefore, they at length consented to part forever guilt boldly walked alone to overtake fate, that went before in the shape of an executive, but shame being naturally timorous returned back to keep company with virtue, which in the beginning of their journey they had left behind. These children after men have traveled through a few stages in vice, shame fore sakes them and returns...... to wait upon the virtues they have still remaining\nAt the beginning of their journey the companions, Guilt and Shame were",
+    "options": ["Forced together","inseparable disagreed","very close","argeeable disargeeable"],
+    "answerIndex": 2,
+    "explanation": "Null"
+  },
+  {
+    "questionNumber": 14,
+    "question": "Guilt and shame, says the allegory, were at first companions and in the beginning of the journey, inseparable kept together, but their union was soon found to be disargeeable and inconvenient to both. Guilt and shame frequently uneasiness and shame often betrayed secret conspiracies of guilt. After long disagreement, therefore, they at length consented to part forever guilt boldly walked alone to overtake fate, that went before in the shape of an executive, but shame being naturally timorous returned back to keep company with virtue, which in the beginning of their journey they had left behind. These children after men have traveled through a few stages in vice, shame fore sakes them and returns...... to wait upon the virtues they have still remaining\nShame was timorous because it was",
+    "options": ["timid","fearless","thoughtless","dependent"],
     "answerIndex": 0,
-    "explanation": "Adding gives $2 + 2 = 4$"
+    "explanation": "Null"
+  },
+  {
+    "questionNumber": 15,
+    "question": "Guilt and shame, says the allegory, were at first companions and in the beginning of the journey, inseparable kept together, but their union was soon found to be disargeeable and inconvenient to both. Guilt and shame frequently uneasiness and shame often betrayed secret conspiracies of guilt. After long disagreement, therefore, they at length consented to part forever guilt boldly walked alone to overtake fate, that went before in the shape of an executive, but shame being naturally timorous returned back to keep company with virtue, which in the beginning of their journey they had left behind. These children after men have traveled through a few stages in vice, shame fore sakes them and returns...... to wait upon the virtues they have still remaining\nThey found their union disagreeable and inconvenient because",
+    "options": ["Guilt was uneasy with shame","shame gave away guilt's secret","they were unfair to each other","guilt overtook shame"],
+    "answerIndex": 2,
+    "explanation": "Null"
   }
-
 ]

@@ -1,0 +1,424 @@
+[
+  {
+    "questionNumber": 1,
+    "question": "An increase in temperature causes an increase in the pressure of a gas in a fixed volume due to an increase in the",
+    "options": [
+      "Number of molecules of the gas",
+      "Density of the gas molecules",
+      "Number of collisions between the gas molecules",
+      "Number of collisions between the gas molecules and the walls of the container"
+    ],
+    "answerIndex": 3,
+    "explanation": "Null"
+  },
+  {
+    "questionNumber": 2,
+    "question": "In electrolysis, the chemical reaction which takes place at the anode is",
+    "options": [
+      "Dissociation",
+      "Hydrolysis",
+      "Oxidation",
+      "Reduction"
+    ],
+    "answerIndex": 2,
+    "explanation": "Null"
+  },
+  {
+    "questionNumber": 3,
+    "question": "In the electrolysis of brine, it is essential to prevent the mixing of the products because",
+    "options": [
+      "sodium and chlorine readily combine",
+      "chlorine gives a green coloration",
+      "chlorine readily recombines with sodium hydroxide",
+      "sodium hydroxide forms carbonates in the presence of air and chlorine"
+    ],
+    "answerIndex": 3,
+    "explanation": "Null"
+  },
+  {
+    "questionNumber": 4,
+    "question": "In what way is equilibrium constant for the forward reaction related to that of the reverse reaction?",
+    "options": [
+      "The two equilibrium constants are identical",
+      "The product of the two is always greater than one",
+      "The product of the two is expected to be one",
+      "The addition of the two is expected to be one"
+    ],
+    "answerIndex": 2,
+    "explanation": "Null"
+  },
+  {
+    "questionNumber": 5,
+    "question": "When chlorine water is exposed to sunlight, the gas evolved is",
+    "options": [
+      "$Cl_2$",
+      "$O_2$",
+      "$HCl$",
+      "$CO_2$"
+    ],
+    "answerIndex": 1,
+    "explanation": "Null"
+  },
+  {
+    "questionNumber": 6,
+    "question": "$PbCl_2$ does not dissolve in liquid ammonia while $AgCl$ does. This is because",
+    "options": [
+      "Pb is not a transition metal while Ag is",
+      "Ag is not a transition metal while Pb is",
+      "AgCl turns grey to exposure to light",
+      "AgCl dissolves in hot water"
+    ],
+    "answerIndex": 0,
+    "explanation": "Null"
+  },
+  {
+    "questionNumber": 7,
+    "question": "When sodium hydroxide pellets are exposed to the atmosphere, the first gas they absorb is",
+    "options": [
+      "$CO_2$",
+      "Water vapour",
+      "Oxygen",
+      "Nitrogen"
+    ],
+    "answerIndex": 0,
+    "explanation": "Null"
+  },
+  {
+    "questionNumber": 8,
+    "image":"assets/images/subpent2ene23gp23.jpg",
+    "question": "What is the IUPAC name of the hydrocarbon $CH_3 - C(CH_2CH_3) = CH - CH(CH_3) - CH_3$",
+    "options": [
+      {"text": "2-ethyl-4-methyl pent-2-ene", "image": ""},
+      {"text": "3,5-dimethyl hex-3-ene", "image": ""},
+      {"text": "2,4-dimethyl hex-3-en", "image": ""},
+      {"text": "3-methyl-2-ethyl hex-2-ene", "image": ""}
+    ],
+    "answerIndex": 0,
+    "explanation": "Null"
+  },
+  {
+    "questionNumber": 9,
+    "question": "Which of the following is NOT a monomer of benzene.",
+    "options": [
+      {"text": "", "image": "assets/images/phenol24gp2023opA.jpg"},
+      {"text": "$CH_2 = CH_2$", "image": ""},
+      {"text": "$CH_2 = CHCl$", "image": ""},
+      {"text": "", "image": "assets/images/ethylbenzene24gp23opD.jpg"}
+    ],
+    "answerIndex": 0,
+    "explanation": "Null"
+  },
+  {
+    "questionNumber": 10,
+    "question": "Which of the following behaves like ethyne?",
+    "options": [
+      "$CH_3CH = CHCH_2$",
+      "$CH_3CH_2CH_2CH_2CH = CH_2$",
+      "$CH_2 = CH_2$",
+      "$CH_3CH_3$"
+    ],
+    "answerIndex": 2,
+    "explanation": "Null"
+  },
+  {
+    "questionNumber": 11,
+    "question": "In an examination, all the candidates offered at least one of English and French. If 52% offered French and 65% offered English, what percentage offered French only?",
+    "options": [
+      "17%",
+      "48%",
+      "35%",
+      "45%"
+    ],
+    "answerIndex": 1,
+    "explanation": "Null"
+  },
+  {
+    "questionNumber": 12,
+    "question": "Simplify $\\frac{6x^3 + 5x^2 - 8x}{2x^2 + x - 3}$",
+    "options": [
+      "$3x - 1$",
+      "$1 - 3x$",
+      "$3x + 1$",
+      "$-(3x - 1)$"
+    ],
+    "answerIndex": 2,
+    "explanation": "Null"
+  },
+  {
+    "questionNumber": 13,
+    "question": "Find the range of values of x satisfying the inequalities $2x - 5 < 7$ and $25 + 2x > 15$.",
+    "options": [
+      "$-5 < x < 6$",
+      "$1 - 3x$",
+      "$-6 < x < 5$",
+      "$-6 < x < 5$"
+    ],
+    "answerIndex": 0,
+    "explanation": "Null"
+  },
+  {
+    "questionNumber": 14,
+    "question": "If the 8th term of an A.P. is 18 and the common difference is 2, find the first term of the A.P.",
+    "options": [
+      "4",
+      "2",
+      "8",
+      "3"
+    ],
+    "answerIndex": 0,
+    "explanation": "Null"
+  },
+  {
+    "questionNumber": 15,
+    "question": "Find the sum to infinity of the series $4 + 3 + \\frac{9}{4} + \\frac{27}{16} + \\dots$",
+    "options": [
+      "16",
+      "$\\frac{16}{3}$",
+      "1",
+      "8"
+    ],
+    "answerIndex": 0,
+    "explanation": "Null"
+  },
+  {
+    "questionNumber": 16,
+    "question": "A 12V battery has an internal resistance of 0.5$\\Omega$. If a cable of 1.0$\\Omega$ resistance is connected across the terminals of the battery, the current drawn from the battery is",
+    "options": [
+      "16.0A",
+      "8.0A",
+      "0.8A",
+      "0.4A"
+    ],
+    "answerIndex": 1,
+    "explanation": "Null"
+  },
+  {
+    "questionNumber": 17,
+    "question": "If two parallel wires carrying current are flowing in the same direction, the conductors will",
+    "options": [
+      "attract each other",
+      "repel each other",
+      "both move in the same direction",
+      "Have no effect on each other"
+    ],
+    "answerIndex": 0,
+    "explanation": "Null"
+  },
+  {
+    "questionNumber": 18,
+    "question": "From the generating station to each sub-station, power is transmitted at a very high voltage so as to reduce",
+    "options": [
+      "eddy current loss",
+      "hysteresis loss",
+      "heating in the coils",
+      "magnetic flux leakage"
+    ],
+    "answerIndex": 2,
+    "explanation": "Null"
+  },
+  {
+    "questionNumber": 19,
+    "question": "Two tuning forks of frequencies 256Hz and 260Hz are sounded close to each other. What is the frequency of the beats produced?",
+    "options": [
+      "516Hz",
+      "258Hz",
+      "4Hz",
+      "300Hz"
+    ],
+    "answerIndex": 2,
+    "explanation": "Null"
+  },
+  {
+    "questionNumber": 20,
+    "question": "The fundamental frequency of vibration of a sonometer wire may be halved by",
+    "options": [
+      "doubling the length of the wire",
+      "doubling the mass of the wire",
+      "reducing the tension by half",
+      "reducing the absolute temperature by half"
+    ],
+    "answerIndex": 0,
+    "explanation": "Null"
+  },
+  {
+    "questionNumber": 21,
+    "question": "A transformer has a primary coil with 500 turns and a secondary coil with 2500 turns. When the voltage input to the primary is 120V, the output is",
+    "options": [
+      "6000V",
+      "600V",
+      "240V",
+      "60V"
+    ],
+    "answerIndex": 1,
+    "explanation": "Null"
+  },
+  {
+    "questionNumber": 22,
+    "question": "The principle of operation of an induction coil is based on",
+    "options": [
+      "Ohm's law",
+      "Ampere's law",
+      "Faraday's law",
+      "Coulomb's law"
+    ],
+    "answerIndex": 2,
+    "explanation": "Null"
+  },
+  {
+    "questionNumber": 23,
+    "question": "4g of radioactive material of half-life 10 days is spilled on a laboratory floor. How long would it take to disintegrate 3.5g of the material?",
+    "options": [
+      {"text": "$\\frac{11}{4}$ days", "image": ""},
+      {"text": "$8\\frac{3}{4}$ days", "image": ""},
+      {"text": "30 days", "image": ""},
+      {"text": "80 days", "image": ""}
+    ],
+    "answerIndex": 2,
+    "explanation": "This is the document for that"
+  },
+  {
+    "questionNumber": 24,
+    "question": "Which of the following statements correctly describe(s) cathode rays?\n(i) They consist of tiny particles carrying negative electric charges\n(ii) They are deflected in a magnetic field but not in an electric field\n(iii) They consist of fast moving neutrons and are deflected in an electric field",
+    "options": [
+      {"text": "i only", "image": ""},
+      {"text": "iii only", "image": ""},
+      {"text": "i and ii only", "image": ""},
+      {"text": "ii and iii only", "image": ""}
+    ],
+    "answerIndex": 2,
+    "explanation": "Null"
+  },
+  {
+    "questionNumber": 25,
+    "question": "Which of the following is most strongly deflected by a magnetic field?",
+    "options": [
+      "$\\gamma$-rays",
+      "X-rays",
+      "$\\beta$-Particles",
+      "$\\alpha$-rays"
+    ],
+    "answerIndex": 2,
+    "explanation": "Null"
+  },
+  {
+    "questionNumber": 26,
+    "question": "An old man is likely to be long-sighted because age affects the",
+    "options": [
+      "optic nerves",
+      "retina",
+      "ciliary muscle",
+      "cornea"
+    ],
+    "answerIndex": 2,
+    "explanation": "Null"
+  },
+  {
+    "questionNumber": 27,
+    "question": "Normally any character shown by an organism is due to the effect of",
+    "options": [
+      "chromosomes",
+      "genes and environment",
+      "hormones and chromosomes",
+      "mutations"
+    ],
+    "answerIndex": 1,
+    "explanation": "Null"
+  },
+  {
+    "questionNumber": 28,
+    "question": "Which of the following lacks chaetae and antennae?",
+    "options": [
+      "snail",
+      "Crab",
+      "millipede",
+      "earthworm"
+    ],
+    "answerIndex": 1,
+    "explanation": "Null"
+  },
+  {
+    "questionNumber": 29,
+    "question": "Which of the following is a feature of the population pyramid of a developing country?",
+    "options": [
+      "Low death rate",
+      "Short lifespan",
+      "Long lifespan",
+      "Low birth rate"
+    ],
+    "answerIndex": 1,
+    "explanation": "Null"
+  },
+  {
+    "questionNumber": 30,
+    "question": "In an experiment to investigate the effect of nitrogen on the growth of plants, the substrate should be a medium of",
+    "options": [
+      "washed sand",
+      "saw dust",
+      "cow dung",
+      "clay soil"
+    ],
+    "answerIndex": 2,
+    "explanation": "Null"
+  },
+  {
+    "questionNumber": 31,
+    "question": "An onion is a bulb because it",
+    "options": [
+      "has a tuberous stem",
+      "has a reduced stem and thick fleshy leaves",
+      "has adventitious roots",
+      "bears many buds at the nodes"
+    ],
+    "answerIndex": 1,
+    "explanation": "Null"
+  },
+  {
+    "questionNumber": 32,
+    "question": "What do bacteria in root nodules derive from the host plant?",
+    "options": [
+      "Protection and minerals",
+      "Water and minerals",
+      "Carbohydrates and water",
+      "Protection and carbohydrates"
+    ],
+    "answerIndex": 3,
+    "explanation": "Null"
+  },
+  {
+    "questionNumber": 33,
+    "question": "Fruits which develop without fertilization of the ovule are",
+    "options": [
+      "false",
+      "multiple",
+      "aggregate",
+      "parthenocarpic"
+    ],
+    "answerIndex": 3,
+    "explanation": "Null"
+  },
+  {
+    "questionNumber": 34,
+    "question": "A severe deficiency of thyroxin results in",
+    "options": [
+      "diabetes mellitus",
+      "sexual underdevelopment",
+      "cretinism",
+      "gigantism"
+    ],
+    "answerIndex": 2,
+    "explanation": "Null"
+  },
+  {
+    "questionNumber": 35,
+    "question": "A red-coloured flower when crossed with a white-coloured one produced pink flowers. This is an example of",
+    "options": [
+      "complete dominance",
+      "bleeding",
+      "interaction of genes",
+      "back crossing"
+    ],
+    "answerIndex": 1,
+    "explanation": "Null"
+  }
+
+]

@@ -1,0 +1,162 @@
+[
+    {
+    "questionNumber": 1,
+    "question": "Read the passage carefully and answer the questions that follow.\nDevelopments in electronic science have transformed the art of record-keeping in the modern age. Traditionally records of events were kept only in people's minds. It depended very much on the rententive power of the human memory. This was extremely dangerous as people either forgot events wholly or in part, or deliberately falsified details to suit their various interests. Interminable arguments were thus the order of the day. Even writing which replaced mental recording was not entirely free from these shortcomings as untruths could be written as true records either willingly or inadvertently. With the advent of the electronic memory, however, these dangers now show not only what happened, but also who did or said what, including how and when.\nThe author believes that electronic recording is",
+    "options": ["superior to mental recording", "inferior to both mental recording and writing", "superior to both mental recording and writing", "Inferior to only writing"],
+    "answerIndex": 2,
+    "explanation": "Null"
+    },
+    {
+    "questionNumber": 2,
+    "question": "Read the passage carefully and answer the questions that follow.\nDevelopments in electronic science have transformed the art of record-keeping in the modern age. Traditionally records of events were kept only in people's minds. It depended very much on the rententive power of the human memory. This was extremely dangerous as people either forgot events wholly or in part, or deliberately falsified details to suit their various interests. Interminable arguments were thus the order of the day. Even writing which replaced mental recording was not entirely free from these shortcomings as untruths could be written as true records either willingly or inadvertently. With the advent of the electronic memory, however, these dangers now show not only what happened, but also who did or said what, including how and when.\nThe writer believes that the art of record keeping has",
+    "options": ["improved over the years", "endangered the art of writing", "changed human memory", "overcome all the problems facing it"],
+    "answerIndex": 0,
+    "explanation": "Null"
+    },
+    {
+    "questionNumber": 3,
+    "question": "Read the passage carefully and answer the questions that follow.\nDevelopments in electronic science have transformed the art of record-keeping in the modern age. Traditionally records of events were kept only in people's minds. It depended very much on the rententive power of the human memory. This was extremely dangerous as people either forgot events wholly or in part, or deliberately falsified details to suit their various interests. Interminable arguments were thus the order of the day. Even writing which replaced mental recording was not entirely free from these shortcomings as untruths could be written as true records either willingly or inadvertently. With the advent of the electronic memory, however, these dangers now show not only what happened, but also who did or said what, including how and when.\nHow many stages of development did the writer mention while discussing the art of a record keeping",
+    "options": ["Two", "Three", "Four", "Five"],
+    "answerIndex": 0,
+    "explanation": "Null"
+    },
+    {
+    "questionNumber": 4,
+    "question": "Read the passage carefully and answer the questions that follow.\nDevelopments in electronic science have transformed the art of record-keeping in the modern age. Traditionally records of events were kept only in people's minds. It depended very much on the rententive power of the human memory. This was extremely dangerous as people either forgot events wholly or in part, or deliberately falsified details to suit their various interests. Interminable arguments were thus the order of the day. Even writing which replaced mental recording was not entirely free from these shortcomings as untruths could be written as true records either willingly or inadvertently. With the advent of the electronic memory, however, these dangers now show not only what happened, but also who did or said what, including how and when.\nAccording to the author, human memory is unreliable because people",
+    "options": ["die and we forget what they said", "forgets events or tells lies", "do not always know when events happen", "do not always know who did what and when"],
+    "answerIndex": 1,
+    "explanation": "Null"
+  },
+  {
+    "questionNumber": 5,
+    "question": "Read the passage carefully and answer the questions that follow.\nDevelopments in electronic science have transformed the art of record-keeping in the modern age. Traditionally records of events were kept only in people's minds. It depended very much on the rententive power of the human memory. This was extremely dangerous as people either forgot events wholly or in part, or deliberately falsified details to suit their various interests. Interminable arguments were thus the order of the day. Even writing which replaced mental recording was not entirely free from these shortcomings as untruths could be written as true records either willingly or inadvertently. With the advent of the electronic memory, however, these dangers now show not only what happened, but also who did or said what, including how and when.\nFrom the passage, that writing is almost",
+    "options": [
+      "as unreliable as human memory",
+      "as reliable as electronic memory",
+      "more reliable than electronic recording",
+      "not to be compared to any other recording system"
+    ],
+    "answerIndex": 0,
+    "explanation": "Null"
+  },
+  {
+    "questionNumber": 6,
+    "question": "Choose the option that best explains the sentence:\nYou are driving too fast for safety.",
+    "options": [
+      "That speed is all right and safe",
+      "That speed is not fast enough for safety",
+      "That speed is not entirely safe",
+      "You should drive faster to ensure safety"
+    ],
+    "answerIndex": 2,
+    "explanation": "Null"
+  },
+  {
+    "questionNumber": 7,
+    "question": "Choose the option that best explains the sentence:\nFor all I care, the man may be dead.",
+    "options": [
+      "I am not sure the man is dead",
+      "I am not interested in his death",
+      "I very much care in case he is dead",
+      "I am ignorant of the man's death"
+    ],
+    "answerIndex": 1,
+    "explanation": "Null"
+  },
+  {
+    "questionNumber": 8,
+    "question": "Select the option opposite in meaning to the underlined word:\nThe priest was invited to <u>consecrate</u> the new building",
+    "options": [
+      "Destroy",
+      "Abuse",
+      "tarnish",
+      "Pollute"
+    ],
+    "answerIndex": 3,
+    "explanation": "Null"
+  },
+  {
+    "questionNumber": 9,
+    "question": "Select the option opposite in meaning to the underlined word:\nA majority of those who sat for the last jamb examination are <u>sanguine</u> of success",
+    "options": [
+      "hopeful",
+      "unsure",
+      "pessimistic",
+      "disheartened"
+    ],
+    "answerIndex": 2,
+    "explanation": "Null"
+  },
+  {
+    "questionNumber": 10,
+    "question": "Select the option opposite in meaning to the underlined word:\nWhen we woke up this morning, the sky was <u>overcast</u>",
+    "options": [
+      "cloudy",
+      "consistently",
+      "clear",
+      "brilliant"
+    ],
+    "answerIndex": 3,
+    "explanation": "Null"
+  },
+  {
+    "questionNumber": 11,
+    "question": "Select the option nearest in meaning to the underlined word:\nEnemies of progress <u>covertly</u> strive to undermine the efforts of this administration",
+    "options": [
+      "secretly",
+      "boldly",
+      "consistently",
+      "overtly"
+    ],
+    "answerIndex": 3,
+    "explanation": "Null"
+  },
+  {
+    "questionNumber": 12,
+    "question": "Choose the word that best completes the sentence:\nThe boy is constantly under some ______ that he is the best student in the class.",
+    "options": [
+      "elusion",
+      "delusion",
+      "illusion",
+      "allusion"
+    ],
+    "answerIndex": 3,
+    "explanation": "Null"
+  },
+  {
+    "questionNumber": 13,
+    "question": "Choose the word that best completes the sentence:\nHer parents did not approve of her marriage two years ago because she has not reached her ______",
+    "options": [
+      "maturity",
+      "puberty",
+      "majority",
+      "minority"
+    ],
+    "answerIndex": 0,
+    "explanation": "Null"
+  },
+  {
+    "questionNumber": 14,
+    "question": "Choose the word or phrase that best completes the sentence:\nOur teacher ______ the importance of reading over our work before submission.",
+    "options": [
+      "emphasized on",
+      "emphasized",
+      "layed emphasis on",
+      "put emphasis"
+    ],
+    "answerIndex": 0,
+    "explanation": "Null"
+  },
+  {
+    "questionNumber": 15,
+    "question": "Choose the option that best completes the sentence:\nYoung men should not get mixed ______ politics.",
+    "options": [
+      "in with",
+      "up with",
+      "up in",
+      "on with"
+    ],
+    "answerIndex": 2,
+    "explanation": "Null"
+  }
+]

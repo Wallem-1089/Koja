@@ -1,0 +1,483 @@
+[
+  {
+    "questionNumber": 1,
+    "question": "Mrs. Ahmed made the promise with her tongue in her cheek.",
+    "options": [
+      "she would not be taken seriously",
+      "she was shy as she spoke",
+      "she could not be heard because her tongue was hidden",
+      "she should not be believed because of the special way she made the promise"
+    ],
+    "answerIndex": 0,
+    "explanation": "Null"
+  },
+  {
+    "questionNumber": 2,
+    "question": "The cashier attends the board meeting sparingly.",
+    "options": [
+      "He attends the meeting quite often",
+      "He seldom attends the meeting",
+      "He attends the meeting regularly",
+      "He attends the meeting unwillingly"
+    ],
+    "answerIndex": 1,
+    "explanation": "Null"
+  },
+  {
+    "questionNumber": 3,
+    "question": "When he was presented with a huge estimate for the project, the manager hit the roof.",
+    "options": [
+      "He became very suspicious",
+      "He threw an object to the roof",
+      "He became very angry",
+      "He ordered the project to be started at once"
+    ],
+    "answerIndex": 2,
+    "explanation": "Null"
+  },
+  {
+    "questionNumber": 4,
+    "question": "Youths see the world through rose-coloured spectacles.",
+    "options": [
+      "They look at the world with spectacles in rose colour",
+      "They view life over optimistically",
+      "They see the world as serious",
+      "They are happy with life"
+    ],
+    "answerIndex": 1,
+    "explanation": "Null"
+  },
+  {
+    "questionNumber": 5,
+    "question": "Since the agreement among them was not serious, it blew over quickly.",
+    "options": [
+      "  The agreement made them fight quickly",
+      " The agreement led them to court quickly",
+      "The agreement came to an end quickly",
+      "The agreement exposed them quickly"
+    ],
+    "answerIndex": 2,
+    "explanation": "Null"
+  },
+  {
+    "questionNumber": 6,
+    "question": "choose the option opposite in meaning to the word or phrase underlined.\nOur economy is now <u>buoyant</u>.",
+    "options": [
+      "unfavourable",
+      "bleak",
+      "gloomy",
+      "depressed"
+    ],
+    "answerIndex": 2,
+    "explanation": "Null"
+  },
+  {
+    "questionNumber": 7,
+    "question": "choose the option opposite in meaning to the word or phrase underlined.\nThe House of Assembly <u>ratified</u> the controversial bill.",
+    "options": [
+      "reviewed",
+      "authenticated",
+      "corroborated",
+      "standardized"
+    ],
+    "answerIndex": 0,
+    "explanation": "Null"
+  },
+  {
+    "questionNumber": 8,
+    "question": "choose the option opposite in meaning to the word or phrase underlined.\nMusa has a <u>burning</u> desire to be a successful businessman.",
+    "options": [
+      "a keen",
+      "a fervent",
+      "an intense",
+      "a stony"
+    ],
+    "answerIndex": 2,
+    "explanation": "Null"
+  },
+  {
+    "questionNumber": 9,
+    "question": "choose the option opposite in meaning to the word or phrase underlined.\nOne should guard against making <u>sacrilegious</u> remarks.",
+    "options": [
+      "impious",
+      "reverent",
+      "blasphemous",
+      "reverential"
+    ],
+    "answerIndex": 1,
+    "explanation": "Null"
+  },
+  {
+    "questionNumber": 10,
+    "question": "choose the option opposite in meaning to the word or phrase underlined.\nMy mother is very <u>daring</u>.",
+    "options": [
+      "intrepid",
+      "timid",
+      "adventurous",
+      "rash"
+    ],
+    "answerIndex": 1,
+    "explanation": "Null"
+  },
+  {
+    "questionNumber": 11,
+    "question": "choose the option opposite in meaning to the word or phrase underlined.\nIn writing, we must choose <u>appropriate</u> words to express our ideas.",
+    "options": [
+      "close",
+      "ineffective",
+      "apt",
+      "unsuitable"
+    ],
+    "answerIndex": 3,
+    "explanation": "Null"
+  },
+  {
+    "questionNumber": 12,
+    "question": "choose the option opposite in meaning to the word or phrase underlined.\nThe Supreme Court <u>quashed</u> the judgment of the Lower court.",
+    "options": [
+      "criticized",
+      "commended",
+      "annulled",
+      "upheld"
+    ],
+    "answerIndex": 3,
+    "explanation": "Null"
+  },
+  {
+    "questionNumber": 13,
+    "question": "choose the option opposite in meaning to the word or phrase underlined.\nThe girl was in <u>ebullient</u> mood.",
+    "options": [
+      "joyous",
+      "delightful",
+      "dull",
+      "stressful"
+    ],
+    "answerIndex": 2,
+    "explanation": "Null"
+  },
+  {
+    "questionNumber": 14,
+    "question": "choose the option opposite in meaning to the word or phrase underlined.\nThe engineer had <u>inadvertently</u> pushed the wrong button.",
+    "options": [
+      "consciously",
+      "conscientiously",
+      "carelessly",
+      "rightly"
+    ],
+    "answerIndex": 0,
+    "explanation": "Null"
+  },
+  {
+    "questionNumber": 15,
+    "question": "choose the option opposite in meaning to the word or phrase underlined.\nThe recently released musical album was considered <u>obscene</u> by many music fans.",
+    "options": [
+      "polite",
+      "pleasant",
+      "harmless",
+      "decent"
+    ],
+    "answerIndex": 3,
+    "explanation": "Null"
+  },
+  {
+    "questionNumber": 16,
+    "question": "choose the option opposite in meaning to the word or phrase underlined.\nThe criminal case was handled in a <u>subtle</u> manner.",
+    "options": [
+      "civil",
+      "harsh",
+      "gentle",
+      "courageous"
+    ],
+    "answerIndex": 1,
+    "explanation": "Null"
+  },
+  {
+    "questionNumber": 17,
+    "question": "choose the option opposite in meaning to the word or phrase underlined.\nMany citizens live in <u>penury</u>.",
+    "options": [
+      "affluence",
+      "poverty",
+      "bondage",
+      "antiquity"
+    ],
+    "answerIndex": 0,
+    "explanation": "Null"
+  },
+  {
+    "questionNumber": 18,
+    "question": "choose the option opposite in meaning to the word or phrase underlined.\nPity is often <u>akin</u> to love.",
+    "options": [
+      "equal",
+      "dissimilar",
+      "essential",
+      "next"
+    ],
+    "answerIndex": 1,
+    "explanation": "Null"
+  },
+  {
+    "questionNumber": 19,
+    "question": "choose the option opposite in meaning to the word or phrase underlined.\nThe lecture seemed <u>interminable</u>.",
+    "options": [
+      "boring",
+      "exciting",
+      "interesting",
+      "unending"
+    ],
+    "answerIndex": 1,
+    "explanation": "Null"
+  },
+  {
+    "questionNumber": 20,
+    "question": "choose the option opposite in meaning to the word or phrase underlined.\nThe goal lifted the team from the <u>agony</u> of defeat.",
+    "options": [
+      "hope",
+      "desire",
+      "celebration",
+      "ecstasy"
+    ],
+    "answerIndex": 3,
+    "explanation": "Null"
+  },
+  {
+    "questionNumber": 21,
+    "question": "choose the option nearest in meaning to the word or phrase underlined.\nMy mother was lost in thought, so she <u>toyed</u> with her lunch.",
+    "options": [
+      "flirted with",
+      "talked with",
+      "fiddled with",
+      "neglected"
+    ],
+    "answerIndex": 2,
+    "explanation": "Null"
+  },
+  {
+    "questionNumber": 22,
+    "question": "choose the option nearest in meaning to the word or phrase underlined.\nPrisoners often undergo <u>torture</u>.",
+    "options": [
+      "humiliation",
+      "destruction",
+      "torment",
+      "lynching"
+    ],
+    "answerIndex": 2,
+    "explanation": "Null"
+  },
+  {
+    "questionNumber": 23,
+    "question": "choose the option nearest in meaning to the word or phrase underlined.\nThe journalist refused to <u>divulge</u> the source of his information.",
+    "options": [
+      "confirm",
+      "disclose",
+      "concede",
+      "affirm"
+    ],
+    "answerIndex": 1,
+    "explanation": "Null"
+  },
+  {
+    "questionNumber": 24,
+    "question": "choose the option nearest in meaning to the word or phrase underlined.\nHe looked <u>miserable</u>.",
+    "options": [
+      "gay",
+      "mirthful",
+      "forlorn",
+      "jovial"
+    ],
+    "answerIndex": 2,
+    "explanation": "Null"
+  },
+  {
+    "questionNumber": 25,
+    "question": "choose the option nearest in meaning to the word or phrase underlined.\nA <u>cursory</u> look at the book shows that it was hurriedly written.",
+    "options": [
+      "deliberate",
+      "planned",
+      "casual",
+      "meticulous"
+    ],
+    "answerIndex": 2,
+    "explanation": "Null"
+  },
+  {
+    "questionNumber": 26,
+    "question": "choose the option nearest in meaning to the word or phrase underlined.\nShe left the village to live a <u>licentious</u> life in the city.",
+    "options": [
+      "a chaste",
+      "an immoral",
+      "a pious",
+      "a free"
+    ],
+    "answerIndex": 1,
+    "explanation": "Null"
+  },
+  {
+    "questionNumber": 27,
+    "question": "choose the option nearest in meaning to the word or phrase underlined.\nThe man gave me a <u>baleful</u> look when the pot fell off my head.",
+    "options": [
+      "remorseful",
+      "sinister",
+      "cheerful",
+      "curious"
+    ],
+    "answerIndex": 3,
+    "explanation": "Null"
+  },
+  {
+    "questionNumber": 28,
+    "question": "choose the option nearest in meaning to the word or phrase underlined.\nThe man's speech was full of <u>insults</u> instead of thanks.",
+    "options": [
+      "requests",
+      "denials",
+      "praises",
+      "curses"
+    ],
+    "answerIndex": 3,
+    "explanation": "Null"
+  },
+  {
+    "questionNumber": 29,
+    "question": "choose the option nearest in meaning to the word or phrase underlined.\nJummai was so <u>engrossed</u> in her knitting that she forgot her visitor.",
+    "options": [
+      "impressed by",
+      "concerned with",
+      "absorbed in",
+      "attracted to"
+    ],
+    "answerIndex": 2,
+    "explanation": "Null"
+  },
+  {
+    "questionNumber": 30,
+    "question": "choose the option nearest in meaning to the word or phrase underlined.\nIt is clear that he has more <u>aptitude</u> for academics than his mates.",
+    "options": [
+      "ability",
+      "fitness",
+      "inclination",
+      "potentials"
+    ],
+    "answerIndex": 0,
+    "explanation": "Null"
+  },
+  {
+    "questionNumber": 31,
+    "question": "choose the option nearest in meaning to the word or phrase underlined.\nThese days traders are notorious for their <u>extortionate</u> prices.",
+    "options": [
+      "expensive",
+      "obnoxious",
+      "exorbitant",
+      "erratic"
+    ],
+    "answerIndex": 2,
+    "explanation": "Null"
+  },
+  {
+    "questionNumber": 32,
+    "question": "choose the option nearest in meaning to the word or phrase underlined.\nThe computer which is an integral part of <u>occidental</u> culture had dominated the world.",
+    "options": [
+      "eastern",
+      "European",
+      "western",
+      "universal"
+    ],
+    "answerIndex": 2,
+    "explanation": "Null"
+  },
+  {
+    "questionNumber": 33,
+    "question": "choose the option nearest in meaning to the word or phrase underlined.\nMany rural dwellers suffer <u>acute</u> fever.",
+    "options": [
+      "intermittent",
+      "constant",
+      "severe",
+      "protracted"
+    ],
+    "answerIndex": 2,
+    "explanation": "Null"
+  },
+  {
+    "questionNumber": 34,
+    "question": "choose the option nearest in meaning to the word or phrase underlined.\nThere was a <u>commemoration</u> of Nigeria’s independence.",
+    "options": [
+      "re-enactment",
+      "remembrance",
+      "celebration",
+      "documentation"
+    ],
+    "answerIndex": 2,
+    "explanation": "Null"
+  },
+  {
+    "questionNumber": 35,
+    "question": "choose the option nearest in meaning to the word or phrase underlined.\nTade was making <u>passes</u> at the beautiful girl.",
+    "options": [
+      "propositions to",
+      "advances at",
+      "faces at",
+      "plans"
+    ],
+    "answerIndex": 1,
+    "explanation": "Null"
+  },
+  {
+    "questionNumber": 36,
+    "question": "Choose the one option that best completes the sentence.\nMy daughter has never seen Bat Beach ______ have my sons.",
+    "options": [
+      "either",
+      "not so",
+      "but neither",
+      "yet"
+    ],
+    "answerIndex": 2,
+    "explanation": "Null"
+  },
+  {
+    "questionNumber": 37,
+    "question": "Choose the one option that best completes the sentence.\nInside that letter, there ______ good news about your application for employment.",
+    "options": [
+      "are some",
+      "is a",
+      "are",
+      "is some"
+    ],
+    "answerIndex": 3,
+    "explanation": "Null"
+  },
+  {
+    "questionNumber": 38,
+    "question": "Choose the one option that best completes the sentence.\nI have been thinking of ______ places there are to visit.",
+    "options": [
+      "the many other all interesting",
+      "all the other interesting many",
+      "all the many other interesting",
+      "all the interesting many other"
+    ],
+    "answerIndex": 1,
+    "explanation": "Null"
+  },
+  {
+    "questionNumber": 39,
+    "question": "Choose the one option that best completes the sentence.\nMore often than not, the law ______ individual freedom.",
+    "options": [
+      "impedes",
+      "encroaches on",
+      "tramples on",
+      "steps on"
+    ],
+    "answerIndex": 1,
+    "explanation": "Null"
+  },
+  {
+    "questionNumber": 40,
+    "question": "Choose the one option that best completes the sentence.\nA ______ expanse of land has been given for the University buildings.",
+    "options": [
+      "massive",
+      "vast",
+      "huge",
+      "wonderful"
+    ],
+    "answerIndex": 1,
+    "explanation": "Null"
+  }
+
+]

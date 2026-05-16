@@ -1,0 +1,470 @@
+[
+  {
+    "questionNumber": 1,
+    "question": "Two lamps rated $40w$ and $220v$ each are connected in series. The total power dissipated in both lamps is:",
+    "options": [
+      "10w",
+      "20w",
+      "40w",
+      "80w"
+    ],
+    "answerIndex": 1,
+    "explanation": "Null"
+  },
+  {
+    "questionNumber": 2,
+    "question": "The amount of heat required to raise the temperature of a body is...",
+    "options": [
+      "Thermal energy",
+      "Thermal conduction",
+      "Specific heat capacity",
+      "Thermal capacity"
+    ],
+    "answerIndex": 3,
+    "explanation": "Null"
+  },
+  {
+    "questionNumber": 3,
+    "question": "If PHCN charges ₦5 per Kwh, what is the cost of operating for 24 hours a lamp requiring $1A$ on a $200V$ line?",
+    "options": [
+      "₦24",
+      "₦32",
+      "₦55",
+      "₦40"
+    ],
+    "answerIndex": 0,
+    "explanation": "Null"
+  },
+  {
+    "questionNumber": 4,
+    "question": "The electric supply from the national grid at Kainji dam is transmitted at high voltages of the order of hundreds of kilovolts but it is converted to domestic use of about $200$ to $220$ volts by:",
+    "options": [
+      "Commutators",
+      "Transistors",
+      "Valves and diodes",
+      "Transformers"
+    ],
+    "answerIndex": 3,
+    "explanation": "Null"
+  },
+  {
+    "questionNumber": 5,
+    "question": "Two boys are communicating with each other by stretching a string passing through a hole punched in the bottom of each of two tin cans. The physical principle employed is that sound travels:",
+    "options": [
+      "Mainly through air",
+      "Faster through gases than in solids and liquids",
+      "With greater ease through a string than in air",
+      "None of the above is correct"
+    ],
+    "answerIndex": 2,
+    "explanation": "Null"
+  },
+  {
+    "questionNumber": 6,
+    "question": "The temperature at which water vapour present in the air saturated the air and begins to condense is known as...",
+    "options": [
+      "Boiling point",
+      "Melting point",
+      "Critical temperature",
+      "Dew point"
+    ],
+    "answerIndex": 3,
+    "explanation": "Null"
+  },
+  {
+    "questionNumber": 7,
+    "question": "An object is positioned between two plane mirrors inclined at right angles to each other. The object is $1$ unit distance from each mirror. The number of image formed is...",
+    "options": [
+      "1",
+      "2",
+      "3",
+      "4"
+    ],
+    "answerIndex": 2,
+    "explanation": "Null"
+  },
+  {
+    "questionNumber": 8,
+    "question": "If the volume of a given mass of gas at constant pressure is proportional to the absolute temperature, the gas is said to obey:",
+    "options": [
+      "Hooke's Law",
+      "Boyle's law",
+      "Dalton's law",
+      "Charles' law"
+    ],
+    "answerIndex": 3,
+    "explanation": "Null"
+  },
+  {
+    "questionNumber": 9,
+    "question": "Which of the following does not cause a reduction of the surface tension of water?",
+    "options": [
+      "Detergent",
+      "Alcohol",
+      "Camphor",
+      "Grease"
+    ],
+    "answerIndex": 3,
+    "explanation": "Null"
+  },
+  {
+    "questionNumber": 10,
+    "question": "A generator is connected to fifteen $40w$ lamps and a musician’s $600w$ amplifier. How much energy is used if the generator runs for $6$ hours?",
+    "options": [
+      "$8.40kwh$",
+      "$7.20kwh$",
+      "$12.00kwh$",
+      "$6.00kwh$"
+    ],
+    "answerIndex": 0,
+    "explanation": "Null"
+  },
+  {
+    "questionNumber": 11,
+    "question": "Mr. Robson bought bags of orange for ₦$2,500$ each. He sold them for ₦$90,000$ at a loss of $20\\%$. How many bags of orange did he buy?",
+    "options": [
+      "60",
+      "80",
+      "50",
+      "45"
+    ],
+    "answerIndex": 3,
+    "explanation": "Null"
+  },
+  {
+    "questionNumber": 12,
+    "question": "The second and fifth terms of a geometric progression are $21$ and $567$ respectively. Find the first term and the common ratio of the progression.",
+    "options": [
+      "$3, 7$",
+      "$-7, 3$",
+      "$-3, 7$",
+      "$3, -7$"
+    ],
+    "answerIndex": 0,
+    "explanation": "Null"
+  },
+  {
+    "questionNumber": 13,
+    "question": "Tunde bought a house for ₦$1,250,000$ and spent ₦$350,000.00$ to renovate it. He then sold the house for ₦$2,000,000.00$. What is the percentage gain?",
+    "options": [
+      "40%",
+      "65%",
+      "35%",
+      "32%"
+    ],
+    "answerIndex": 0,
+    "explanation": "Null"
+  },
+  {
+    "questionNumber": 14,
+    "question": "List the integral values of $x$ which satisfy the inequality $-2 < 7 - 3x \\leq 10$",
+    "options": [
+      "$-1, 0, 1, 2$",
+      "$-2, 0, 1$",
+      "$1, 2, 3$",
+      "$0, 1, 2$"
+    ],
+    "answerIndex": 0,
+    "explanation": "Null"
+  },
+  {
+    "questionNumber": 15,
+    "question": "In a class, $120$ students speak English or French or both. $70$ speak English and $55$ speak French. How many speak English but not French?",
+    "options": [
+      "45",
+      "50",
+      "65",
+      "60"
+    ],
+    "answerIndex": 2,
+    "explanation": "Null"
+  },
+  {
+    "questionNumber": 16,
+    "question": "The lengths of the sides of a right angled triangle are $ym$, $(3y - 1)m$ and $(3y + 1)m$, find $y$.",
+    "options": [
+      "12",
+      "9",
+      "8",
+      "4"
+    ],
+    "answerIndex": 3,
+    "explanation": "Null"
+  },
+  {
+    "questionNumber": 18,
+    "question": "Find the ranges of values of $s$ and $t$, if $2s + t < 9$ and $s + 3t < 7$",
+    "options": [
+      "$s < 4$ and $t > -1$",
+      "$s > 4$ and $t < 1$",
+      "$s > 4$ and $t > 1$",
+      "$s < 4$ and $t > 1$"
+    ],
+    "answerIndex": 0,
+    "explanation": "Null"
+  },
+  {
+    "questionNumber": 19,
+    "question": "Find the solution of the inequality $12 + 4s - s^2 < 0$",
+    "options": [
+      "$\\{s : s < -2\\} \\; \\{s : s > 6\\}$",
+      "$\\{s : s > -2\\} \\; \\{s : s < 6\\}$",
+      "$\\{s : s > 2\\} \\; \\{s : s < 6\\}$",
+      "$\\{s : s > -2\\} \\; \\{s : s > 6\\}$"
+    ],
+    "answerIndex": 0,
+    "explanation": "Null"
+  },
+  {
+    "questionNumber": 20,
+    "question": "If the $4^{th}$ term of an A.P is $15$, find the $3^{rd}$ term of the series $3 + r + s + ...$",
+    "options": [
+      "4",
+      "7",
+      "9",
+      "11"
+    ],
+    "answerIndex": 1,
+    "explanation": "Null"
+  },
+  {
+    "questionNumber": 21,
+    "question": "Daughters receive their X-chromosome from their...",
+    "options": [
+      "Father",
+      "Mother",
+      "Relative",
+      "Siblings"
+    ],
+    "answerIndex": 0,
+    "explanation": "Null"
+  },
+  {
+    "questionNumber": 22,
+    "question": "In bony fishes, the swim bladder is used for...",
+    "options": [
+      "Adjusting the weight of the fish when swimming at different levels",
+      "Extracting oxygen from water which enters the mouth of the fish",
+      "Equalizing fluid pressures between the fish and the surrounding water",
+      "Absorbing more water when the fish is about to descend to a lower level"
+    ],
+    "answerIndex": 0,
+    "explanation": "Null"
+  },
+  {
+    "questionNumber": 23,
+    "question": "The theory that new organs or characteristics develop in organisms when there is a need for them was postulated by...",
+    "options": [
+      "Charles Darwin",
+      "Wallace",
+      "Jean Lamarck",
+      "Gregor Mendel"
+    ],
+    "answerIndex": 2,
+    "explanation": "Null"
+  },
+  {
+    "questionNumber": 24,
+    "question": "Ribosomes are found in all living cells. What is their function?",
+    "options": [
+      "Cellular respiration",
+      "Synthesis of proteins",
+      "Excretion of waste products",
+      "Intracellular transport"
+    ],
+    "answerIndex": 1,
+    "explanation": "Null"
+  },
+  {
+    "questionNumber": 25,
+    "question": "Which of the following is NOT a function of the nucleus of a cell?",
+    "options": [
+      "It controls the life processes of the cell",
+      "It translates genetic information for the manufacture of proteins",
+      "It stores and carries hereditary information",
+      "It is a reservoir of energy for the cell"
+    ],
+    "answerIndex": 3,
+    "explanation": "Null"
+  },
+  {
+    "questionNumber": 26,
+    "question": "Plants that are adapted to grow in dry land where water content is low are...",
+    "options": [
+      "Halophytes",
+      "Hydrophytes",
+      "Xerophytes",
+      "Mesophytes"
+    ],
+    "answerIndex": 2,
+    "explanation": "Null"
+  },
+  {
+    "questionNumber": 27,
+    "question": "What happens to a man whose pancreas has been surgically removed?",
+    "options": [
+      "The level of blood sugar would increase",
+      "The glycogen content of the liver would increase",
+      "His blood pressure would decrease",
+      "His weight would increase appreciably"
+    ],
+    "answerIndex": 0,
+    "explanation": "Null"
+  },
+  {
+    "questionNumber": 28,
+    "question": "The hereditary factor of the material for inheritance is...",
+    "options": [
+      "Organ",
+      "Sex",
+      "Gene",
+      "Ovum"
+    ],
+    "answerIndex": 2,
+    "explanation": "Null"
+  },
+  {
+    "questionNumber": 29,
+    "question": "The random way genes recombine during meiosis and fertilization leads to...",
+    "options": [
+      "Genetic variation",
+      "Phenotype",
+      "Genome",
+      "Genotype"
+    ],
+    "answerIndex": 0,
+    "explanation": "Null"
+  },
+  {
+    "questionNumber": 30,
+    "question": "One of the following is not an excretory structure.",
+    "options": [
+      "Stomata",
+      "Blood",
+      "Kidney",
+      "Flame cell"
+    ],
+    "answerIndex": 1,
+    "explanation": "Null"
+  },
+  {
+    "questionNumber": 31,
+    "question": "The molecular formula of a common organic laboratory anesthetic is...",
+    "options": [
+      "$CHCl_3$",
+      "$CHI_3$",
+      "$CCl_4$",
+      "$CHF_3$"
+    ],
+    "answerIndex": 0,
+    "explanation": "Null"
+  },
+  {
+    "questionNumber": 32,
+    "question": "Organic molecules that have the suffix-ene are unsaturated hydrocarbons that have...",
+    "options": [
+      "A single bond",
+      "Double bond",
+      "A triple bond",
+      "An ionic bond"
+    ],
+    "answerIndex": 1,
+    "explanation": "Null"
+  },
+  {
+    "questionNumber": 33,
+    "question": "Copper metal dissolves in concentrated trioxonitrate (V) acid with the resultant evolution of...",
+    "options": [
+      "$CO_2$",
+      "$SO_2$",
+      "$NO_2$",
+      "$CO$"
+    ],
+    "answerIndex": 2,
+    "explanation": "Null"
+  },
+  {
+    "questionNumber": 34,
+    "question": "A gaseous mixture of $80.0g$ of oxygen and $56.0g$ of nitrogen has a total pressure of $1.8atm$. The partial pressure of oxygen in the mixture is...",
+    "options": [
+      "$0.8atm$",
+      "$1.0atm$",
+      "$1.2atm$",
+      "$1.4atm$"
+    ],
+    "answerIndex": 1,
+    "explanation": "Null"
+  },
+  {
+    "questionNumber": 35,
+    "question": "Palm wine turns sour with time because...",
+    "options": [
+      "The sugar content is converted into alcohol",
+      "The $CO_2$ formed during the fermentation process has a sour taste",
+      "It is commonly adulterated by the tappers and sellers",
+      "Microbiological activity results in the production of organic acids within it"
+    ],
+    "answerIndex": 3,
+    "explanation": "Null"
+  },
+  {
+    "questionNumber": 36,
+    "question": "Alkanals can be differentiated from alkanones by reaction with...",
+    "options": [
+      "2,4-dinitrophenylhydrazine",
+      "Hydrogen cyanide",
+      "Sodium hydrogen sulphite reagent",
+      "Tollen's reagent"
+    ],
+    "answerIndex": 3,
+    "explanation": "Null"
+  },
+  {
+    "questionNumber": 37,
+    "question": "The following are uses of sulphur except...",
+    "options": [
+      "Vulcanization of rubber",
+      "Manufacture of dyes",
+      "Coating of steel to prevent rusting",
+      "Manufacture of tetraoxosulphate(VI) acid"
+    ],
+    "answerIndex": 2,
+    "explanation": "Null"
+  },
+  {
+    "questionNumber": 38,
+    "question": "Catalytic hydrogenation of benzene produces...",
+    "options": [
+      "An aromatic hydrocarbon",
+      "Margarine",
+      "Cyclohexane",
+      "Benzene"
+    ],
+    "answerIndex": 2,
+    "explanation": "Null"
+  },
+  {
+    "questionNumber": 39,
+    "question": "The oxidation number of chlorine is $+1$ in...",
+    "options": [
+      "$KClO_3$",
+      "$Cl_2O_7$",
+      "$ZnCl_2$",
+      "$NaClO$"
+    ],
+    "answerIndex": 3,
+    "explanation": "Null"
+  },
+  {
+    "questionNumber": 40,
+    "question": "The carbon atoms on ethane are...",
+    "options": [
+      "$Sp_2$ hybridized",
+      "$SP$ hybridized",
+      "$SP_3$ hybridized",
+      "$SP_2d$ hybridized"
+    ],
+    "answerIndex": 2,
+    "explanation": "Null"
+  }
+]

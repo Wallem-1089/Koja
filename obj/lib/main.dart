@@ -210,7 +210,10 @@ class _MySecondPageState extends State<SecondPage> {
   @override
   Widget build(BuildContext context) {
 
-    return Scaffold(
+  final screenWidth = MediaQuery.of(context).size.width;
+  final isMobile = screenWidth < 700;
+
+  return Scaffold(
 
       appBar: AppBar(
         title: Text("Pick Your Subjects"),
@@ -218,17 +221,103 @@ class _MySecondPageState extends State<SecondPage> {
         backgroundColor: Colors.blueGrey,
       ),
 
-      body: Row(
+      body: isMobile
+    ? SingleChildScrollView(
+        child: Padding(
+          padding: EdgeInsets.all(12),
+          child: Column(
+            children: [
+
+              /// SUBJECTS
+              subjectSelector(0),
+              SizedBox(height: 12),
+
+              subjectSelector(1),
+              SizedBox(height: 12),
+
+              subjectSelector(2),
+              SizedBox(height: 12),
+
+              subjectSelector(3),
+
+              SizedBox(height: 25),
+
+              /// DURATION
+              Text(
+                "Select Exam Duration",
+                style: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+
+              SizedBox(height: 15),
+
+              DropdownButton<String>(
+                value: selectedDuration,
+                isExpanded: true,
+                items: [
+                  "15 Minutes",
+                  "30 Minutes",
+                  "45 Minutes",
+                  "60 Minutes",
+                  "2 Hours"
+                ].map((value) {
+                  return DropdownMenuItem(
+                    value: value,
+                    child: Text(value),
+                  );
+                }).toList(),
+                onChanged: (value) {
+                  setState(() {
+                    selectedDuration = value!;
+                  });
+                },
+              ),
+
+              SizedBox(height: 25),
+
+              /// EXAM MODE
+              Text(
+                "Select Exam Mode",
+                style: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+
+              SizedBox(height: 15),
+
+              DropdownButton<String>(
+                value: selectedExamMode,
+                isExpanded: true,
+                items: ["Mock", "Exam", "Study"]
+                    .map((value) => DropdownMenuItem(
+                          value: value,
+                          child: Text(value),
+                        ))
+                    .toList(),
+                onChanged: (value) {
+                  setState(() {
+                    selectedExamMode = value!;
+                  });
+                },
+              ),
+            ],
+          ),
+        ),
+      )
+
+    : Row(
         children: [
 
-          /// LEFT SIDE — SUBJECT SELECTORS (2x2 GRID)
+          /// LEFT SIDE — SUBJECT SELECTORS
           Expanded(
             child: Padding(
               padding: EdgeInsets.all(12),
               child: Column(
                 children: [
 
-                  /// ROW 1
                   Row(
                     children: [
                       Expanded(child: subjectSelector(0)),
@@ -239,7 +328,6 @@ class _MySecondPageState extends State<SecondPage> {
 
                   SizedBox(height: 15),
 
-                  /// ROW 2
                   Row(
                     children: [
                       Expanded(child: subjectSelector(2)),
@@ -247,7 +335,6 @@ class _MySecondPageState extends State<SecondPage> {
                       Expanded(child: subjectSelector(3)),
                     ],
                   ),
-
                 ],
               ),
             ),
@@ -255,21 +342,20 @@ class _MySecondPageState extends State<SecondPage> {
 
           VerticalDivider(),
 
-          /// RIGHT SIDE — DURATION
+          /// RIGHT SIDE
           Expanded(
             child: Padding(
               padding: EdgeInsets.all(16),
-
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
-
                 children: [
 
                   Text(
                     "Select Exam Duration",
                     style: TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold),
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
 
                   SizedBox(height: 20),
@@ -281,7 +367,7 @@ class _MySecondPageState extends State<SecondPage> {
                       "15 Minutes",
                       "30 Minutes",
                       "45 Minutes",
-                      "60 Minutes", 
+                      "60 Minutes",
                       "2 Hours"
                     ].map((value) {
                       return DropdownMenuItem(
@@ -295,37 +381,41 @@ class _MySecondPageState extends State<SecondPage> {
                       });
                     },
                   ),
+
                   SizedBox(height: 30),
 
-                ///  NEW: EXAM MODE DROPDOWN
-                Text(
-                  "Select Exam Mode",
-                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-                ),
+                  Text(
+                    "Select Exam Mode",
+                    style: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
 
-                 SizedBox(height: 20),
+                  SizedBox(height: 20),
 
-              DropdownButton<String>(
-                value: selectedExamMode,
-                isExpanded: true,
-                items: ["Mock", "Exam", "Study"] //new
-                    .map((value) => DropdownMenuItem(
-                          value: value,
-                          child: Text(value),
-                        ))
-                    .toList(),
-                onChanged: (value) {
-                  setState(() {
-                    selectedExamMode = value!;
-                  });
-                },
-              ),
+                  DropdownButton<String>(
+                    value: selectedExamMode,
+                    isExpanded: true,
+                    items: ["Mock", "Exam", "Study"]
+                        .map((value) => DropdownMenuItem(
+                              value: value,
+                              child: Text(value),
+                            ))
+                        .toList(),
+                    onChanged: (value) {
+                      setState(() {
+                        selectedExamMode = value!;
+                      });
+                    },
+                  ),
                 ],
               ),
             ),
           ),
         ],
       ),
+      
       
 
       floatingActionButton: FloatingActionButton(
@@ -716,7 +806,16 @@ Future<void> confirmSubmit() async {
   });
 }
 ///Math Render Function
-  Widget buildContent(String text) {
+ Widget buildContent(String text) {
+
+  double screenWidth = MediaQuery.of(context).size.width;
+
+  double fontSize = screenWidth < 400
+      ? 16
+      : screenWidth < 700
+          ? 19
+          : 22;
+    
 
   /// Detect LaTeX ($...$)
   final regex = RegExp(r'\$(.*?)\$');
@@ -728,7 +827,7 @@ Future<void> confirmSubmit() async {
   if (!regex.hasMatch(text) && !underlineRegex.hasMatch(text)) {
     return Text(
       text,
-      style: TextStyle(fontSize: 22),
+      style: TextStyle(fontSize: fontSize),
     );
   }
 
@@ -749,7 +848,7 @@ Future<void> confirmSubmit() async {
           text: text.substring(lastIndex, match.start),
           style: TextStyle(
             color: Colors.black,
-            fontSize: 22,
+            fontSize: fontSize,
           ),
         ),
       );
@@ -763,7 +862,7 @@ Future<void> confirmSubmit() async {
           alignment: PlaceholderAlignment.middle,
           child: Math.tex(
             match.group(1)!,
-            textStyle: TextStyle(fontSize: 22),
+            textStyle: TextStyle(fontSize: fontSize),
           ),
         ),
       );
@@ -777,7 +876,7 @@ Future<void> confirmSubmit() async {
           text: match.group(2)!,
           style: TextStyle(
             color: Colors.black,
-            fontSize: 22,
+            fontSize: fontSize,
             decoration: TextDecoration.underline,
           ),
         ),
@@ -794,15 +893,21 @@ Future<void> confirmSubmit() async {
         text: text.substring(lastIndex),
         style: TextStyle(
           color: Colors.black,
-          fontSize: 22,
+          fontSize: fontSize,
         ),
       ),
     );
   }
 
-  return RichText(
-    text: TextSpan(children: spans),
-  );
+  return LayoutBuilder(
+  builder: (context, constraints) {
+    return RichText(
+      softWrap: true,
+      overflow: TextOverflow.visible,
+      text: TextSpan(children: spans),
+    );
+  },
+);
 }
   Widget optionWidget(dynamic option) {
 
@@ -1115,7 +1220,9 @@ Future<void> confirmSubmit() async {
                                           ...List.generate(options.length, (index) {
                                             String optionLetter = ["A", "B", "C", "D"][index];
                                             return RadioListTile<int>(
+                                              contentPadding: EdgeInsets.zero,
                                               title: Row(
+                                                crossAxisAlignment: CrossAxisAlignment.start,
                                                 children: [
                                                   Text("$optionLetter. "),
                                                   Expanded(
@@ -1342,8 +1449,9 @@ Future<void> confirmSubmit() async {
               itemCount: questions.length,
 
               gridDelegate:
-                  SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 20,
+                SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount:
+                  MediaQuery.of(context).size.width < 700 ? 5 : 20,
                 crossAxisSpacing: 4,
                 mainAxisSpacing: 4,
                 childAspectRatio: 1,
@@ -1499,10 +1607,18 @@ Widget buildContent(String text) {
       ),
     );
   }
-
   return RichText(
-    text: TextSpan(children: spans),
-  );
+  text: TextSpan(children: spans),
+);
+  /*return LayoutBuilder(
+  builder: (context, constraints) {
+    return RichText(
+      softWrap: true,
+      overflow: TextOverflow.visible,
+      text: TextSpan(children: spans),
+    );
+  },
+);*/
 }
 List<Map<String, dynamic>> getWrongQuestions() {
   List<Map<String, dynamic>> wrong = [];
@@ -1646,7 +1762,8 @@ Widget build(BuildContext context) {
                           Text(
                             "$score / $total",
                             style: TextStyle(
-                              fontSize: 40,
+                              fontSize:
+                                MediaQuery.of(context).size.width < 700 ? 28 : 40,
                               color: Colors.blue,
                               fontWeight: FontWeight.bold,
                             ),
@@ -2119,23 +2236,40 @@ class ResultHistoryPage extends StatelessWidget {
               final r = results[index];
 
               return Card(
-                margin: EdgeInsets.all(10),
+                margin: EdgeInsets.symmetric(
+                  horizontal: 10,
+                  vertical: 6,
+                ),
 
                 child: ListTile(
-                  title: Text("${r.score}/${r.total} (${r.percentage.toStringAsFixed(1)}%)"),
-
-                  subtitle: Column(
+                  title: Text(
+                    "${r.score}/${r.total} (${r.percentage.toStringAsFixed(1)}%)",
+                    overflow: TextOverflow.ellipsis,
+                    maxLines: 1,
+                  ),
+                  subtitle: Padding(
+                    padding: EdgeInsets.only(top: 6),
+                    child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
 
                       Text("Mode: ${r.mode}"),
-                      Text("Subjects: ${r.subjects.join(", ")}"),
-                      Text("Date: ${r.date}"),
+                      Text(
+                        "Subjects: ${r.subjects.join(", ")}",
+                        maxLines: 2,
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                      Text(
+                        "Date: ${r.date.day}/${r.date.month}/${r.date.year} "
+                        "${r.date.hour.toString().padLeft(2, '0')}:"
+                        "${r.date.minute.toString().padLeft(2, '0')}",
+                      ),
 
                       Text("Time Spent: ${r.timeSpent}s"),
                     ],
                   ),
                 ),
+              ),
               );
             },
           );

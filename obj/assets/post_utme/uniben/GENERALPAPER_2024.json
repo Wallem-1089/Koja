@@ -8,7 +8,7 @@
       "40w",
       "80w"
     ],
-    "answerIndex": 1,
+    "answerIndex": 3,
     "explanation": "Null"
   },
   {
@@ -25,7 +25,7 @@
   },
   {
     "questionNumber": 3,
-    "question": "If PHCN charges ₦5 per Kwh, what is the cost of operating for 24 hours a lamp requiring $1A$ on a $200V$ line?",
+    "question": "If PHCN charges $₦5$ per Kwh, what is the cost of operating for 24 hours a lamp requiring $1A$ on a $200V$ line?",
     "options": [
       "₦24",
       "₦32",
@@ -116,7 +116,7 @@
       "$12.00kwh$",
       "$6.00kwh$"
     ],
-    "answerIndex": 0,
+    "answerIndex": 1,
     "explanation": "Null"
   },
   {
@@ -135,7 +135,7 @@
     "questionNumber": 12,
     "question": "The second and fifth terms of a geometric progression are $21$ and $567$ respectively. Find the first term and the common ratio of the progression.",
     "options": [
-      "$3, 7$",
+      "$7, 3$",
       "$-7, 3$",
       "$-3, 7$",
       "$3, -7$"
@@ -152,7 +152,7 @@
       "35%",
       "32%"
     ],
-    "answerIndex": 0,
+    "answerIndex": 3,
     "explanation": "Null"
   },
   {
@@ -188,7 +188,7 @@
       "8",
       "4"
     ],
-    "answerIndex": 3,
+    "answerIndex": 0,
     "explanation": "Null"
   },
   {
@@ -224,7 +224,7 @@
       "9",
       "11"
     ],
-    "answerIndex": 1,
+    "answerIndex": 3,
     "explanation": "Null"
   },
   {

@@ -1,0 +1,122 @@
+[
+  {
+    "questionNumber": 1,
+    "question": "Which is the correct spelling?",
+    "options": [
+      "Agreement",
+      "Aggrement",
+      "Aggreement",
+      "Agrement"
+    ],
+    "answerIndex": 0,
+    "explanation": "Agreement is the correctly spelled word."
+  },
+  {
+    "questionNumber": 2,
+    "question": "Which is the correct spelling?",
+    "options": [
+      "Embarasment",
+      "Embarassement",
+      "Embarrassment",
+      "Embarrasment"
+    ],
+    "answerIndex": 2,
+    "explanation": "Embarrassment is the correct spelling."
+  },
+  {
+    "questionNumber": 3,
+    "question": "Choose the antonym. The <u>serenity</u> of a rural place obviously contrasts with the ______ of a typical urban center",
+    "options": [
+      "tranquility",
+      "poverty",
+      "wealth",
+      "bustle"
+    ],
+    "answerIndex": 3,
+    "explanation": "Bustle is the opposite of serenity."
+  },
+  {
+    "questionNumber": 4,
+    "question": "Choose the antonym. The biology teacher always gives us <u>ample</u> time to carry out our assignments because the teacher is in the habit of giving us ______ notice",
+    "options": [
+      "sufficient",
+      "inadequate",
+      "average",
+      "additional"
+    ],
+    "answerIndex": 1,
+    "explanation": "Inadequate notice means notice that is not enough."
+  },
+  {
+    "questionNumber": 5,
+    "question": "Choose the antonym. While the woman poured out a lot of <u>invectives</u> in her speech the man's speech was dominated by",
+    "options": [
+      "conjectures",
+      "additives",
+      "praises",
+      "curses"
+    ],
+    "answerIndex": 2,
+    "explanation": "Praises are the opposite of invectives."
+  },
+  {
+    "questionNumber": 6,
+    "question": "Choose the antonym. He did the work <u>perfuntorily</u> instead of doing it",
+    "options": [
+      "perfectly",
+      "carefully",
+      "permanently",
+      "especially"
+    ],
+    "answerIndex": 1,
+    "explanation": "Null"
+  },
+  {
+    "questionNumber": 7,
+    "question": "Church",
+    "options": [
+      "feature",
+      "chauffer",
+      "ocean",
+      "machine"
+    ],
+    "answerIndex": 0,
+    "explanation": "Null"
+  },
+  {
+    "questionNumber": 8,
+    "question": "Thank",
+    "options": [
+      "through",
+      "thought",
+      "Thames",
+      "Thomas"
+    ],
+    "answerIndex": 1,
+    "explanation": "Null"
+  },
+  {
+    "questionNumber": 9,
+    "question": "Choose the best option to complete the sentence. The officer was compelled to ______ the suspect's car",
+    "options": [
+      "seize",
+      "cease",
+      "seized",
+      "caese"
+    ],
+    "answerIndex": 0,
+    "explanation": "Null"
+  },
+  {
+    "questionNumber": 10,
+    "question": "Choose the best option to complete the sentence. The trader complained that he ____ robbed",
+    "options": [
+      "has been",
+      "had been",
+      "was being",
+      "is being"
+    ],
+    "answerIndex": 1,
+    "explanation": "Null"
+  }
+]

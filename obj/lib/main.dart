@@ -108,7 +108,7 @@ class _MySecondPageState extends State<SecondPage> {
     return 3600;
   }
 
-  List<String> getAvailableSubjects(int currentIndex) {
+  /*List<String> getAvailableSubjects(int currentIndex) {
 
   /// Get all selected subjects except current slot
   List<String> selected = selectedSubjectsData
@@ -117,18 +117,19 @@ class _MySecondPageState extends State<SecondPage> {
       .where((entry) =>
           entry.key != currentIndex &&
           entry.value["subject"] != null)
-      .map((entry) => entry.value["subject"]!)
+      .map((entry) => entry.value["subject"]!
+      )
       .toList();
 
   /// Return subjects not already selected
   return subjectOptions.where((subj) => !selected.contains(subj)).toList();
-}
+}*/
 
 
   /// SUBJECT CARD WIDGET
   Widget subjectSelector(int index) {
 
-  List<String> availableSubjects = getAvailableSubjects(index);
+  //List<String> availableSubjects = getAvailableSubjects(index);
 
   return Card(
     elevation: 3,
@@ -152,15 +153,13 @@ class _MySecondPageState extends State<SecondPage> {
 
             items: [
 
-              /// CLEAR OPTION
-              DropdownMenuItem(
+              DropdownMenuItem<String>(
                 value: null,
                 child: Text("None"),
               ),
 
-              /// FILTERED SUBJECTS
-              ...availableSubjects.map((value) {
-                return DropdownMenuItem(
+              ...subjectOptions.map((value) {
+                return DropdownMenuItem<String>(
                   value: value,
                   child: Text(value),
                 );
@@ -171,14 +170,12 @@ class _MySecondPageState extends State<SecondPage> {
               setState(() {
                 selectedSubjectsData[index]["subject"] = value;
 
-                /// reset year if cleared
                 if (value == null) {
                   selectedSubjectsData[index]["year"] = null;
                 }
               });
             },
           ),
-
           SizedBox(height: 10),
 
           /// YEAR DROPDOWN
@@ -336,6 +333,30 @@ class _MySecondPageState extends State<SecondPage> {
         onPressed: () {
 
           List<String> selectedSubjects = getSelectedSubjects();
+          Set<String> combinations = {};
+
+          for (var item in selectedSubjectsData) {
+
+            if (item["subject"] != null && item["year"] != null) {
+
+              String combo = "${item["subject"]}_${item["year"]}";
+
+              if (combinations.contains(combo)) {
+
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(
+                    content: Text(
+                      "Duplicate subject-year combination detected",
+                    ),
+                  ),
+                );
+
+                return;
+              }
+
+              combinations.add(combo);
+            }
+          }
 
           if (selectedSubjects.isEmpty) {
             ScaffoldMessenger.of(context).showSnackBar(
@@ -1589,7 +1610,7 @@ Widget build(BuildContext context) {
   return Scaffold(
     appBar: AppBar(title: Text("Exam Result"),),
 
-    body: (examMode == "Mock" || examMode == "Study" || examMode == "Exam")
+    body: (examMode == "Mock" || examMode == "Study" || examMode == "Exam"  || examMode == "Retry")
     ? Stack(
         children: [
 

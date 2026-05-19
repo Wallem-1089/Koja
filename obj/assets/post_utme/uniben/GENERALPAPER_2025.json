@@ -1,0 +1,362 @@
+[
+    {
+    "questionNumber": 11,
+    "question": "Which of these is not active transport?",
+    "options": [
+      "Sodium pump",
+      "Diffusion",
+      "Pinocytosis",
+      "Endocytosis"
+    ],
+    "answerIndex": 1,
+    "explanation": "Diffusion is a passive transport process."
+  },
+  {
+    "questionNumber": 12,
+    "question": "The pH of the solution which is neutral is",
+    "options": [
+      "1",
+      "14",
+      "7",
+      "0"
+    ],
+    "answerIndex": 2,
+    "explanation": "Neutral solutions have a pH of 7."
+  },
+  {
+    "questionNumber": 13,
+    "question": "Which of the following is the least efficient to neutralize an acid?",
+    "options": [
+      "Atom",
+      "Molecule",
+      "Salt",
+      "Alkali"
+    ],
+    "answerIndex": 0,
+    "explanation": "An atom alone is least efficient in neutralization."
+  },
+  {
+    "questionNumber": 14,
+    "question": "An ionic bond consists of",
+    "options": [
+      "sharing of electrons",
+      "positive and negative ions",
+      "covalent attraction",
+      "hydrogen bonding"
+    ],
+    "answerIndex": 1,
+    "explanation": "Ionic bonds are formed by attraction between positive and negative ions."
+  },
+  {
+    "questionNumber": 15,
+    "question": "An optically active compound must contain",
+    "options": [
+      "double bond",
+      "plane polarized light",
+      "asymmetric carbon atom",
+      "ionic bond"
+    ],
+    "answerIndex": 2,
+    "explanation": "Optical activity is usually due to an asymmetric carbon atom."
+  },
+  {
+    "questionNumber": 16,
+    "question": "In determining parameters of two commodities, the best described as?",
+    "options": [
+      "chemical property",
+      "physical property",
+      "optical property",
+      "magnetic property"
+    ],
+    "answerIndex": 1,
+    "explanation": "The parameters described are physical properties."
+  },
+  {
+    "questionNumber": 17,
+    "question": "A compound burns with a very smoky flame. The percentage composition by mass is 77% and the molecular mass is 78. What is the molecular formula?",
+    "options": [
+      "$C_6H_6$",
+      "$C_2H_6$",
+      "$C_3H_8$",
+      "$C_4H_{10}$"
+    ],
+    "answerIndex": 0,
+    "explanation": "The molecular formula is benzene, $C_6H_6$."
+  },
+  {
+    "questionNumber": 18,
+    "question": "The process whereby water is added to a compound is called",
+    "options": [
+      "hydrogenation",
+      "hydration",
+      "dehydration",
+      "cracking"
+    ],
+    "answerIndex": 1,
+    "explanation": "Hydration involves adding water to a compound."
+  },
+  {
+    "questionNumber": 19,
+    "question": "Which of the following is made up of only one atom?",
+    "options": [
+      "$O_2$",
+      "$H_2$",
+      "He",
+      "$N_2$"
+    ],
+    "answerIndex": 2,
+    "explanation": "Helium exists as a single atom."
+  },
+  {
+    "questionNumber": 20,
+    "question": "Which energy level in an atom can accommodate the highest number of electrons?",
+    "options": [
+      "K-shell",
+      "L-shell",
+      "M-shell",
+      "N-shell"
+    ],
+    "answerIndex": 3,
+    "explanation": "The N-shell can accommodate the highest number of electrons among the options."
+  },
+  {
+    "questionNumber": 21,
+    "question": "A colourless gas is made up of lead sulphide",
+    "options": [
+      "Carbon",
+      "Carbon II oxide",
+      "Methane",
+      "Hydrogen sulphide"
+    ],
+    "answerIndex": 3,
+    "explanation": "Hydrogen sulphide is a colourless gas."
+  },
+  {
+    "questionNumber": 22,
+    "question": "The role of useful substances from the bloodstream into cells is called",
+    "options": [
+      "Excretion",
+      "Respiration",
+      "Absorption",
+      "Secretion"
+    ],
+    "answerIndex": 2,
+    "explanation": "Absorption involves taking substances into cells."
+  },
+  {
+    "questionNumber": 23,
+    "question": "Which of the following is not present in the white blood cell?",
+    "options": [
+      "Chromosomes",
+      "Nucleus",
+      "Mitochondria",
+      "Chloroplast"
+    ],
+    "answerIndex": 3,
+    "explanation": "Animal cells do not contain chloroplasts."
+  },
+  {
+    "questionNumber": 24,
+    "question": "Which of the following is not a characteristic feature of organisms?",
+    "options": [
+      "they reproduce",
+      "they contain genetic materials",
+      "they undergo mitosis in their life cycle",
+      "formation of a lipid membrane"
+    ],
+    "answerIndex": 3,
+    "explanation": "Formation of a lipid membrane alone is not a defining characteristic of organisms."
+  },
+  {
+    "questionNumber": 25,
+    "question": "Which of the following is referred to as an example of a tropical rain forest in Southern Nigeria?",
+    "options": [
+      "Mangrove forest",
+      "Savanna",
+      "Sahel vegetation",
+      "Desert"
+    ],
+    "answerIndex": 0,
+    "explanation": "Mangrove forest is common in Southern Nigeria."
+  },
+  {
+    "questionNumber": 26,
+    "question": "A government against club house is called",
+    "options": [
+      "Monarchy",
+      "Socialism",
+      "Democracy",
+      "Feudalism"
+    ],
+    "answerIndex": 2,
+    "explanation": "Democracy is a government by the people."
+  },
+  {
+    "questionNumber": 27,
+    "question": "The green pigment in plants is called",
+    "options": [
+      "chlorophyll",
+      "xylem",
+      "phloem",
+      "cytoplasm"
+    ],
+    "answerIndex": 0,
+    "explanation": "Chlorophyll is the green pigment used in photosynthesis."
+  },
+  {
+    "questionNumber": 28,
+    "question": "The instrument used to measure temperature is",
+    "options": [
+      "barometer",
+      "thermometer",
+      "hydrometer",
+      "hygrometer"
+    ],
+    "answerIndex": 1,
+    "explanation": "A thermometer measures temperature."
+  },
+  {
+    "questionNumber": 29,
+    "question": "The process by which plants make food is called",
+    "options": [
+      "respiration",
+      "photosynthesis",
+      "digestion",
+      "transpiration"
+    ],
+    "answerIndex": 1,
+    "explanation": "Photosynthesis is the process plants use to make food."
+  },
+  {
+    "questionNumber": 30,
+    "question": "The SI unit of force is",
+    "options": [
+      "joule",
+      "watt",
+      "newton",
+      "pascal"
+    ],
+    "answerIndex": 2,
+    "explanation": "The SI unit of force is the newton."
+  },
+  {
+    "questionNumber": 31,
+    "question": "When an object is at infinity to the pole of a concave mirror the image is formed at",
+    "options": [
+      "principal focus, real and diminished",
+      "friction",
+      "tension",
+      "magnetism"
+    ],
+    "answerIndex": 0,
+    "explanation": "An immersed object experiences upthrust due to buoyancy."
+  },
+  {
+    "questionNumber": 32,
+    "question": "The concave mirror with focal length of 20cm forms an image Vz the side of object. Determine the object distance",
+    "options": [
+      "20cm",
+      "40cm",
+      "100cm",
+      "80cm"
+    ],
+    "answerIndex": 1,
+    "explanation": "Null"
+  },
+  {
+    "questionNumber": 33,
+    "question": "Compute the focal length of the lens which will give an erect image 20cm from the lens when the object distance from the lens is very great",
+    "options": [
+      "20cm",
+      "10cm",
+      "20m",
+      "10cm"
+    ],
+    "answerIndex": 0,
+    "explanation": "Focal length is the distance between the optical center and focus."
+  },
+  {
+    "questionNumber": 34,
+    "question": "A car moving with a speed of 90km/h was brought uniformly to rest by the application of brakes in 10s. How far did the car travel after the brakes were applied?",
+    "options": [
+      "125m",
+      "150m",
+      "250m",
+      "15km"
+    ],
+    "answerIndex": 0,
+    "explanation": "Null"
+  },
+  {
+    "questionNumber": 35,
+    "question": "Which of the following is not an example of simple harmonic motion?",
+    "options": [
+      "Oscillation of a mass attached to a spring",
+      "Oscillation of the strings of a musical instrument",
+      "Oscillation of a loaded test tube floating in water",
+      "All of the above"
+    ],
+    "answerIndex": 2,
+    "explanation": "Uniform motion in a straight line is not oscillatory."
+  },
+  {
+    "questionNumber": 36,
+    "question": "A 10m wire is made to stretch to 11.6m by the application of a force. Calculate the tensile strain.",
+    "options": [
+      "16.0",
+      "0.16",
+      "1.60",
+      "0.016"
+    ],
+    "answerIndex": 1,
+    "explanation": "Strain = extension/original length."
+  },
+  {
+    "questionNumber": 37,
+    "question": "Calculate the pressure due to water at a depth of 20m in water. Take Density of water = 1000kg/m$^3$ and acceleration due to gravity = 9.8m/s$^2$",
+    "options": [
+      "$19600N/m^2$",
+      "$196000N/m^2$",
+      "$1960N/m^2$",
+      "$196N/m^2$"
+    ],
+    "answerIndex": 1,
+    "explanation": "Pressure = $\\rho gh$."
+  },
+  {
+    "questionNumber": 38,
+    "question": "The upthrust of an object immersed in a liquid is equivalent to",
+    "options": [
+      "density x volume x accceleration",
+      "weight of the object + immersed liquid",
+      "weight of the fluid displaced",
+      "volume of the fluid displaced"
+    ],
+    "answerIndex": 2,
+    "explanation": "By Archimedes' principle, upthrust equals the weight of displaced liquid."
+  },
+  {
+    "questionNumber": 39,
+    "question": "Convert $98.6^\\circ F$ to $^\\circ C$",
+    "options": [
+      "$130.6^\\circ C$",
+      "$66.6^\\circ C$",
+      "$39^\\circ C$",
+      "$37^\\circ C$"
+    ],
+    "answerIndex": 3,
+    "explanation": "$98.6^\\circ F$ equals $37^\\circ C$."
+  },
+  {
+    "questionNumber": 40,
+    "question": "If the period of a wave is 4 sec what is the frequency of the wave?",
+    "options": [
+      "4Hz",
+      "25Hz",
+      "0.25Hz",
+      "40Hz"
+    ],
+    "answerIndex": 3,
+    "explanation": "Frequency = $\\frac{1}{\\text{period}}$."
+  }
+]

@@ -1,0 +1,362 @@
+[
+{
+    "questionNumber": 21,
+    "question": "The basic structural and functional unit of life is:",
+    "options": [
+      "Tissue",
+      "Organ",
+      "Cell",
+      "System"
+    ],
+    "answerIndex": 2,
+    "explanation": "The cell is defined as the fundamental structural, functional, and biological unit of all living organisms."
+  },
+  {
+    "questionNumber": 22,
+    "question": "Which of the following is NOT a characteristic of living things?",
+    "options": [
+      "Respiration",
+      "Locomotion",
+      "Growth",
+      "Reproduction"
+    ],
+    "answerIndex": 1,
+    "explanation": "While movement occurs in all living things, 'locomotion' (moving from one geographic place to another) is not a characteristic of all living organisms, notably plants."
+  },
+  {
+    "questionNumber": 23,
+    "question": "The organelle responsible for energy production is:",
+    "options": [
+      "Nucleus",
+      "Ribosome",
+      "Mitochondrion",
+      "Lysosome"
+    ],
+    "answerIndex": 2,
+    "explanation": "The mitochondrion is known as the powerhouse of the cell because it generates chemical energy via cellular respiration."
+  },
+  {
+    "questionNumber": 24,
+    "question": "The organ responsible for photosynthesis in plants is:",
+    "options": [
+      "Root",
+      "Leaf",
+      "Stem",
+      "Flower"
+    ],
+    "answerIndex": 1,
+    "explanation": "Leaves contain high concentrations of chloroplasts filled with chlorophyll, making them the primary site for photosynthesis."
+  },
+  {
+    "questionNumber": 25,
+    "question": "Movement of molecules from high concentration to low concentration is called:",
+    "options": [
+      "Osmosis",
+      "Diffusion",
+      "Active transport",
+      "Plasmolysis"
+    ],
+    "answerIndex": 1,
+    "explanation": "Diffusion is the passive net movement of particles down a concentration gradient."
+  },
+  {
+    "questionNumber": 26,
+    "question": "Which organ is responsible for excretion in humans?",
+    "options": [
+      "Liver",
+      "Heart",
+      "Pancreas",
+      "Kidney"
+    ],
+    "answerIndex": 3,
+    "explanation": "The kidneys are primary excretory organs responsible for filtering waste products (like urea) out of the blood stream to form urine."
+  },
+  {
+    "questionNumber": 27,
+    "question": "Pepsin digests:",
+    "options": [
+      "Starch",
+      "Sugar",
+      "Lipid",
+      "Protein"
+    ],
+    "answerIndex": 3,
+    "explanation": "Pepsin is an enzyme produced in the stomach that initiates the breakdown of proteins into smaller peptides."
+  },
+  {
+    "questionNumber": 28,
+    "question": "Asexual reproduction in Hydra occurs by:",
+    "options": [
+      "Binary fission",
+      "Fragmentation",
+      "Budding",
+      "Regeneration"
+    ],
+    "answerIndex": 2,
+    "explanation": "Hydra typically reproduce asexually by growing an outgrowth or 'bud' through repeated mitotic cell divisions at one specific site."
+  },
+  {
+    "questionNumber": 29,
+    "question": "Benedict's solution is used to test for:",
+    "options": [
+      "Lipids",
+      "Proteins",
+      "Reducing sugars",
+      "Vitamins"
+    ],
+    "answerIndex": 2,
+    "explanation": "Benedict's reagent changes color from blue to green, yellow, or brick-red in the presence of reducing sugars like glucose."
+  },
+  {
+    "questionNumber": 30,
+    "question": "A group of interacting populations in a habitat is called:",
+    "options": [
+      "Biome",
+      "Biosphere",
+      "Community",
+      "Ecosystem"
+    ],
+    "answerIndex": 2,
+    "explanation": "An ecological community is defined as an interacting group of various species populations in a common location."
+  },
+  {
+    "questionNumber": 31,
+    "question": "The smallest particle of an element that retains its properties is:",
+    "options": [
+      "Molecule",
+      "Atom",
+      "Ion",
+      "Compound"
+    ],
+    "answerIndex": 1,
+    "explanation": "An atom is the basic defining unit of a chemical element that retains all the chemical properties of that element."
+  },
+  {
+    "questionNumber": 32,
+    "question": "Which method is used to separate crude oil into fractions?",
+    "options": [
+      "Filtration",
+      "Distillation",
+      "Fractional distillation",
+      "Chromatography"
+    ],
+    "answerIndex": 2,
+    "explanation": "Crude oil is a complex mixture separated into fractions based on differing boiling point ranges using fractional distillation."
+  },
+  {
+    "questionNumber": 33,
+    "question": "Elements in the same group have the same:",
+    "options": [
+      "Atomic mass",
+      "Number of shells",
+      "Valence electrons",
+      "Neutrons"
+    ],
+    "answerIndex": 2,
+    "explanation": "Elements belonging to the same vertical group on the periodic table share the same number of outer/valence electrons, giving them similar chemical properties."
+  },
+  {
+    "questionNumber": 34,
+    "question": "The bond formed by transfer of electrons is:",
+    "options": [
+      "Covalent",
+      "Ionic",
+      "Metallic",
+      "Hydrogen"
+    ],
+    "answerIndex": 1,
+    "explanation": "An ionic bond is formed through the complete transfer of valence electron(s) from a metal to a non-metal, producing electrostatic attraction between ions."
+  },
+  {
+    "questionNumber": 35,
+    "question": "Which of the following is a reducing agent?",
+    "options": [
+      "CO₂",
+      "NaCl",
+      "H₂",
+      "HCl"
+    ],
+    "answerIndex": 2,
+    "explanation": "Hydrogen gas ($H_2$) readily donates electrons or combines with oxygen, acting as a standard reducing agent in many chemical processes."
+  },
+  {
+    "questionNumber": 36,
+    "question": "If temperature increases at constant pressure, the volume of a gas will:",
+    "options": [
+      "Decrease",
+      "Increase",
+      "Remain constant",
+      "Become zero"
+    ],
+    "answerIndex": 1,
+    "explanation": "According to Charles's Law, the volume of an ideal gas is directly proportional to its absolute temperature when pressure is held constant ($V \\propto T$)."
+  },
+  {
+    "questionNumber": 37,
+    "question": "A substance that produces OH⁻ ions in solution is:",
+    "options": [
+      "Acid",
+      "Base",
+      "Salt",
+      "Oxide"
+    ],
+    "answerIndex": 1,
+    "explanation": "According to the Arrhenius definition, a base is a substance that dissociates in aqueous solution to produce hydroxide ions ($OH^-$)."
+  },
+  {
+    "questionNumber": 38,
+    "question": "Alkanes are:",
+    "options": [
+      "Unsaturated hydrocarbons",
+      "Aromatic compounds",
+      "Saturated hydrocarbons",
+      "Alcohols"
+    ],
+    "answerIndex": 2,
+    "explanation": "Alkanes are acyclic hydrocarbons containing only single carbon-carbon bonds, meaning they are saturated with hydrogen atoms."
+  },
+  {
+    "questionNumber": 39,
+    "question": "One mole of a substance contains:",
+    "options": [
+      "6.02 × 10²³ particles",
+      "3.00 × 10⁸ particles",
+      "1.00 × 10³ particles",
+      "9.81 × 10² particles"
+    ],
+    "answerIndex": 0,
+    "explanation": "One mole corresponds to Avogadro's number ($6.02 \\times 10^{23}$) of particles."
+  },
+  {
+    "questionNumber": 40,
+    "question": "Oxidation is defined as:",
+    "options": [
+      "Gain of electrons",
+      "Loss of electrons",
+      "Gain of hydrogen",
+      "Loss of oxygen"
+    ],
+    "answerIndex": 1,
+    "explanation": "In terms of electron transfer, oxidation is the loss of electrons during a reaction by a molecule, atom, or ion (remember acronym OIL RIG: Oxidation Is Loss, Reduction Is Gain)."
+  },
+  {
+    "questionNumber": 41,
+    "question": "Which quantity is conserved in an inelastic collision?",
+    "options": [
+      "Kinetic energy only",
+      "Momentum only",
+      "Both kinetic energy and momentum",
+      "Neither"
+    ],
+    "answerIndex": 1,
+    "explanation": "Total linear momentum is always conserved in all closed-system collisions. Kinetic energy, however, is not conserved in inelastic collisions because some of it transforms into thermal energy or structural deformation."
+  },
+  {
+    "questionNumber": 42,
+    "question": "A wave travels at 340 m/s with frequency 170 Hz. Find its wavelength.",
+    "options": [
+      "0.5 m",
+      "2 m",
+      "5 m",
+      "10 m"
+    ],
+    "answerIndex": 1,
+    "explanation": "Using the wave formula $\\lambda = v / f$: $340\\text{ m/s} / 170\\text{ Hz} = 2\\text{ m}$."
+  },
+  {
+    "questionNumber": 43,
+    "question": "Which lens is used to correct long-sightedness (hypermetropia)?",
+    "options": [
+      "Concave",
+      "Convex",
+      "Cylindrical",
+      "Plane"
+    ],
+    "answerIndex": 1,
+    "explanation": "Hypermetropia occurs when incoming light rays focus behind the retina. A convex (converging) lens is used to bring the focal point forward onto the retina."
+  },
+  {
+    "questionNumber": 44,
+    "question": "An electric bulb is rated 240V, 120W. Calculate the current drawn.",
+    "options": [
+      "0.5 A",
+      "2 A",
+      "120 A",
+      "60 A"
+    ],
+    "answerIndex": 0,
+    "explanation": "Using the power formula $P = I \\times V$, rearranges to $I = P / V$: $120\\text{W} / 240\\text{V} = 0.5\\text{A}$."
+  },
+  {
+    "questionNumber": 45,
+    "question": "The scientist who discovered radioactivity is:",
+    "options": [
+      "Rutherford",
+      "Bohr",
+      "Becquerel",
+      "Einstein"
+    ],
+    "answerIndex": 2,
+    "explanation": "Henri Becquerel discovered radioactivity in 1896 while investigating phosphorescence in uranium salts."
+  },
+  {
+    "questionNumber": 46,
+    "question": "The process of adding impurities to a semiconductor is called:",
+    "options": [
+      "Ionization",
+      "Doping",
+      "Diffusion",
+      "Conduction"
+    ],
+    "answerIndex": 1,
+    "explanation": "Doping is the intentional introduction of trace impurities into an intrinsic semiconductor to modify its electrical conductivity properties."
+  },
+  {
+    "questionNumber": 47,
+    "question": "What happens to the internal energy of a system when heat is added?",
+    "options": [
+      "Decreases",
+      "Increases",
+      "Remains constant",
+      "Becomes zero"
+    ],
+    "answerIndex": 1,
+    "explanation": "According to the First Law of Thermodynamics ($\\Delta U = Q - W$), adding heat ($Q$) to a system increases its internal energy ($\\Delta U$) provided the work output does not exceed the heat added."
+  },
+  {
+    "questionNumber": 48,
+    "question": "The distance between two successive nodes in a stationary wave is:",
+    "options": [
+      "$\\lambda$",
+      "$\\lambda / 2$",
+      "$\\lambda / 4$",
+      "$2\\lambda$"
+    ],
+    "answerIndex": 1,
+    "explanation": "In a standing wave pattern, the distance separating two adjacent nodes (or two adjacent antinodes) corresponds to half of the wavelength ($\\lambda / 2$)."
+  },
+  {
+    "questionNumber": 49,
+    "question": "A car starts from rest and accelerates uniformly at 2 m/s² for 5 seconds. What is its final velocity?",
+    "options": [
+      "5 m/s",
+      "10 m/s",
+      "15 m/s",
+      "20 m/s"
+    ],
+    "answerIndex": 1,
+    "explanation": "Using the kinematic equation $v = u + at$ where $u = 0$: $v = 0 + (2\\text{ m/s}^2 \\times 5\\text{ s}) = 10\\text{ m/s}$."
+  },
+  {
+    "questionNumber": 50,
+    "question": "A resistor of resistance 5$\\Omega$ is connected to a 10V battery. Calculate the current flowing through the circuit.",
+    "options": [
+      "0.5 A",
+      "2 A",
+      "5 A",
+      "50 A"
+    ],
+    "answerIndex": 1,
+    "explanation": "Using Ohm's Law $I = V / R$: $10\\text{V} / 5\\Omega = 2\\text{A}$."
+  }
+]

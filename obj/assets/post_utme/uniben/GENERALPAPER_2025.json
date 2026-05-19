@@ -1,255 +1,255 @@
 [
     {
     "questionNumber": 11,
-    "question": "Which of these is not active transport?",
+    "question": "Which of these is not acidic?",
     "options": [
-      "Sodium pump",
-      "Diffusion",
-      "Pinocytosis",
-      "Endocytosis"
+      "Aluminum chloride",
+      "Zinc chloride",
+      "Copper II tetraoxosulphate(IV)",
+      "Silver chloride"
     ],
-    "answerIndex": 1,
-    "explanation": "Diffusion is a passive transport process."
+    "answerIndex": 3,
+    "explanation": "Null"
   },
   {
     "questionNumber": 12,
-    "question": "The pH of the solution which is neutral is",
+    "question": "The pH of the solution M, N, O and P are 4, 6, 8 and 10 respectively. Hence",
     "options": [
-      "1",
-      "14",
-      "7",
-      "0"
+      "None of the solution is acidic",
+      "H of O is made neutral by adding water",
+      "The most acidic solution is P",
+      "M is the most acidic soltion"
     ],
-    "answerIndex": 2,
-    "explanation": "Neutral solutions have a pH of 7."
+    "answerIndex": 3,
+    "explanation": "Null"
   },
   {
     "questionNumber": 13,
-    "question": "Which of the following is the least efficient to neutralize an acid?",
+    "question": "Which metals has the least tendency to form positive ion",
     "options": [
-      "Atom",
-      "Molecule",
-      "Salt",
-      "Alkali"
+      "Iron",
+      "Aluminum",
+      "Sodium",
+      "Calcium"
     ],
     "answerIndex": 0,
-    "explanation": "An atom alone is least efficient in neutralization."
+    "explanation": "Null"
   },
   {
     "questionNumber": 14,
-    "question": "An ionic bond consists of",
+    "question": "A triple bond consists of",
     "options": [
-      "sharing of electrons",
-      "positive and negative ions",
-      "covalent attraction",
-      "hydrogen bonding"
+      "2 sigma bonds and 1 pi bond ",
+      "3 sigma bonds",
+      "3 pi bonds",
+      "1 sigma bond and 2 pi bonds"
     ],
-    "answerIndex": 1,
-    "explanation": "Ionic bonds are formed by attraction between positive and negative ions."
+    "answerIndex": 3,
+    "explanation": "Null"
   },
   {
     "questionNumber": 15,
-    "question": "An optically active compound must contain",
+    "question": "An optically active compound",
     "options": [
-      "double bond",
-      "plane polarized light",
-      "asymmetric carbon atom",
-      "ionic bond"
+      "must contain at least four carbon",
+      "when in solution rotate the plane of polarized light",
+      "in solution an asymmetric carbon atom",
+      "in solution always give a negative reading in a polarimeter"
     ],
-    "answerIndex": 2,
-    "explanation": "Optical activity is usually due to an asymmetric carbon atom."
+    "answerIndex": 1,
+    "explanation": "Null"
   },
   {
     "questionNumber": 16,
-    "question": "In determining parameters of two commodities, the best described as?",
+    "question": "A mixture of equal portions of two enantiomers, is best described as?",
     "options": [
-      "chemical property",
-      "physical property",
-      "optical property",
-      "magnetic property"
+      "epimers",
+      "aldose",
+      "racemate",
+      "optical isomers"
     ],
-    "answerIndex": 1,
-    "explanation": "The parameters described are physical properties."
+    "answerIndex": 2,
+    "explanation": "Null"
   },
   {
     "questionNumber": 17,
-    "question": "A compound burns with a very smoky flame. The percentage composition by mass is 77% and the molecular mass is 78. What is the molecular formula?",
+    "question": "A compound burns with a very sooty flame has the composition C = 92.3%, H = 7.7% and the molecular mass is 78. What is the molecular formula?",
     "options": [
       "$C_6H_6$",
-      "$C_2H_6$",
-      "$C_3H_8$",
-      "$C_4H_{10}$"
+      "$C_3H_6$",
+      "$C_6H_12$",
+      "$C_3H_4$"
     ],
     "answerIndex": 0,
     "explanation": "The molecular formula is benzene, $C_6H_6$."
   },
   {
     "questionNumber": 18,
-    "question": "The process whereby water is added to a compound is called",
+    "question": "______ property is not associated with carbon",
     "options": [
-      "hydrogenation",
-      "hydration",
-      "dehydration",
-      "cracking"
+      "maximum valency of four",
+      "hybridization",
+      "catenation",
+      "hydrophilicity"
     ],
-    "answerIndex": 1,
-    "explanation": "Hydration involves adding water to a compound."
+    "answerIndex": 3,
+    "explanation": "Null"
   },
   {
     "questionNumber": 19,
-    "question": "Which of the following is made up of only one atom?",
+    "question": "Which of the following will be IR active?",
     "options": [
-      "$O_2$",
-      "$H_2$",
-      "He",
-      "$N_2$"
+      "$–C≡N$",
+      "$CH_2=CH_2$",
+      "O_2",
+      "$H_2$"
     ],
-    "answerIndex": 2,
-    "explanation": "Helium exists as a single atom."
+    "answerIndex": 0,
+    "explanation": "The cyanide group ($–C≡N$) is IR active due to the change in dipole moment during vibration."
   },
   {
     "questionNumber": 20,
-    "question": "Which energy level in an atom can accommodate the highest number of electrons?",
+    "question": "Azimuthal quantum number desbribes",
     "options": [
-      "K-shell",
-      "L-shell",
-      "M-shell",
-      "N-shell"
+      "the sub-energy level in an atom",
+      "hybridization in an atom",
+      "catenation number of electrons in the outermost shell of an atom",
+      "none of the above"
     ],
-    "answerIndex": 3,
-    "explanation": "The N-shell can accommodate the highest number of electrons among the options."
+    "answerIndex": 0,
+    "explanation": "Null"
   },
   {
     "questionNumber": 21,
-    "question": "A colourless gas is made up of lead sulphide",
+    "question": "Which of the following tissues is made up of dead cells",
     "options": [
-      "Carbon",
-      "Carbon II oxide",
-      "Methane",
-      "Hydrogen sulphide"
+      "Xylem tissue",
+      "Cambium",
+      "Mesophyll",
+      "Palisade"
     ],
-    "answerIndex": 3,
-    "explanation": "Hydrogen sulphide is a colourless gas."
+    "answerIndex": 0,
+    "explanation": "Xylem tissue is made up of dead cells."
   },
   {
     "questionNumber": 22,
-    "question": "The role of useful substances from the bloodstream into cells is called",
+    "question": "The release of useful substances from the cells of an organism is called",
     "options": [
       "Excretion",
-      "Respiration",
-      "Absorption",
+      "Evacuation",
+      "Metabolism",
       "Secretion"
     ],
-    "answerIndex": 2,
-    "explanation": "Absorption involves taking substances into cells."
+    "answerIndex": 3,
+    "explanation": "Secretion is the release of useful substances from the cells of an organism."
   },
   {
     "questionNumber": 23,
-    "question": "Which of the following is not present in the white blood cell?",
+    "question": "Which of the following is not present in the nucleus?",
     "options": [
       "Chromosomes",
       "Nucleus",
-      "Mitochondria",
-      "Chloroplast"
+      "Genes",
+      "Mitochondria"
     ],
     "answerIndex": 3,
-    "explanation": "Animal cells do not contain chloroplasts."
+    "explanation": "Null"
   },
   {
     "questionNumber": 24,
-    "question": "Which of the following is not a characteristic feature of organisms?",
+    "question": "Which of the following is not a characteristic found in both the Gnetophyta and the angiosperms?",
     "options": [
-      "they reproduce",
-      "they contain genetic materials",
-      "they undergo mitosis in their life cycle",
-      "formation of a lipid membrane"
+      "their ovules contain two integuments",
+      "they produce vessel elements in their xylem",
+      "they undergo double fertilization",
+      "formation of a triploid endosperm"
     ],
     "answerIndex": 3,
-    "explanation": "Formation of a lipid membrane alone is not a defining characteristic of organisms."
+    "explanation": "Null"
   },
   {
     "questionNumber": 25,
-    "question": "Which of the following is referred to as an example of a tropical rain forest in Southern Nigeria?",
+    "question": "Which of the following is referred to as an usual gymnoeqzerm found in the Namibia and Massainiedes deserts of South Western Africa?",
     "options": [
-      "Mangrove forest",
-      "Savanna",
-      "Sahel vegetation",
-      "Desert"
+      "Gnetum",
+      "ephedra",
+      "welwitschia",
+      "Sequoia"
     ],
-    "answerIndex": 0,
-    "explanation": "Mangrove forest is common in Southern Nigeria."
+    "answerIndex": 2,
+    "explanation": "Welwitschia is an unusual gymnosperm found in the Namibia and Maasai Mara deserts of South Western Africa."
   },
   {
     "questionNumber": 26,
-    "question": "A government against club house is called",
+    "question": "A small flattened multicellular structure that represents the independent gametophyte generation of club mosses horsetails and ferns is called a/an",
     "options": [
-      "Monarchy",
-      "Socialism",
-      "Democracy",
-      "Feudalism"
+      "Prothallus",
+      "Protenema",
+      "Sori",
+      "Indusium"
     ],
-    "answerIndex": 2,
-    "explanation": "Democracy is a government by the people."
+    "answerIndex": 0,
+    "explanation": "Prothallus is the small flattened multicellular structure that represents the independent gametophyte generation of club mosses, horsetails, and ferns."
   },
   {
     "questionNumber": 27,
-    "question": "The green pigment in plants is called",
+    "question": "Which group does not produce seeds___",
     "options": [
-      "chlorophyll",
-      "xylem",
-      "phloem",
-      "cytoplasm"
+      "bryophyte",
+      "fern",
+      "gymnosperm",
+      "algae"
     ],
-    "answerIndex": 0,
-    "explanation": "Chlorophyll is the green pigment used in photosynthesis."
+    "answerIndex": 3,
+    "explanation": "Algae are non-flowering plants that do not produce seeds."
   },
   {
     "questionNumber": 28,
-    "question": "The instrument used to measure temperature is",
+    "question": "In true ferns, the gametophyte generation is represented by ",
     "options": [
-      "barometer",
-      "thermometer",
-      "hydrometer",
-      "hygrometer"
+      "Thallus",
+      "Prothallus",
+      "dorsoventrally flattened ribbon-like structure",
+      "sorus"
     ],
     "answerIndex": 1,
-    "explanation": "A thermometer measures temperature."
+    "explanation": "Null"
   },
   {
     "questionNumber": 29,
-    "question": "The process by which plants make food is called",
+    "question": "Which of these pairs are inappropriate?",
     "options": [
-      "respiration",
-      "photosynthesis",
-      "digestion",
-      "transpiration"
+      "Marsellia-Pteridophyte",
+      "Dryopteris-Pteridophyte",
+      "Salvinia-Bryophyte",
+      "Mnium-Bryophyte"
     ],
-    "answerIndex": 1,
-    "explanation": "Photosynthesis is the process plants use to make food."
+    "answerIndex": 2,
+    "explanation": "Null"
   },
   {
     "questionNumber": 30,
-    "question": "The SI unit of force is",
+    "question": "Paraphyses are",
     "options": [
-      "joule",
-      "watt",
-      "newton",
-      "pascal"
+      "sterile absorptive structure intermixed with gametangia in most mosses",
+      "sterile absorptive and hygroscopic structures in moss capsule",
+      "sterile absorptive structures in spore of most mosses",
+      "developmental stages of most mosses"
     ],
-    "answerIndex": 2,
-    "explanation": "The SI unit of force is the newton."
+    "answerIndex": 0,
+    "explanation": "Null"
   },
   {
     "questionNumber": 31,
     "question": "When an object is at infinity to the pole of a concave mirror the image is formed at",
     "options": [
       "principal focus, real and diminished",
-      "friction",
-      "tension",
-      "magnetism"
+      "Centre of curvature, real and inverted",
+      "Centre of curvature, virtual and erect",
+      "Principal focus, real and erect"
     ],
     "answerIndex": 0,
-    "explanation": "An immersed object experiences upthrust due to buoyancy."
+    "explanation": "Null"
   },
   {
     "questionNumber": 32,
@@ -356,7 +356,7 @@
       "0.25Hz",
       "40Hz"
     ],
-    "answerIndex": 3,
+    "answerIndex": 2,
     "explanation": "Frequency = $\\frac{1}{\\text{period}}$."
   }
 ]

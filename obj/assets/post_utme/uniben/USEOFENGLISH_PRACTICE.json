@@ -1,0 +1,242 @@
+[
+  {
+    "questionNumber": 1,
+    "question": "Education is widely regarded as the foundation of national development. A country that invests in the education of its citizens is more likely to experience economic growth and social stability. However, in many developing nations, access to quality education remains a challenge due to inadequate funding, poor infrastructure. and shortage of qualified teachers. Governments must therfore prioritize education by allocating sufficient resources and implementing policies that promote equal access to all. Without such efforts, the gap between the rich and the poor may continue to widen, leading to social unrest and economic stagnation. \nWhat is the main idea of the passage?",
+    "options": [
+      "Education is expensive",
+      "Education promotes national development",
+      "Teachers are not enough",
+      "Governments are careless"
+    ],
+    "answerIndex": 1,
+    "explanation": "The passage explicitly states that 'Education is widely regarded as the foundation of national development' and highlights its role in economic growth and social stability."
+  },
+  {
+    "questionNumber": 2,
+    "question": "Education is widely regarded as the foundation of national development. A country that invests in the education of its citizens is more likely to experience economic growth and social stability. However, in many developing nations, access to quality education remains a challenge due to inadequate funding, poor infrastructure. and shortage of qualified teachers. Governments must therfore prioritize education by allocating sufficient resources and implementing policies that promote equal access to all. Without such efforts, the gap between the rich and the poor may continue to widen, leading to social unrest and economic stagnation. \nAccording to the passage, what is a major challenge?",
+    "options": [
+      "Too many teachers",
+      "Excess funding",
+      "Lack of access to quality education",
+      "Too many students"
+    ],
+    "answerIndex": 2,
+    "explanation": "The text states that 'access to quality education remains a challenge due to inadequate funding, poor infrastructure, and shortage of qualified teachers.'"
+  },
+  {
+    "questionNumber": 3,
+    "question": "The teacher asked the students if they _______ any questions.",
+    "options": [
+      "has",
+      "having",
+      "have",
+      "had"
+    ],
+    "answerIndex": 3,
+    "explanation": "This is a past tense reported speech structure ('The teacher asked...'), so the past tense verb 'had' is required to maintain tense consistency."
+  },
+  {
+    "questionNumber": 4,
+    "question": "Which is a complex sentence?",
+    "options": [
+      "He is tall and strong",
+      "I came, I saw, I conquered",
+      "She smiled and waved",
+      "Because it rained, we stayed indoors"
+    ],
+    "answerIndex": 3,
+    "explanation": "A complex sentence consists of an independent clause ('we stayed indoors') and at least one dependent clause introduced by a subordinating conjunction ('Because it rained')."
+  },
+  {
+    "questionNumber": 5,
+    "question": "They are building a new hospital. Choose the correct passive form:",
+    "options": [
+      "A new hospital was being built",
+      "A new hospital has been built",
+      "A new hospital was built",
+      "A new hospital is being built"
+    ],
+    "answerIndex": 3,
+    "explanation": "The active sentence is in the present continuous tense ('are building'). Its passive counterpart requires 'is/are + being + past participle' ('is being built')."
+  },
+  {
+    "questionNumber": 6,
+    "question": "She came early, _______?",
+    "options": [
+      "didn't she",
+      "did she",
+      "wasn't she",
+      "had she"
+    ],
+    "answerIndex": 0,
+    "explanation": "For a positive statement in the simple past tense ('came'), the question tag must be negative and use the auxiliary verb 'did' ('didn't she')."
+  },
+  {
+    "questionNumber": 7,
+    "question": "Choose correct stress pattern:",
+    "options": [
+      "'advise",
+      "'advice",
+      "ad'vice",
+      "advise'"
+    ],
+    "answerIndex": 1,
+    "explanation": "The noun 'advice' is stressed on the first syllable: 'advice."
+  },
+  {
+    "questionNumber": 8,
+    "question": "My shoes are worn out; I must see my _______",
+    "options": [
+      "grocer",
+      "tanner",
+      "cobbler",
+      "hosier"
+    ],
+    "answerIndex": 2,
+    "explanation": "A cobbler is a person who repairs shoes."
+  },
+  {
+    "questionNumber": 9,
+    "question": "The police warned the communities not to take the law _______",
+    "options": [
+      "into their",
+      "into their own",
+      "into them",
+      "into hand"
+    ],
+    "answerIndex": 1,
+    "explanation": "The idiomatic expression is 'to take the law into one's own hands,' which means to punish someone illegally according to one's own discretion."
+  },
+  {
+    "questionNumber": 10,
+    "question": "Everyone makes mistakes; nobody is _______",
+    "options": [
+      "incorrigible",
+      "imperfect",
+      "infallible",
+      "indestructible"
+    ],
+    "answerIndex": 2,
+    "explanation": "'Infallible' means incapable of making mistakes or being wrong."
+  },
+  {
+    "questionNumber": 11,
+    "question": "The hospital can now boast of more _______",
+    "options": [
+      "woman doctor",
+      "woman doctors",
+      "women doctors",
+      "woman's doctors"
+    ],
+    "answerIndex": 2,
+    "explanation": "When forming the plural of a compound noun where the first word is 'woman' or 'man', both parts are pluralized: 'women doctors'."
+  },
+  {
+    "questionNumber": 12,
+    "question": "Choose the option nearest in meaning to the word in brackets: The lecturer's explanation was (lucid).",
+    "options": [
+      "Confusing",
+      "Clear",
+      "Lengthy",
+      "Boring"
+    ],
+    "answerIndex": 1,
+    "explanation": "'Lucid' means expressed clearly or easy to understand."
+  },
+  {
+    "questionNumber": 13,
+    "question": "Choose the option opposite in meaning to the word in brackets: His actions were (deliberate).",
+    "options": [
+      "Planned",
+      "Careful",
+      "Accidental",
+      "Intentional"
+    ],
+    "answerIndex": 2,
+    "explanation": "'Deliberate' means done consciously and intentionally. The opposite is 'accidental'."
+  },
+  {
+    "questionNumber": 14,
+    "question": "She would have passed the exam if she _______ harder.",
+    "options": [
+      "studies",
+      "studied",
+      "had studied",
+      "studying"
+    ],
+    "answerIndex": 2,
+    "explanation": "This is a third conditional sentence expressing a hypothetical past event. The structure requires 'if + past perfect' ('had studied') alongside 'would have + past participle'."
+  },
+  {
+    "questionNumber": 15,
+    "question": "Each of the students _______ responsible for the task.",
+    "options": [
+      "are",
+      "were",
+      "is",
+      "have"
+    ],
+    "answerIndex": 2,
+    "explanation": "The subject of the sentence is 'Each', which is a singular pronoun and therefore takes a singular verb ('is')."
+  },
+  {
+    "questionNumber": 16,
+    "question": "The man was accused _______ stealing the money.",
+    "options": [
+      "for",
+      "with",
+      "of",
+      "on"
+    ],
+    "answerIndex": 2,
+    "explanation": "The verb 'accused' is idiomatically followed by the preposition 'of'."
+  },
+  {
+    "questionNumber": 17,
+    "question": "When he heard the news, he kicked the bucket.",
+    "options": [
+      "Became angry",
+      "Died",
+      "Ran away",
+      "Celebrated"
+    ],
+    "answerIndex": 1,
+    "explanation": "'Kick the bucket' is a well-known English idiom that means to die."
+  },
+  {
+    "questionNumber": 18,
+    "question": "By this time next year, she _______ from the university.",
+    "options": [
+      "graduates",
+      "will graduate",
+      "will have graduated",
+      "graduated"
+    ],
+    "answerIndex": 2,
+    "explanation": "The phrase 'By this time next year' indicates an action that will be completed at a specific point in the future, requiring the future perfect tense ('will have graduated')."
+  },
+  {
+    "questionNumber": 19,
+    "question": "Identify the error: He did not knew the answer.",
+    "options": [
+      "He",
+      "did",
+      "knew",
+      "answer"
+    ],
+    "answerIndex": 2,
+    "explanation": "The auxiliary verb 'did' handles the past tense marker, so the main verb must remain in its base/infinitive form ('know') rather than past tense ('knew')."
+  },
+  {
+    "questionNumber": 20,
+    "question": "She is fond _______ music.",
+    "options": [
+      "at",
+      "with",
+      "of",
+      "on"
+    ],
+    "answerIndex": 2,
+    "explanation": "The adjective 'fond' takes the dependent preposition 'of'."
+  }
+]

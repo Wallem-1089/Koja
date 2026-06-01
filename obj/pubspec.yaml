@@ -44,8 +44,8 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  isar_generator: any
-  build_runner: any
+  isar_generator: ^3.1.0+1
+  build_runner: ^2.4.13
   flutter_launcher_icons: ^0.14.3
 
   # The "flutter_lints" package below contains a set of recommended lints to

@@ -1,4 +1,4 @@
-package com.example.obj
+package com.koja.obj
 
 import io.flutter.embedding.android.FlutterActivity
 
